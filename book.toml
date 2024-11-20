@@ -1,0 +1,6 @@
+[book]
+authors = ["Miquel A. Cabot"]
+language = "ca"
+multilingual = false
+src = "src"
+title = "Seguretat del Software (UIB)"
