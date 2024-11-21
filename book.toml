@@ -3,7 +3,7 @@ authors = ["Miquel A. Cabot"]
 language = "ca"
 multilingual = false
 src = "src"
-title = "Seguretat del Software (UIB)"
+title = "Seguretat del Software (Grau d'Enginyeria Telemàtica - UIB)"
 
 [output.html]
 git-repository-url = "https://github.com/uib-software-security/book"
