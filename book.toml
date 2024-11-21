@@ -4,3 +4,6 @@ language = "ca"
 multilingual = false
 src = "src"
 title = "Seguretat del Software (UIB)"
+
+[output.html]
+git-repository-url = "https://github.com/uib-software-security/book"
