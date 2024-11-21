@@ -1,1 +1,1 @@
-# Seguretat de baix nivell: atacs i exploits
+# ⚙️ Seguretat de baix nivell: atacs i exploits

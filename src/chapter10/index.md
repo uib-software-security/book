@@ -1,1 +1,1 @@
-# Revisió del codi: testing i anàlisi
+# 🧪 Revisió del codi: testing i anàlisi
