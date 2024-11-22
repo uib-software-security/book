@@ -8,6 +8,7 @@
 - **Crèdits**: 6.0  
 - **Curs**: 4t  
 - **Semestre**: Segon semestre  
+- **Professorat**: Miquel Àngel Cabot Nadal
 
 ---
 
@@ -59,9 +60,15 @@
 ---
 
 ## 📊 Avaluació  
-- **Activitats pràctiques**: 60% de la nota final  
-- **Exàmens escrits**: 40% de la nota final  
-- Hi haurà un examen de recuperació.  
+- **Activitats pràctiques**: 60% de la nota fina
+  - Pràctica 1: Temes 1 a 3
+  - Pràctica 2: Temes 4 a 6
+  - Pràctica 3: Temes 7 a 8
+  - Pràctica 4: Temes 9 a 11
+- **Exàmens escrits**: 40% de la nota final
+  - Exàmen 1r parcial: Temes 1 a 6
+  - Exàmen 2n parcial: Temes 7 a 11
+- **Exàmen de recuperació**
 
 ---
 
@@ -70,26 +77,37 @@
 - **Llibre recomanat**:  
   - *Effective C: An Introduction to Professional C Programming*, Robert C. Seacord  
 
+![Effective C](./img/effective_c.png)
+
+---
+
 ## 🦀 Programació en Rust  
 - També es faran pràctiques amb llenguatge Rust  
 - **Llibre recomanat**:  
   - *The Rust Programming Language*, Steve Klabnik i Carol Nichols  
   - Disponible online: [Rust Book](https://doc.rust-lang.org/book/)  
 
-*Designing Secure Software: A Guide for Developers*, Loren Kohnfelder|*Writing Secure Code*, David LeBlanc i Michael Howard
-:-------------------------:|:------------------------
-![](https://m.media-amazon.com/images/I/71x5wP8A-iL._AC_UF894,1000_QL80_.jpg)  |  ![](https://m.media-amazon.com/images/I/81sLhMuFxxL._UF1000,1000_QL80_.jpg)
+![The Rust Programming Language](./img/rust_book.png)
 
 ---
 
-## 📚 Més llibres recomanats  
-### Llibres recomanats per aquesta assignatura:  
+## 📚 Llibres recomanats per aquesta assignatura:  
+- *Designing Secure Software: A Guide for Developers*, Loren Kohnfelder
 - *Writing Secure Code*, David LeBlanc i Michael Howard  
-- *Designing Secure Software: A Guide for Developers*, Loren Kohnfelder  
+- *Penetration Testing: A Hands-On Introduction to Hacking*, Georgia Weidman
 
-*Designing Secure Software: A Guide for Developers*, Loren Kohnfelder|*Writing Secure Code*, David LeBlanc i Michael Howard|*Penetration Testing: A Hands-On Introduction to Hacking*, Georgia Weidman
-:-------------------------:|:------------------------:|:-------------------------
-![](https://m.media-amazon.com/images/I/71x5wP8A-iL._AC_UF894,1000_QL80_.jpg)  |  ![](https://m.media-amazon.com/images/I/81sLhMuFxxL._UF1000,1000_QL80_.jpg)  |  ![](https://m.media-amazon.com/images/I/5173WE-kO5L._AC_UF894,1000_QL80_.jpg)
+![Llibres per assignatura](./img/books1.png)
 
-### Llibres imprescindibles per a programadors:  
-- *Penetration Testing: A Hands-On Introduction to Hacking*, Georgia Weidman  
+## 📚 Llibres imprescindibles per a programadors:  
+- *Code Complete: A Practical Handbook of Software Construction, Second Edition*, Steve McConnell
+- *The Pragmatic Programmer: Your Journey to Mastery*, David Thomas i Andrew Hunt
+- *Clean Code: A Handbook of Agile Software Craftsmanship*, Robert C. Martin
+
+![Llibres per programadors](./img/books2.png)
+
+---
+
+## 🔗 Enllaços d'interès:
+- [Informació de l'assignatura](https://estudis.uib.cat/estudis-de-grau/grau/telematica/GTT2-P/22660/index.html)
+- [Cronograma](https://academic.uib.es/pds/consultaPublica/look[conpub]InicioPubHora?entradaPublica=true&lock=true&idiomaPais=ca.ES&planDocente=2024&centro=9399&estudio=331&planEstudio=613&curso=4&trimestre=S/2&asignatura22660=22660&&grupo0=4&consultarAsignaturaGrupoPrivada=S)
+- [Guia docent](https://academic.uib.es/doa/consultaPublica/look%5bconpub%5dMostrarPubGuiaDocAs?entradaPublica=true&idiomaPais=ca.ES&_anoAcademico=2024&_codAsignatura=22660)
