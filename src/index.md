@@ -1,12 +1,12 @@
 # Seguretat del Software
 
-Apunts de l'assignatura **Seguretat del Software** en format [mdBook](https://rust-lang.github.io/mdBook/).
+![Logo UIB](./img/logo-uib.png)
 
-> **Professor**: Miquel Àngel Cabot ([miquel.cabot@uib.cat](mailto:miquel.cabot@uib.cat))
+> **Universitat de les Illes Balears**
 >
 > **Grau d'Enginyeria Telemàtica​**
 >
-> **Universitat de les Illes Balears**
+> **Professor**: Miquel Àngel Cabot ([miquel.cabot@uib.cat](mailto:miquel.cabot@uib.cat))
 
-![Logo UIB](./img/logo-uib.png)
 
+Apunts de l'assignatura **Seguretat del Software** en format [mdBook](https://rust-lang.github.io/mdBook/).
