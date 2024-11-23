@@ -1,6 +1,6 @@
 # 🎓 Presentació
 
-## 📚 Informació de l'assignatura  
+## Informació de l'assignatura  
 - **Nom**: Seguretat del Software  
 - **Titulació**: 613 - GTT2 - Grau d'Enginyeria Telemàtica (Pla 2020)  
 - **Codi**: 22660  
@@ -12,7 +12,7 @@
 
 ---
 
-## 🗂️ Temes  
+## Temes  
 1. Introducció a la seguretat del software  
 2. Git i GitHub. Sistemes de control de versions  
 3. Llenguatge de marques Markdown  
@@ -27,7 +27,7 @@
 
 ---
 
-## 🛠️ Continguts  
+## Continguts  
 ### 🔥 Atacs de baix nivell  
 - Trencament de la pila  
 - Atacs de cadenes de format  
@@ -59,7 +59,7 @@
 
 ---
 
-## 📊 Avaluació  
+## Avaluació  
 - **Activitats pràctiques**: 60% de la nota fina
   - Pràctica 1: Temes 1 a 3
   - Pràctica 2: Temes 4 a 6
@@ -72,7 +72,7 @@
 
 ---
 
-## 💻 Programació en C  
+## Programació en C  
 - Algunes pràctiques es faran amb llenguatge C  
 - **Llibre recomanat**:  
   - *Effective C: An Introduction to Professional C Programming*, Robert C. Seacord  
@@ -81,7 +81,7 @@
 
 ---
 
-## 🦀 Programació en Rust  
+## Programació en Rust  
 - També es faran pràctiques amb llenguatge Rust  
 - **Llibre recomanat**:  
   - *The Rust Programming Language*, Steve Klabnik i Carol Nichols  
@@ -91,14 +91,16 @@
 
 ---
 
-## 📚 Llibres recomanats per aquesta assignatura:  
+## Llibres recomanats per aquesta assignatura:  
 - *Designing Secure Software: A Guide for Developers*, Loren Kohnfelder
 - *Writing Secure Code*, David LeBlanc i Michael Howard  
 - *Penetration Testing: A Hands-On Introduction to Hacking*, Georgia Weidman
 
 ![Llibres per assignatura](./img/books1.png)
 
-## 📚 Llibres imprescindibles per a programadors:  
+---
+
+## Llibres imprescindibles per a programadors:  
 - *Code Complete: A Practical Handbook of Software Construction, Second Edition*, Steve McConnell
 - *The Pragmatic Programmer: Your Journey to Mastery*, David Thomas i Andrew Hunt
 - *Clean Code: A Handbook of Agile Software Craftsmanship*, Robert C. Martin
