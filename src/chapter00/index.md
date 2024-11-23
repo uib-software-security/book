@@ -1,5 +1,7 @@
 # 🎓 Presentació
 
+---
+
 ## Informació de l'assignatura
 
 - **Nom**: Seguretat del Software  
@@ -45,6 +47,8 @@
 - Aleatorització de disseny d'espai d'adreces (ASLR)  
 - Aplicació de seguretat de memòria (p. ex., SoftBound)  
 - Integritat del flux de control (CFI)  
+
+---v
 
 ### 🏗️ Disseny segur
 
