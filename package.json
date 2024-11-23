@@ -1,0 +1,13 @@
+{
+  "name": "uib-software-security",
+  "version": "1.0.0",
+  "description": "Seguretat del Software (UIB)",
+  "author": "Miquel A. Cabot <miquel.cabot@uib.cat>",
+  "license": "MPL-2.0",
+  "scripts": {
+    "reveal-md": "rm -rf html-slides && reveal-md ./ --static html-slides"
+  },
+  "dependencies": {
+    "reveal-md": "^6.1.3"
+  }
+}

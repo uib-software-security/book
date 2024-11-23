@@ -1,0 +1,15 @@
+{
+  "title": "Seguretat del Software (UIB)",
+  "theme": "styles/PBA-theme.css",
+  "assetsDir": ".",
+  "separator": "\r?\n---\r?\n",
+  "verticalSeparator": "\r?\n---v\r?\n",
+  "highlightTheme": "shades-of-purple",
+  "host": "localhost",
+  "staticDir": "slides-html",
+  "staticDirs": [
+    "styles"
+  ],
+  "preprocessor": null,
+  "glob": "./src/**/*.md"
+}
