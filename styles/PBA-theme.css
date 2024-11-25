@@ -441,6 +441,10 @@ pba-flex[right] {
   background-color: var(--r-code-background-color);
 }
 
+code {
+  color: #ffffff;
+}
+
 .reveal pre code {
   display: block;
   overflow: auto;
