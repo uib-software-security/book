@@ -245,3 +245,36 @@
 ![Git branches](./img/branches.png)
 
 [http://git-school.github.io/visualizing-git/](http://git-school.github.io/visualizing-git/)
+
+---
+
+## Resum de comandes de Git
+
+![Git commands](./img/git_workflow2.png)
+
+---v
+
+![Git commands](./img/git_workflow3.png)
+
+---
+
+## Other GitHub tools
+
+- **Issues**: to report bugs, request new features, or ask questions.
+- **Projects**: to organize and prioritize your work.
+- **Wiki**: to document your project.
+- **Pull requests**: to propose changes to the project.
+- **Actions**: to automate your workflow.
+- **Insights**: to analyze the project.
+
+---
+
+## 🔗 Enllaços
+
+- [Git & GitHub Crash Course For Beginners (Youtube)](https://www.youtube.com/watch?v=SWYqp7iY_Tc)
+- [Using Projects for feature planning (Youtube)](https://www.youtube.com/watch?v=yFQ-p6wMS_Y)
+- [Tools & Concepts for Mastering Version Control with Git (Youtube)](https://www.youtube.com/watch?v=Uszj_k0DGsg&t=2s)
+- [ProGit book](https://git-scm.com/book/en/v2)
+- [Git and GitHub learning resources](https://docs.github.com/en/get-started/quickstart/git-and-github-learning-resources)
+- [GitHub Skills](https://skills.github.com/)
+- [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
