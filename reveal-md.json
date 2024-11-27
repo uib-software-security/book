@@ -16,5 +16,5 @@
     "tools"
   ],
   "preprocessor": null,
-  "glob": "./content/**/*[Ss]lides.md"
+  "glob": "./content/*[Ss]lides.md"
 }
