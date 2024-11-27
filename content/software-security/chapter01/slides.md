@@ -1,7 +1,3 @@
----
-title: Introducció a la seguretat del software
----
-
 # Introducció a la seguretat del software
 
 ---
