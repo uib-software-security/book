@@ -1,33 +1,37 @@
+---
+title: Presentació
+---
+
 # Presentació
 
 ---
 
 ## Informació de l'assignatura
 
-- **Nom**: Seguretat del Software  
-- **Titulació**: 613 - GTT2 - Grau d'Enginyeria Telemàtica (Pla 2020)  
-- **Codi**: 22660  
-- **Tipus**: Optativa  
-- **Crèdits**: 6.0  
-- **Curs**: 4t  
-- **Semestre**: Segon semestre  
+- **Nom**: Seguretat del Software
+- **Titulació**: 613 - GTT2 - Grau d'Enginyeria Telemàtica (Pla 2020)
+- **Codi**: 22660
+- **Tipus**: Optativa
+- **Crèdits**: 6.0
+- **Curs**: 4t
+- **Semestre**: Segon semestre
 - **Professorat**: Miquel Àngel Cabot Nadal
 
 ---
 
 ## Temes
 
-1. Introducció a la seguretat del software  
-2. Git i GitHub. Sistemes de control de versions  
-3. Llenguatge de marques Markdown  
-4. Programació en C  
-5. Seguretat de baix nivell: atacs i exploits  
-6. Defensa contra exploits de baix nivell  
-7. Programació en Rust  
-8. Metodologia Scrum  
-9. Desenvolupament segur de software  
-10. Revisió del codi: testing i anàlisi  
-11. Proves de penetració (Pentesting)  
+1. Introducció a la seguretat del software
+2. Git i GitHub. Sistemes de control de versions
+3. Llenguatge de marques Markdown
+4. Programació en C
+5. Seguretat de baix nivell: atacs i exploits
+6. Defensa contra exploits de baix nivell
+7. Programació en Rust
+8. Metodologia Scrum
+9. Desenvolupament segur de software
+10. Revisió del codi: testing i anàlisi
+11. Proves de penetració (Pentesting)
 
 ---
 
@@ -35,39 +39,39 @@
 
 ### 🔥 Atacs de baix nivell
 
-- Trencament de la pila  
-- Atacs de cadenes de format  
-- Accés a la memòria obsoleta  
-- Programació orientada al retorn (ROP)  
+- Trencament de la pila
+- Atacs de cadenes de format
+- Accés a la memòria obsoleta
+- Programació orientada al retorn (ROP)
 
 ### 🛡️ Defenses contra atacs basats en memòria
 
-- *Stack canaries*  
-- Dades no executables (W+X o DEP)  
-- Aleatorització de disseny d'espai d'adreces (ASLR)  
-- Aplicació de seguretat de memòria (p. ex., SoftBound)  
-- Integritat del flux de control (CFI)  
+- *Stack canaries*
+- Dades no executables (W+X o DEP)
+- Aleatorització de disseny d'espai d'adreces (ASLR)
+- Aplicació de seguretat de memòria (p. ex., SoftBound)
+- Integritat del flux de control (CFI)
 
 ---v
 
 ### 🏗️ Disseny segur
 
-- Modelatge d'amenaces  
-- Principis de disseny de seguretat:  
-  - Simplicitat  
-  - Confiar amb reticència (*trust with reluctance*)  
-  - Defensar en profunditat (*defend in depth*)  
-- Exemples reals de dissenys bons i dolents  
+- Modelatge d'amenaces
+- Principis de disseny de seguretat:
+  - Simplicitat
+  - Confiar amb reticència (*trust with reluctance*)
+  - Defensar en profunditat (*defend in depth*)
+- Exemples reals de dissenys bons i dolents
 
 ### 🧪 Revisió de codi automatitzada
 
-- Anàlisi estàtica  
-- Execució simbòlica  
-- Proves de fuzz de caixa blanca  
+- Anàlisi estàtica
+- Execució simbòlica
+- Proves de fuzz de caixa blanca
 
 ### 🎯 Proves de penetració i fuzzing
 
-- Objectius, tècniques i eines  
+- Objectius, tècniques i eines
 
 ---
 
@@ -87,9 +91,9 @@
 
 ## Programació en C
 
-- Algunes pràctiques es faran amb llenguatge C  
-- **Llibre recomanat**:  
-  - *Effective C: An Introduction to Professional C Programming*, Robert C. Seacord  
+- Algunes pràctiques es faran amb llenguatge C
+- **Llibre recomanat**:
+  - *Effective C: An Introduction to Professional C Programming*, Robert C. Seacord
 
 ![Effective C](./img/effective_c.png)
 
@@ -97,10 +101,10 @@
 
 ## Programació en Rust
 
-- També es faran pràctiques amb llenguatge Rust  
-- **Llibre recomanat**:  
-  - *The Rust Programming Language*, Steve Klabnik i Carol Nichols  
-  - Disponible online: [Rust Book](https://doc.rust-lang.org/book/)  
+- També es faran pràctiques amb llenguatge Rust
+- **Llibre recomanat**:
+  - *The Rust Programming Language*, Steve Klabnik i Carol Nichols
+  - Disponible online: [Rust Book](https://doc.rust-lang.org/book/)
 
 ![The Rust Programming Language](./img/rust_book.png)
 
@@ -109,7 +113,7 @@
 ## Llibres recomanats per aquesta assignatura
 
 - *Designing Secure Software: A Guide for Developers*, Loren Kohnfelder
-- *Writing Secure Code*, David LeBlanc i Michael Howard  
+- *Writing Secure Code*, David LeBlanc i Michael Howard
 - *Penetration Testing: A Hands-On Introduction to Hacking*, Georgia Weidman
 
 ![Llibres per assignatura](./img/books1.png)

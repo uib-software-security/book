@@ -1,7 +1,5 @@
 ---
 title: Git i GitHub. Sistemes de control de versions
-description: Git i GitHub. Sistemes de control de versions
-duration: 1 hours
 ---
 
 # Git i GitHub. Sistemes de control de versions
@@ -92,7 +90,7 @@ duration: 1 hours
    ```bash
    git status
    ```
-- Per veure els canvis entre l'àrea de treball i el **Index** (*staging area*) 
+- Per veure els canvis entre l'àrea de treball i el **Index** (*staging area*)
    ```bash
    git diff <filename>
 - Mostrar els canvis (commits) realitzats al **HEAD** (Repositori)

@@ -1,7 +1,5 @@
 ---
 title: Introducció a la seguretat del software
-description: Introducció a la seguretat del software
-duration: 1 hours
 ---
 
 # Introducció a la seguretat del software

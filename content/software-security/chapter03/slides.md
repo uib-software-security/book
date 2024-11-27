@@ -1,7 +1,5 @@
 ---
 title: Llenguatge de marques Markdown
-description: Llenguatge de marques Markdown
-duration: 1 hours
 ---
 
 # Llenguatge de marques Markdown
@@ -117,7 +115,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 Inline `code` has `back-ticks around` it.
 
 ```
-No language indicated, so no syntax highlighting. 
+No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
 ```
 ````
@@ -125,7 +123,7 @@ But let's throw in a <b>tag</b>.
 Inline `code` has `back-ticks around` it.
 
 ```
-No language indicated, so no syntax highlighting. 
+No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
 ```
 
