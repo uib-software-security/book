@@ -8,7 +8,7 @@
 
 ---
 
-- [🔐 Cryptography](./cryptography/index.md)
+- [🔐 Cryptography](./cryptography/page.md)
 
   - [Introduction to Cryptography](./cryptography/intro/page.md)
   - [Addresses and Keys](./cryptography/addresses/page.md)
