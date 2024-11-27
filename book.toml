@@ -1,7 +1,7 @@
 [book]
-title = "Polkadot Blockchain Academy"
-authors = ["Polkadot Blockchain Academy"]
-description = "The materials used in the Polkadot Blockchain Academy"
+title = "Seguretat del Software (UIB)"
+authors = ["Miquel A. Cabot"]
+description = "Materials utilitzats a l'assignatura Seguretat del Software (UIB)"
 language = "en"
 multilingual = false
 src = "content"
@@ -14,9 +14,9 @@ create-missing = false # opt out of helper to create missing stub files, we want
 edition = "2021"
 
 [output.html]
-site-url = "/pba-book/" # needed for gh-pages, MUST match repo name on github!
-git-repository-url = "https://github.com/Polkadot-Blockchain-Academy/pba-book"
-edit-url-template = "https://github.com/Polkadot-Blockchain-Academy/pba-book/edit/main/{path}"
+site-url = "/book/" # needed for gh-pages, MUST match repo name on github!
+git-repository-url = "https://github.com/uib-software-security/book"
+edit-url-template = "https://github.com/uib-software-security/book/edit/main/{path}"
 
 [output.html.search]
 limit-results = 20
