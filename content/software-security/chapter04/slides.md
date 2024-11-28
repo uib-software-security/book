@@ -261,3 +261,95 @@ Fer un programa que calculi la hipotenusa c d'un triangle, donats els seus costa
 ![Triangle](./img/triangle.png)
 
 ---
+
+## Condicional if
+
+```c
+if (<condition>) {
+  // Statements;
+} else if (<condition>) {
+  // Statements;
+} else {
+  // Statements
+}
+```
+
+---
+
+## Condicional switch
+
+```c
+switch (<expression>) {
+  case <value1>:
+    // Statements;
+    break;
+  case <value2>:
+    // Statements;
+    break;
+  default:
+    // Statements;
+}
+```
+
+---
+
+## Operadors lògics i relacionals
+
+```c
+// Operadors lògics
+// && - AND
+// || - OR
+// !  - NOT
+
+// Operadors relacionals
+// == - igual
+// != - diferent
+// >  - major
+// >= - major o igual
+// <  - menor
+// <= - menor o igual
+```
+
+---
+
+## Proposta
+
+Fer un programa que converteixi temperatures de graus Celsius a Fahrenheit i viceversa
+
+![Triangle](./img/temperature.png)
+
+---
+
+## Funcions
+
+```c
+return_type function_name(parameter list )
+{
+  // Statements
+}
+```
+
+---v
+
+```c
+/* function declaration */
+int max(int num1, int num2);
+
+int main () {
+  /* calling a function to get max value */
+  int ret = max(100, 200);
+  printf("Max value is : %d\n", ret);
+  return 0;
+}
+
+/* function returning the max between two numbers */
+int max(int num1, int num2) {
+  /* local variable declaration */
+  int result;
+  if (num1 > num2)
+    result = num1;
+  else
+    result = num2;
+  return result;
+}
+```
