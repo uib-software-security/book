@@ -63,15 +63,15 @@ int main() {
 ## Caràcters d'escapament (*scape characters*)
 
 ```c
-\n         // Nova línia (LF, line feed)
-\r         // Retorn de carro (CR, carriage return)
-\t         // Tabulació horitzontal
-\'         // Cometa simple
-\"         // Cometes dobles
-\\         // Barra diagonal inversa
-\x         // Valor hexadecimal, com \xFFFF
-\uhhhh     // Codi Unicode per davall de 10000 hexadecimal 
-\Uhhhhhhhh // Codi Unicode on h és un dígit hexadecimal
+// \n         - Nova línia (LF, line feed)
+// \r         - Retorn de carro (CR, carriage return)
+// \t         - Tabulació horitzontal
+// \'         - Cometa simple
+// \"         - Cometes dobles
+// \\         - Barra diagonal inversa
+// \x         - Valor hexadecimal, com \xFFFF
+// \uhhhh     - Codi Unicode per davall de 10000 hexadecimal 
+// \Uhhhhhhhh - Codi Unicode on h és un dígit hexadecimal
 ```
 
 ---
