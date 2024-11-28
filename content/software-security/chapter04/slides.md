@@ -353,3 +353,90 @@ int max(int num1, int num2) {
   return result;
 }
 ```
+
+---
+
+## Operador ternari
+
+```c
+// ternary operator = shortcut to if/else when assigning/returning a value
+// (condition)? value_if_true : value_if_false
+
+int findMax(int x, int y) {
+  return (x > y) ? x : y;
+}
+```
+
+---
+
+## Funcions d'string (1)
+
+```c
+#include <string.h>
+
+strlwr(string1); // converts a string to lowercase
+strupr(string1); // converts a string to uppercase
+strcat(string1, string2); // appends string2 to end of string1
+strncat(string1, string2, n); // appends n characters from string2 to string1
+strcpy(string1, string2); // copy string2 to stringl
+strncpy(string1, string2, n); // copy n characters of string2 to stringl
+
+strset(string1, char); // sets all characters of a string to a given character
+strnset(string1, char, n); //sets first n characters of a string to a given character
+strrev(string1); //reverses a string
+```
+
+---
+
+## Funcions d'string (i 2)
+
+```c
+#include <string.h>
+
+int result = strlen(string1); // returns string length as int
+int result = strcmp(string1, string2); // string compare all characters (0 equal, 1 = different)
+int result = strncmp(string1, string2, 1); // string compare n characters (0 equal, 1 = different)
+int result = strempi(string1, string1); // string compare all (ignore case)
+int result = strnicmp(string1, string1, 1); // string compare n characters (ignore case)
+```
+
+---
+
+## Bucles while i do/while
+
+```c
+while (condition) {
+  // Statements;
+}
+
+do {
+  // Statements;
+} while (condition);
+
+// continue = skips rest of code & forces the next iteration of the loop
+// break = exits a loop/switch
+```
+
+---
+
+## Bucle for
+
+```c
+for (initial_value; condition; incrementation_or_decrementation ) {
+  // Statements;
+}
+```
+
+Exemple:
+
+```c
+int number;
+//for loop to print 1-10 numbers
+for(number=1; number<=10; number++) {
+  printf("%d\n",number);
+}
+```
+
+---
+
+
