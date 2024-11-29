@@ -11,7 +11,7 @@
 
 ---
 
-## Sintaxi: negreta, cursiva...
+## Sintaxi: negreta, cursiva i ratllat
 
 ```markdown
 Emphasis, aka italics, with *asterisks* or _underscores_.
