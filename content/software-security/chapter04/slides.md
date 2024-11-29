@@ -31,17 +31,22 @@ int main() {
 ## Compilar i executar
 
 - Instrucció per compilar:
-  ```bash
-  gcc test.c -o test
-  ```
+
+```bash
+gcc test.c -o test
+```
+
 - Instrucció per executar:
-  ```bash
-  ./test
-  ```
+
+```bash
+./test
+```
+
 - Resultat:
-  ```bash
-  Hello, World!
-  ```
+
+```bash
+Hello, World!
+```
 
 ---
 
@@ -110,7 +115,7 @@ printf("Your gpa is %5.2f\n");
 
 ---
 
-## Tipus de dades
+## Tipus de dades (1)
 
 ```c
 char a = 'C'; // single character %c
@@ -128,7 +133,7 @@ void // \0
 
 ---
 
-## Tipus de dades
+## Tipus de dades (i 2)
 
 ```c
 char f = 100; // 1 byte (-128 to +127) %d or %c
@@ -188,7 +193,7 @@ i += 1; // i = i + 1;
 
 ---
 
-## Introducció de dades per teclat
+## Introducció de dades per teclat (1)
 
 ```c
 #include <stdio.h>
@@ -207,7 +212,7 @@ Amb `scanf`, a diferència de `printf`, cal passar punters als arguments perquè
 
 ---
 
-## Introducció de dades per teclat
+## Introducció de dades per teclat (i 2)
 
 ```c
 #include <stdio.h>
@@ -246,7 +251,7 @@ tan(n);
 
 ---
 
-## Proposta
+## Proposta 1
 
 Fer un programa que calculi la circumferència i l'àrea d'un cercle, donat el seu radi
 
@@ -254,7 +259,7 @@ Fer un programa que calculi la circumferència i l'àrea d'un cercle, donat el s
 
 ---
 
-## Proposta
+## Proposta 2
 
 Fer un programa que calculi la hipotenusa c d'un triangle, donats els seus costats a i b
 
@@ -312,7 +317,7 @@ switch (<expression>) {
 
 ---
 
-## Proposta
+## Proposta 3
 
 Fer un programa que converteixi temperatures de graus Celsius a Fahrenheit i viceversa
 
@@ -614,7 +619,7 @@ int main () {
 
 ---
 
-## Proposta
+## Proposta 4
 
 Fer un programa per jugar a tres en línia (tic-tac-toe) entre dos jugadors
 

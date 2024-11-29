@@ -48,9 +48,9 @@ git config --list
 
 ## Estructura d'un repositori
 
-- **El directori de treball (*working tree*):** conté els fitxers en què estàs treballant actualment.
-- **L'índex (*staging area*):** és una àrea de preparació on es configuren els canvis per validar-los (**commits**).
-- **El repositori (*HEAD*):** és la ubicació final on es guarden els canvis validats.
+- **El directori de treball (_working tree_):** conté els fitxers en què estàs treballant actualment.
+- **L'índex (_staging area_):** és una àrea de preparació on es configuren els canvis per validar-los (**commits**).
+- **El repositori (_HEAD_):** és la ubicació final on es guarden els canvis validats.
 
 ![Estructura d'un repositori Git](./img/git_structure.png)
 
@@ -75,7 +75,7 @@ git init
 ```
 
 - Afegir fitxers a l'índex
-  - Agafa una instantània dels fitxers per a versionar, afegint-los a l'**Index** (*staging area*).
+  - Agafa una instantània dels fitxers per a versionar, afegint-los a l'**Index** (_staging area_).
   - L'opció `-u` també afegeix els fitxers per eliminar.
 
 ```bash
@@ -99,7 +99,7 @@ git commit -m "Missatge del commit"
 git status
 ```
 
-- Per veure els canvis entre l'àrea de treball i el **Index** (*staging area*)
+- Per veure els canvis entre l'àrea de treball i el **Index** (_staging area_)
 
 ```bash
 git diff <filename>
@@ -218,10 +218,10 @@ git fetch
 
 ## Ús de branques
 
-- A **Git**, cada **commit** sap quin *commit* el precedeix (historial).
+- A **Git**, cada **commit** sap quin _commit_ el precedeix (historial).
 - Una **branch** a Git és simplement un apuntador a un commit.
-  - Cada vegada que es fa un **commit**, l'apuntador de la branca activa s'actualitza automàticament. L'historial d'una branca seria la seqüència de *commits* des de l'apuntador de la branca fins al seu inici.
-- **HEAD** apunta a la **branca activa**, és a dir, a l'apuntador de l'últim *commit* de la branca activa.
+  - Cada vegada que es fa un **commit**, l'apuntador de la branca activa s'actualitza automàticament. L'historial d'una branca seria la seqüència de _commits_ des de l'apuntador de la branca fins al seu inici.
+- **HEAD** apunta a la **branca activa**, és a dir, a l'apuntador de l'últim _commit_*_ de la branca activa.
 
 ---
 
@@ -263,7 +263,7 @@ git checkout [-b] <branch_name>
 ```
 
 - Crear un nou commit que integri la branca especificada a la branca activa
-  - Aquest commit tindrà dos "commits pare". Si no s'especifica una branca, integrarà la branca remota (*origin/master*)
+  - Aquest commit tindrà dos "commits pare". Si no s'especifica una branca, integrarà la branca remota (_origin/master_)
 
 ```bash
 git merge <branch_name> -m "message"
