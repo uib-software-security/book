@@ -16,27 +16,33 @@
 
 - **Windows**: descarregar des de [https://git-scm.com/download/win](https://git-scm.com/download/win)
 - **Linux**: executar la comanda
-  ```bash
-  sudo apt install git
-  ```
+
+```bash
+sudo apt install git
+```
+
 - **macOS**: instal·lar Xcode des de l'App Store i executar
-  ```bash
-  xcode-select --install
-  ```
+
+```bash
+xcode-select --install
+```
 
 ---
 
 ## Configuració de Git
 
 - **Nom i correu electrònic**: cal configurar el nom i correu electrònic per a identificar els commits.
-  ```bash
-  git config --global user.name "<user-name>"
-  git config --global user.email "<user-email>"
-  ```
+
+```bash
+git config --global user.name "<user-name>"
+git config --global user.email "<user-email>"
+```
+
 - **Visualització de la configuració**:
-  ```bash
-  git config --list
-  ```
+
+```bash
+git config --list
+```
 
 ---
 
@@ -62,45 +68,58 @@
 ## Comandes bàsiques de Git
 
 - Inicialitzar un repositori nou:
-   ```bash
-   git init
-   ```
-   - Crea un nou repositori local (`/.git`).
+  - Crea un nou repositori local (`/.git`).
+
+```bash
+git init
+```
+
 - Afegir fitxers a l'índex
-   ```bash
-   git add [-u] [filename | . | pattern]
-   ```
-   - Agafa una instantània dels fitxers per a versionar, afegint-los a l'**Index** (*staging area*).
-   - L'opció `-u` també afegeix els fitxers per eliminar.
+  - Agafa una instantània dels fitxers per a versionar, afegint-los a l'**Index** (*staging area*).
+  - L'opció `-u` també afegeix els fitxers per eliminar.
+
+```bash
+git add [-u] [filename | . | pattern]
+```
+
 - Validar els canvis al repositori
-   ```bash
-   git commit -m "Missatge del commit"
-   ```
-   - Guarda els canvis de l'**Index** al **Repositori** (**HEAD**).
+  - Guarda els canvis de l'**Index** al **Repositori** (**HEAD**).
+
+```bash
+git commit -m "Missatge del commit"
+```
 
 ---
 
 ## Veure l'estat del repositori git
 
 - Llistar tots els fitxers nous o modificats (comparats amb el **HEAD**)
-   ```bash
-   git status
-   ```
+
+```bash
+git status
+```
+
 - Per veure els canvis entre l'àrea de treball i el **Index** (*staging area*)
-   ```bash
-   git diff <filename>
+
+```bash
+git diff <filename>
+```
+
 - Mostrar els canvis (commits) realitzats al **HEAD** (Repositori)
-   ```bash
-   git log [-p] [--graph] [--all] [--oneline]
-   ```
-   - `-p` mostra els detalls de cada commit.
-   - `--graph` mostra un esquema de l'historial de commits.
-   - `--all` mostra commits de totes les branques.
-   - `--oneline` mostra els commits en una sola línia.
+  - `-p` mostra els detalls de cada commit.
+  - `--graph` mostra un esquema de l'historial de commits.
+  - `--all` mostra commits de totes les branques.
+  - `--oneline` mostra els commits en una sola línia.
+
+```bash
+git log [-p] [--graph] [--all] [--oneline]
+```
+
 - Mostrar informació d'un commit
-   ```bash
-   git show <id_commit>
-   ```
+
+```bash
+git show <id_commit>
+```
 
 ---
 
@@ -150,34 +169,44 @@
 ## Comandes per configurar un repositori remot
 
 - Crea una còpia d'un repositori remot
-   ```bash
-   git clone <url>
-   ```
+
+```bash
+git clone <url>
+```
+
 - Mostra el(s) repositori(s) remot(s)
-   ```bash
-   git remote show [origin]
-   ```
+
+```bash
+git remote show [origin]
+```
+
 - Afegeix un repositori remot
-   ```bash
-   git remote add origin <url>
-   ```
+
+```bash
+git remote add origin <url>
+```
 
 ---
 
 ## Comandes per treballar amb un repositori remot
 
 - Puja tots els fitxers validades de la branca local al repositori remot
-   ```bash
-   git push [origin] [master]
-   ```
+
+```bash
+git push [origin] [master]
+```
+
 - Descarrega i incorpora els canvis del repositori remot (`git fetch` + `git merge`)
-   ```bash
-   git pull [origin] [master]
-   ```
+
+```bash
+git pull [origin] [master]
+```
+
 - Descarrega els canvis del repositori remot
-   ```bash
-   git fetch
-   ```
+
+```bash
+git fetch
+```
 
 ---
 
@@ -205,36 +234,46 @@
 ## Comandes de Git amb branques
 
 - Crear una nova branca
-   ```bash
-   git branch <branch_name>
-   ```
+
+```bash
+git branch <branch_name>
+```
+
 - Mostrar les branques existents
-   ```bash
-   git branch -l
-   ```
+
+```bash
+git branch -l
+```
+
 - Esborrar la branca especificada
-   ```bash
-   git branch -d <branch_name>
-   ```
+
+```bash
+git branch -d <branch_name>
+```
 
 ---
 
 ## Més comandes de Git amb branques
 
 - Canviar a la branca especificada, modificant on apunta el HEAD
-   ```bash
-   git checkout [-b] <branch_name>
-   ```
-   - `-b` crea la branca si no existeix
+  - `-b` crea la branca si no existeix
+
+```bash
+git checkout [-b] <branch_name>
+```
+
 - Crear un nou commit que integri la branca especificada a la branca activa
-   ```bash
-   git merge <branch_name> -m "message"
-   ```
-   - Aquest commit tindrà dos "commits pare". Si no s'especifica una branca, integrarà la branca remota (*origin/master*)
+  - Aquest commit tindrà dos "commits pare". Si no s'especifica una branca, integrarà la branca remota (*origin/master*)
+
+```bash
+git merge <branch_name> -m "message"
+```
+
 - Reescriure l'historial de commits, integrant la branca especificada en el punt on es va bifurcar
-   ```bash
-   git rebase <branch_name>
-   ```
+
+```bash
+git rebase <branch_name>
+```
 
 ---
 
