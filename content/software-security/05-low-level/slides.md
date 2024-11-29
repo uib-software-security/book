@@ -174,3 +174,91 @@
 ## Malware vs Exploits: What's the Difference?
 
 [![Malware vs Exploits: What's the Difference?](https://img.youtube.com/vi/a9u8-rNCHUs/0.jpg)](https://www.youtube.com/watch?v=a9u8-rNCHUs)
+
+---
+
+## Tipus d'exploits
+
+- Zero-day
+- Full disclosure
+- Responsible disclosure
+
+---
+
+## Zero-day
+
+- Forat o vulnerabilitat en el programari que és desconegut per al fabricant o desenvolupador
+- Pot ser explotat pels hackers abans que el venedor ho descobreixi i creï un _patch_ per tal d’eliminar-ne la vulnerabilitat
+- Són els més perillosos
+
+---
+
+## Full disclosure
+
+- Full disclosure és la pràctica de publicar la informació de les vulnerabilitats al mateix moment que es descobreix, de forma que sigui accessible per a tothom
+  - Per tant, les víctimes potencials estan informades de com poden ser atacades i els fabricants poden desenvolupar el _patch_
+- També s'anomenen **exploits de dia 1**, ja que es coneix l'error però encara no hi ha un _patch_
+
+---
+
+## Responsible disclosure
+
+- El fabricant descobreix o és informat de l’error però no es fa públic
+- Quan el fabricant té disponible el _patch_ i el posa a disposició dels clients és quan es dóna a conèixer i es fa públic
+- Sistema molt comú en les grans empreses de programari com Microsoft
+  - S'aplica el principi de no publicar res que pugui afectar la seguretat dels seus clients.
+
+---
+
+## Introducció a la seguretat de baix nivell
+
+> C i l'atac de buffer overflow
+
+---
+
+## Què es un _buffer overflow_?
+
+- Un **_buffer overflow_** (desbordament de memòria intermèdia) és un **_bug_** que afecta el codi de baix nivell, normalment en **C** i **C++**, amb importants implicacions de seguretat
+- **Normalment**, un programa amb aquest error simplement **fallarà**
+- Però un **atacant** pot alterar les situacions que fan que el programa faci coses pitjors:
+  - **Robar** informació privada
+  - **Corrompre** informació valuosa
+  - **Executar** codi de l'atacant
+
+---
+
+## Per què estudiar-lo?
+
+- Els **_buffer overflows_** encara són **rellevants** avui dia
+  - C i C++ encara són populars
+  - Els _buffer overflows_ encara es produeixen amb regularitat
+- Tenen una **llarga història**
+  - S'han desenvolupat molts enfocaments diferents per defensar-se contra ells, i errors com ells
+- Comparteixen **característiques comunes amb altres _bugs_** que estudiarem
+  - En **com funciona l'atac**
+  - En **com defensar-s'hi**
+
+---
+
+## C i C++ són encara molt populars
+
+![Top programming languages](./img/top_languages.png)
+
+- [https://spectrum.ieee.org/top-programming-languages-2024](https://spectrum.ieee.org/top-programming-languages-2024)
+
+---
+
+## Sistemes crítics en C/C++
+
+- La majoria dels **nuclis (_kernels_)** i utilitats del sistema operatiu
+  - fingerd, X windows server, shell
+- Molts **servidors d'alt rendiment**
+  - Microsoft IIS, Apache httpd, nginx
+  - Servidor Microsoft SQL, MySQL, redis, memcached
+- Molts **sistemes encastats** (_embedded systems_)
+  - Rover de Mart, sistemes de control industrial, automòbils
+**Un atac a aquests sistemes és especialment perillós!**
+
+---
+
+
