@@ -139,7 +139,7 @@ unsigned short int i = 65535; // 2 bytes (0 to +65,535) %d
 
 int j = 2147483647； // 4 bytes (-2,147,483,648 to +2,147,483,647) %d
 unsigned int k = 4294967295; // 4 bytes (0 to +4,294,967, 295) %u
-// NOTE: long int = int
+// long int = int
 
 long long int 1 = 9223372036854775807; // 8 bytes (-9 quintillion to +9 quintillion) %lld
 unsigned long long int m = 18446744073709551615; // 8 bytes (0 to +18 quintillion) %llu
@@ -439,4 +439,190 @@ for(number=1; number<=10; number++) {
 
 ---
 
+## Arrays
 
+- Array: estructura de dades que pot guardar múltiples valors del mateix tipus de dades
+
+```c
+double prices[] = {5.0, 10.0, 15.0, 25.0, 20.0};
+printf("%lf", prices[0]);
+
+// També es pot declarar i inicialitzar un array de la següent manera:
+double prices[5];
+prices[0] = 5.0;
+prices[1] = 10.0;
+prices[2] = 15.0;
+prices[3] = 25.0;
+prices[4] = 2.0;
+```
+
+- Mostar la mida d'un array:
+
+```c
+sizeof(prices) // returns 5
+```
+
+---
+
+## Arrays multidimensionals
+
+```c
+int numbers[2][3] = {
+  {1, 2, 3},
+  {4, 5, 6}
+};
+
+numbers[0][1] // = 2
+numbers[0][1] = 4;
+```
+
+---
+
+## Arrays de strings
+
+```c
+#include <string.h>
+
+char cars[][10] = {"Mustang", "Corvette", "Camaro"};
+
+cars[0] = "Tesla";        // ERROR
+strcpy(cars[0], "Tesla"); // sets first element as "Tesla"
+
+for(int i = 0; i ‹ sizeof(cars)/sizeof(cars[0]); i++) {
+  printf("%s \n", cars[i]);
+}
+```
+
+---
+
+## Structs
+
+- `struct`: col·lecció de membres relacionats ("variables")
+  - Poden ser de diferents tipus de dades
+  - Llistat sota un nom en un bloc de memòria
+  - Molt semblant a les classes en altres llenguatges (però sense mètodes)
+
+```c
+struct Player {
+  char name[12];
+  int score;
+};
+
+struct Player player1;
+
+strcpy(player1.name, "Mike");
+player1.score = 4;
+
+struct Player player2 = {"Bob", 5};
+```
+
+---
+
+## Typedef
+
+- `typedef`: paraula reservada que dona un àlies a un tipus de dades existent
+
+```c
+typedef unsigned char BYTE;
+BYTE b1, b2;
+
+typedef struct Books {
+  char title[50];
+  char author[50];
+  int book_id;
+} Book;
+Book book;
+```
+
+---
+
+## Operacions a nivell de bit
+
+```c
+// & = AND
+// | = OR
+// ^ = XOR
+// << left shift
+// >> right shift
+
+int x = 6;  //  6 = 00000110
+int y = 12; // 12 = 00001100
+int z = 0;
+
+z = x & y;  //  4 = 00000100
+printf("AND = %d\n", z);
+````
+
+---
+
+## Adreces de memòria
+
+- **Memòria**: una matriu de bytes dins de la memòria RAM
+- **Bloc de memòria**: una única unitat (byte) dins de la memòria, utilitzada per contenir algun valor
+- **Adreça de memòria**: adreça d'on es troba un bloc de memòria
+  - Format: `%p`
+  - Valor de l'adreça: `&nom_variable`
+
+```c
+char a = 'X';
+char b = 'Y';
+
+printf("%ld bytes\n", sizeof(a)); // 1 bytes
+printf("%ld bytes\n", sizeof(b)); // 1 bytes
+
+printf("%p\n", &a); // 0x16f22312b
+printf("%p\n", &b); // 0x16f22312a
+```
+
+---
+
+## Punters
+
+- Un punter és una variable que conté com a valor l'adreça de memòria d'una altra variable.
+  - Això permet accedir i manipular els continguts de la memòria a través de l'ús d'adreces.
+
+```c
+int age = 21;
+
+int *pAge = NULL; // pointer to an integer
+pAge = &age;      // store address of age in pAge
+
+printf("address of age: %p\n", &age); // 0x16f14f12c
+printf("value of pAge: %p\n", pAge);  // 0x16f14f12c
+
+printf("size of age: %ld bytes\n", sizeof(age));   // 4 bytes
+printf("size of pAge: %ld bytes\n", sizeof(pAge)); // 8 bytes
+
+printf("value of age: %d\n", age);              // 21
+printf("value at stored address: %d\n", *pAge); // 21
+```
+
+---
+
+## Utilitzant punters com a paràmetres de funcions
+
+```c
+void printAge(int *pAge) {
+  printf("You are %d years old\n", *pAge);
+}
+
+int main () {
+  int age = 21;
+  printAge(&age);
+}
+```
+
+---
+
+## Proposta
+
+Fer un programa per jugar a tres en línia (tic-tac-toe) entre dos jugadors
+
+![Tic tac toe](./img/tic-tac-toe.png)
+
+---
+
+## 🔗 Enllaços
+
+- [C Programming Full Course for free (Youtube)](https://www.youtube.com/watch?v=87SH2Cn0s9A)
+- [C Programming Tutorial for Beginners (Youtube)](https://www.youtube.com/watch?v=KJgsSFOSQv0)
