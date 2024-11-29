@@ -64,7 +64,7 @@
 - Inicialitzar un repositori nou:
    ```bash
    git init
-   ````
+   ```
    - Crea un nou repositori local (`/.git`).
 - Afegir fitxers a l'índex
    ```bash

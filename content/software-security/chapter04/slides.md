@@ -56,11 +56,11 @@ int main() {
   múltiples
   línies
 */
-````
+```
 
 ---
 
-## Caràcters d'escapament (*scape characters*)
+## Caràcters d'escapament (_scape characters_)
 
 ```c
 // \n         - Nova línia (LF, line feed)
@@ -551,7 +551,7 @@ int z = 0;
 
 z = x & y;  //  4 = 00000100
 printf("AND = %d\n", z);
-````
+```
 
 ---
 

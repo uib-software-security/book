@@ -18,8 +18,8 @@
 
 ### Diferència clau
 
-- **Correcció** -> Què *ha de fer* un sistema.
-- **Seguretat** -> Què *no ha de fer* un sistema.
+- **Correcció** -> Què _ha de fer_ un sistema.
+- **Seguretat** -> Què _no ha de fer_ un sistema.
 
 ---
 
@@ -69,7 +69,7 @@
 ## Defectes i vulnerabilitats
 
 - Moltes infraccions comencen explotant una **vulnerabilitat**
-- **Vulnerabilitat**: **Defecte del programari** rellevant per a la seguretat que pot ser **explotat** (*exploit*) per produir un comportament no desitjat
+- **Vulnerabilitat**: **Defecte del programari** rellevant per a la seguretat que pot ser **explotat** (_exploit_) per produir un comportament no desitjat
 - Hi ha un **defecte** del programari quan el programari es comporta incorrectament, és a dir, no compleix el seu requisits
 - **Defectes**:
   - **Flaw** (defecte): Defecte en el **disseny**
@@ -79,12 +79,12 @@
 
 ## Correcció i seguretat
 
-- És massa car corregir tots els *bugs* abans de desplegar els programes
+- És massa car corregir tots els _bugs_ abans de desplegar els programes
   - Per tant, les empreses només arreglen els que tenen més probabilitats d'afectar als usuaris normals
 - A tenir en compte: els **adversaris/hackers** no són usuaris normals
 - L'adversari intentarà activament trobar defectes en interaccions de característiques i casos extrems
-  - Per a un usuari típic, trobar un *bug* (accidentalment) provocarà un error, que després intentarà evitar.
-  - Un adversari treballarà per trobar un *bug* i explotar-lo per assolir els seus objectius
+  - Per a un usuari típic, trobar un _bugs_ (accidentalment) provocarà un error, que després intentarà evitar.
+  - Un adversari treballarà per trobar un _bugs_ i explotar-lo per assolir els seus objectius
 
 ### Solució
 
@@ -119,9 +119,9 @@
 ## Altres formes de seguretat
 
 - Seguretat del **sistema operatiu**
-  - Gestionen les accions dels programes (*system calls*)
+  - Gestionen les accions dels programes (_system calls_)
   - Per exemple, polítiques de lectura i escriptura de fitxers, enviament i recepció de paquets de xarxa, engegar nous programes...
-- **Firewalls i IDSs** (*Intrusion Detection System*)
+- **Firewalls i IDSs** (_Intrusion Detection System_)
   - Observen, bloquegen i filtren els missatges intercanviats per programes
 - **Antivirus**
   - Cerquen signes de comportament maliciós als fitxers locals

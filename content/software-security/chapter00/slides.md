@@ -42,7 +42,7 @@
 
 ### 🛡️ Defenses contra atacs basats en memòria
 
-- *Stack canaries*
+- _Stack canaries_
 - Dades no executables (W+X o DEP)
 - Aleatorització de disseny d'espai d'adreces (ASLR)
 - Aplicació de seguretat de memòria (p. ex., SoftBound)
@@ -55,8 +55,8 @@
 - Modelatge d'amenaces
 - Principis de disseny de seguretat:
   - Simplicitat
-  - Confiar amb reticència (*trust with reluctance*)
-  - Defensar en profunditat (*defend in depth*)
+  - Confiar amb reticència (_trust with reluctance_)
+  - Defensar en profunditat (_defend in depth_)
 - Exemples reals de dissenys bons i dolents
 
 ### 🧪 Revisió de codi automatitzada
@@ -89,7 +89,7 @@
 
 - Algunes pràctiques es faran amb llenguatge C
 - **Llibre recomanat**:
-  - *Effective C: An Introduction to Professional C Programming*, Robert C. Seacord
+  - _Effective C: An Introduction to Professional C Programming_, Robert C. Seacord
 
 ![Effective C](./img/effective_c.png)
 
@@ -99,7 +99,7 @@
 
 - També es faran pràctiques amb llenguatge Rust
 - **Llibre recomanat**:
-  - *The Rust Programming Language*, Steve Klabnik i Carol Nichols
+  - _The Rust Programming Language_, Steve Klabnik i Carol Nichols
   - Disponible online: [Rust Book](https://doc.rust-lang.org/book/)
 
 ![The Rust Programming Language](./img/rust_book.png)
@@ -108,9 +108,9 @@
 
 ## Llibres recomanats per aquesta assignatura
 
-- *Designing Secure Software: A Guide for Developers*, Loren Kohnfelder
-- *Writing Secure Code*, David LeBlanc i Michael Howard
-- *Penetration Testing: A Hands-On Introduction to Hacking*, Georgia Weidman
+- _Designing Secure Software: A Guide for Developers_, Loren Kohnfelder
+- _Writing Secure Code_, David LeBlanc i Michael Howard
+- _Penetration Testing: A Hands-On Introduction to Hacking_, Georgia Weidman
 
 ![Llibres per assignatura](./img/books1.png)
 
@@ -118,9 +118,9 @@
 
 ## Llibres imprescindibles per a programadors
 
-- *Code Complete: A Practical Handbook of Software Construction, Second Edition*, Steve McConnell
-- *The Pragmatic Programmer: Your Journey to Mastery*, David Thomas i Andrew Hunt
-- *Clean Code: A Handbook of Agile Software Craftsmanship*, Robert C. Martin
+- _Code Complete: A Practical Handbook of Software Construction, Second Edition_, Steve McConnell
+- _The Pragmatic Programmer: Your Journey to Mastery_, David Thomas i Andrew Hunt
+- _Clean Code: A Handbook of Agile Software Craftsmanship_, Robert C. Martin
 
 ![Llibres per programadors](./img/books2.png)
 
