@@ -29,7 +29,7 @@
    - Assegura que només els usuaris amb drets, privilegis i necessitat d'accedir a la informació poden fer-ho
    - Exemple: Robatori d'informació com secrets corporatius, dades personals,...
 2. **Integritat**:
-   - Fa que les dades estiguin emmagatzemades com espera l’usuari: que no siguin alterades sense el seu consentiment
+   - Fa que les dades estiguin emmagatzemades com espera l'usuari: que no siguin alterades sense el seu consentiment
    - Exemple: instal·lar software no desitjat (spyware,...), destrucció o modificació de dades (logs, registres de bases de dades...)
 3. **Disponibilitat _(Availability)_**:
    - Intenta que els usuaris puguin accedir als serveis amb normalitat en el moment desitjat.
