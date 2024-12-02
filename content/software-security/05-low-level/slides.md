@@ -267,8 +267,9 @@
   - Propagat entre màquines (massa agressiu, gràcies a un bug)
   - Una manera de propagar-se va ser un atac de buffer overflow contra una versió vulnerable de fingerd als VAX
     - Va enviar una cadena especial al _daemon_ finger (fingerd), que va fer que executés codi que creava una nova còpia del cuc
-    - No s'ha comprovat el sistema operatiu: ha provocat que Suns executant BSD es bloquegin
   - Resultat final: 10-100 milions de dòlars en danys
+
+![Morris worm](./img/morris_worm.png)
 
 ---
 
@@ -383,3 +384,96 @@ Té dues parts
 ---v
 
 ![Pila](./img/stack.png)
+
+---
+
+## Disposició de la memòria
+
+- A sobre del segment de dades hi ha el _heap_ (**emmagatzematge dinàmic**). Aquesta és la zona que gestiona _malloc_
+  - **_Memory allocation_**: assignació dinàmica de memòria
+- Totes aquestes dades s'organitzen i es gestionen en temps d'execució
+- És a dir, com es comporta depèn del que faci el programa. Amb què interactua, quines dades i fitxers d'entrada llegeix o escriu, etc.
+
+---v
+
+![Heap](./img/heap.png)
+
+---
+
+## Memory allocation: assignació dinàmica de memòria
+
+```c
+/* Assignar espai per una matriu de 10 elements de tipus int */
+int *array = malloc(10 * sizeof(int));
+
+/* Comprova que la memòria s'ha assignat correctament, en cas contrari es gestiona l'error. */
+if (array == NULL) {
+  /* gestió de l'error en l'assignació ... */
+}
+
+/* Si arribam a aquest punt significa que la memòria ha estat assignada correctament */
+
+/* Una vegada hem finalitzat l'ús de la memòria hem d'alliberar la mateixa per futurs usos */
+free(array);
+
+/* Ens asseguram que el punter ja no s'utilitza assignant-lo a NULL */
+array = NULL;
+```
+
+---
+
+## Disposició de la memòria
+
+- Ara la imatge està girada al costat de manera que l'adreça més baixa està a l'esquerra i l'adreça més alta a la dreta
+- Veiem l'_stack_ i el _heap_ representats i també mostrem la direcció en què creixen
+  - A mesura que es necessita més memòria al _heap_, creix cap a les adreces més altes
+  - Quan es necessita més memòria per a l'_stack_, creix cap a la baixa cap a l'adreça inferior.
+
+![Stack i Heap](./img/stack_heap.png)
+
+---
+
+## Disposició de la memòria
+
+- Mentre el programa s'executa, manté un punter d'_stack que indica la part superior de l'_stack_
+  - Quan el programa emet una instrucció **_push_**, mourà el punter d'_stack_ després de guardar el valor
+- Ara, suposem que després d'executar-se durant un temps, la funció que havia guardat aquests valors retorna (fa **_return_**)
+  - En aquest cas, la funció eliminarà (farà **_pop_**) d'una gran part de la pila eliminant totes les seves variables i arguments locals
+
+---v
+
+![Stack i return](./img/stack_return1.png)
+
+![Stack i return](./img/stack_return2.png)
+
+![Stack i return](./img/stack_return3.png)
+
+![Stack i return](./img/stack_return4.png)
+
+---
+
+## Disposició de la memòria
+
+- El compilador emet les instruccions que ajusten l'_stack_ en temps d'execució.
+- La memòria que utilitza el _heap_ la distribueix el sistema operatiu, però les dades individuals que s'emmagatzemen dins del _heap_ són gestionades per **_malloc_**
+De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu del primer atac que tindrem en compte.
+
+---v
+
+![Stack i return](./img/stack_return5.png)
+
+---
+
+## Cridades de pila i funcions
+
+- Què passa quan **cridam** una funció (**_call_**)?
+  - Quines dades s'han d'emmagatzemar?
+  - On va?
+- Què passa quan **tornam** d'una funció (**_return_**)?
+  - Quines dades s'han de restaurar?
+  - D'on ve?
+
+---
+
+## Disseny bàsic de la pila
+
