@@ -261,4 +261,125 @@
 
 ---
 
+## Història dels _buffer_ overflows (1)
 
+- 1988: **_Morris worm_** (cuc de Morris)
+  - Propagat entre màquines (massa agressiu, gràcies a un bug)
+  - Una manera de propagar-se va ser un atac de buffer overflow contra una versió vulnerable de fingerd als VAX
+    - Va enviar una cadena especial al _daemon_ finger (fingerd), que va fer que executés codi que creava una nova còpia del cuc
+    - No s'ha comprovat el sistema operatiu: ha provocat que Suns executant BSD es bloquegin
+  - Resultat final: 10-100 milions de dòlars en danys
+
+---
+
+## Història dels _buffer_ overflows (i 2)
+
+- 2001: CodeRed
+  - Va provocar un desbordament (_overflow_) al servidor MS-IIS
+  - 300.000 màquines infectades en 14 hores
+- 2003: SQL Slammer
+  - Va provocar un desbordament al servidor MS-SQL
+  - 75.000 màquines infectades en 10 minuts
+
+---
+
+## Vulnerabilitats de Buffer Overflow
+
+![BOF Vulnerabilities](./img/bof_vulnerabilities.png)
+
+Vulnerabilitats de Buffer Overflow trobades des de 1999 a 2021
+segons Common Vulnerabilities and Exposures (CVE)
+[http://dx.doi.org/10.3390/app12136702](http://dx.doi.org/10.3390/app12136702)
+
+---
+
+## Disposició de la memòria
+
+> Memory layout
+
+---
+
+## Disposició de la memòria
+
+- Com es disposen les dades del programa a la memòria?
+- Com és la pila (_stack_)?
+- Quin efecte té en la memòria cridar (i tornar de) una funció?
+- Ens centrarem en el model de procés de Linux
+  - Similar a altres sistemes operatius
+
+---
+
+## Tots els programes s'emmagatzemen a la memòria
+
+- Un **programa**, quan comença a executar-se, s'anomena **procés**
+  - Aquest procés rep memòria del sistema operatiu per tal que s'executi
+- Aquí representem l'espai dels processos.
+  - A la part inferior hi ha l'adreça zero, l'adreça més baixa
+  - A la part superior hi ha l'adreça de quatre gigabytes, que és l'adreça més alta d'un sistema de 32 bits
+- El procés veu la memòria com si fos tota seva
+- En realitat, aquestes són adreces virtuals, que el sistema operatiu i el processador assignen a adreces físiques reals per a la memòria de la màquina
+
+---v
+
+![Programa a la memoria](./img/program_in_memory.png)
+
+---
+
+## Disposició de la memòria
+
+- A la part inferior de l'espai d'adreces hi ha el **segment de text** (o codi de text)
+  - _Text segment_
+- Aquí veiem algunes instruccions x86 que podrien constituir el codi del nostre programa
+
+---v
+
+![Text segment](./img/text_segment.png)
+
+---
+
+## Disposició de la memòria
+
+- Just a sobre del segment de text hi ha el **segment de dades**, on s'hi guarden les variables estàtiques (**_static_**):
+  - El seu temps de vida s'extèn durant tota l'execució del programa
+Té dues parts
+  - **Àrea de dades inicialitzada**. Dades estàtiques inicialitzades
+  - **Àrea de dades no inicialitzades**. Dades estàtiques no inicialitzades
+- El model de procés garanteix que les **variables globals** no inicialitzades pel programa són zero
+  - Això no és cert amb les **variables locals** no inicialitzades
+
+---v
+
+![Dades estàtiques](./img/static_data.png)
+
+---
+
+## Disposició de la memòria
+
+- Totes aquestes dades es coneixen en el moment de la compilació
+- Així, el compilador pot determinar on va  aquesta informació i pot especificar-ho el màxim possible a l'executable.
+
+---v
+
+![Dades conegudes en temps de compilació](./img/compile_time.png)
+
+---
+
+## Disposició de la memòria
+
+- A la part superior de l'espai d'adreces apareixen els arguments de la línia d'ordres i les variables d'entorn
+- Aquests s'estableixen quan comença el procés.
+
+---v
+
+![Arguments i variables d'entorn](./img/arguments_env.png)
+
+---
+
+## Disposició de la memòria
+
+- Just a sota d'ells, hi ha la **pila** (_stack_)
+- La **pila** és el que conté les variables locals, juntament amb les metadades que el programa utilitza per cridar i tornar de funcions.
+
+---v
+
+![Pila](./img/stack.png)
