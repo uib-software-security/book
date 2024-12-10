@@ -300,7 +300,7 @@ segons Common Vulnerabilities and Exposures (CVE)
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (1)
 
 - Com es disposen les dades del programa a la memòria?
 - Com és la pila (_stack_)?
@@ -326,7 +326,7 @@ segons Common Vulnerabilities and Exposures (CVE)
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (2)
 
 - A la part inferior de l'espai d'adreces hi ha el **segment de text** (o codi de text)
   - _Text segment_
@@ -338,7 +338,7 @@ segons Common Vulnerabilities and Exposures (CVE)
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (3)
 
 - Just a sobre del segment de text hi ha el **segment de dades**, on s'hi guarden les variables estàtiques (**_static_**):
   - El seu temps de vida s'extèn durant tota l'execució del programa
@@ -354,7 +354,7 @@ Té dues parts
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (4)
 
 - Totes aquestes dades es coneixen en el moment de la compilació
 - Així, el compilador pot determinar on va  aquesta informació i pot especificar-ho el màxim possible a l'executable.
@@ -365,7 +365,7 @@ Té dues parts
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (5)
 
 - A la part superior de l'espai d'adreces apareixen els arguments de la línia d'ordres i les variables d'entorn
 - Aquests s'estableixen quan comença el procés.
@@ -376,7 +376,7 @@ Té dues parts
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (6)
 
 - Just a sota d'ells, hi ha la **pila** (_stack_)
 - La **pila** és el que conté les variables locals, juntament amb les metadades que el programa utilitza per cridar i tornar de funcions.
@@ -387,7 +387,7 @@ Té dues parts
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (7)
 
 - A sobre del segment de dades hi ha el _heap_ (**emmagatzematge dinàmic**). Aquesta és la zona que gestiona _malloc_
   - **_Memory allocation_**: assignació dinàmica de memòria
@@ -422,7 +422,7 @@ array = NULL;
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (8)
 
 - Ara la imatge està girada al costat de manera que l'adreça més baixa està a l'esquerra i l'adreça més alta a la dreta
 - Veiem l'_stack_ i el _heap_ representats i també mostrem la direcció en què creixen
@@ -433,7 +433,7 @@ array = NULL;
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (9)
 
 - Mentre el programa s'executa, manté un punter d'_stack que indica la part superior de l'_stack_
   - Quan el programa emet una instrucció **_push_**, mourà el punter d'_stack_ després de guardar el valor
@@ -452,7 +452,7 @@ array = NULL;
 
 ---
 
-## Disposició de la memòria
+## Disposició de la memòria (i 10)
 
 - El compilador emet les instruccions que ajusten l'_stack_ en temps d'execució.
 - La memòria que utilitza el _heap_ la distribueix el sistema operatiu, però les dades individuals que s'emmagatzemen dins del _heap_ són gestionades per **_malloc_**
@@ -493,7 +493,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---
 
-## Accés a variables
+## Accés a variables (1)
 
 - Com pot el programa saber on estàn les variables locals?
   - Per exemple volem accedir a `loc2`
@@ -510,7 +510,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---
 
-## Accés a variables
+## Accés a variables (i 2)
 
 - Necessitem un punt de referència dins del **marc de la pila** (**_stack frame_**)
   - L'anomenam **punter de marc** (**_frame pointer_**)
@@ -521,7 +521,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---
 
-## Retornant de funcions
+## Retornant de funcions (1)
 
 - Ara, si cridam a `func` des de `main`, `main` està utilitzant el punter de marc (**_stack frame_**) de la mateixa manera que `func` ho fa per accedir a les seves pròpies variables locals
 - Quan tornem de `func`, `main` voldrà utilitzar el mateix **_stack frame_** que tenia abans
@@ -536,7 +536,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---
 
-## Retornant de funcions
+## Retornant de funcions (2)
 
 - Pensem en com `main` cridarà a `func`:
   - El que farà és que guardarà els seus tres arguments, `arg3`, `arg2`, `arg1`: `"Hey"`, `10`, `i –3`
@@ -557,7 +557,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---
 
-## Retornant de funcions
+## Retornant de funcions (3)
 
 - Ara, quan la funció `func` comenci a executar-se, guardarà les seves variables locals després de l'**_stack frame_** actual
 - La següent pregunta és: com reprendrem al mateix lloc on estàvem, a `main`, quan vàrem cridar a `func`
@@ -581,7 +581,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---
 
-## Retornant de funcions
+## Retornant de funcions (i 4)
 
 - El que volem és tornar a on estàvem quan vam cridar la funció
 - Podem fer el mateix truc que vam fer amb el _frame pointer_
@@ -598,7 +598,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---
 
-## En resum...
+## Resum
 
 - **Cridant una funció**:
   - **Introduïm els arguments** a l'_stack_ (al revés)
