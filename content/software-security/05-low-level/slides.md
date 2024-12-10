@@ -477,3 +477,98 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ## Disseny bàsic de la pila
 
+- Veiem una representació de les dades del **_caller_**, que és qui crida aquesta funció
+- Quan el _caller_ crida aquesta funció, **guardarà els arguments en ordre invers al codi**
+  - La pila creix de dreta a esquerra, és a dir, de les adreces superiors a les adreces inferiors
+  - `arg3` arriba primer, després `arg2`, després `arg1`, és a dir, l'ordre contrari del programa
+- Després guarda a la pila les **variables locals** de la funció, i emmagatzemant-les en l'**ordre en què apareixen al codi** del programa
+  - És a dir, primer `loc1`, i després `loc2`
+- També hi ha informació que s'emmagatzema entremig
+
+---v
+
+![Funció i pila](./img/func_stack.png)
+
+![Funció i pila](./img/func_stack2.png)
+
+---
+
+## Accés a variables
+
+- Com pot el programa saber on estàn les variables locals?
+  - Per exemple volem accedir a `loc2`
+  - Suposem per exemple que està a `0xbffff323`
+  - Com que aquesta funció es pot cridar des de diferent llocs, `loc2` pot estar a diferents adreces depenent de qui ha cridat la funció
+- El compilador no pot saber l'adreça en temps de compilació
+  - Però sempre sap l'adreça relativa: sempre 8 bytes abans del signes d'interrogació
+
+---v
+
+![Accés a variables](./img/func_stack3.png)
+
+![Accés a variables](./img/func_stack4.png)
+
+---
+
+## Accés a variables
+
+- Necessitem un punt de referència dins del **marc de la pila** (**_stack frame_**)
+  - L'anomenam **punter de marc** (**_frame pointer_**)
+  - Normalment, els compiladors emmagatzemen el **_frame pointer_** (o **_base pointer_**) al registre **EBP**
+- Per tant, el compilador sap que des d'on es crida aquesta funció, la variable `loc2` sempre estarà a vuit bytes de distància del valor actual del **_frame pointer_**
+
+![Accés a variables](./img/func_stack5.png)
+
+---
+
+## Retornant de funcions
+
+- Ara, si cridam a `func` des de `main`, `main` està utilitzant el punter de marc (**_stack frame_**) de la mateixa manera que `func` ho fa per accedir a les seves pròpies variables locals
+- Quan tornem de `func`, `main` voldrà utilitzar el mateix **_stack frame_** que tenia abans
+  - De manera que quan accedeixi a les seves variables, va a les adreces correctes
+- La pregunta és: com desam i restauram el punter de marc perquè funcioni correctament?
+
+---v
+
+![Retornant de funcions](./img/func_stack6.png)
+
+![Retornant de funcions](./img/func_stack7.png)
+
+---
+
+## Retornant de funcions
+
+- Pensem en com `main` cridarà a `func`:
+  - El que farà és que guardarà els seus tres arguments, `arg3`, `arg2`, `arg1`: `"Hey"`, `10`, `i –3`
+  - I algunes altres dades que veurem més endavant
+- Ara, l'**_stack frame_** està a `%esp`
+- Després, el que fa és guardar el **_stack frame_** de main (`%ebp`)
+- En aquest punt, podem actualitzar l'stack frame (`%ebp`) perquè sigui l'**_stack frame_** actual (`%esp`)
+
+---v
+
+![Retornant de funcions](./img/func_stack8.png)
+
+![Retornant de funcions](./img/func_stack9.png)
+
+![Retornant de funcions](./img/func_stack10.png)
+
+![Retornant de funcions](./img/func_stack11.png)
+
+---
+
+## Retornant de funcions
+
+- Ara, quan la funció `func` comenci a executar-se, guardarà les seves variables locals després de l'**_stack frame_** actual
+- La següent pregunta és: com reprendrem al mateix lloc on estàvem, a `main`, quan vàrem cridar a `func`
+
+---v
+
+![Retornant de funcions](./img/func_stack12.png)
+
+![Retornant de funcions](./img/func_stack13.png)
+
+---
+
+## Instruccions a la memòria
+
