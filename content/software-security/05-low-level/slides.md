@@ -572,3 +572,42 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ## Instruccions a la memòria
 
+- A mesura que `main` s'executa, el **punter d'instruccions** (**_instruction pointer_**), `eip`, es mou per les diferents instruccions que implementen `main`
+- Quan crida a `func`, `eip` es mourà cap amunt i començarà a executar aquestes altres instruccions
+
+![Instruccions a la memòria](./img/instructions1.png)
+
+![Instruccions a la memòria](./img/instructions2.png)
+
+---
+
+## Retornant de funcions
+
+- El que volem és tornar a on estàvem quan vam cridar la funció
+- Podem fer el mateix truc que vam fer amb el _frame pointer_
+  - Podem emmagatzemar el punter d'instrucció _eip_ just abans de cridar la funció a la pila
+- Ara, quan anem a tornar, només hem de posar el punter d'instruccions al valor que està a 4 bytes després del _frame pointer_ actual
+
+![Retornant de funcions](./img/func_stack14.png)
+
+---
+
+## `ebp` (base pointer) i `esp` (stack pointer)
+
+![ebp i esp](./img/ebp_esp.png)
+
+---
+
+## En resum...
+
+- **Cridant una funció**:
+  - **Introduïm els arguments** a l'_stack_ (al revés)
+  - **Feim push del l'adreça de retor**n _(%eip)_, és a dir, l'adreça de la instrucció que volem executar després que ens torni el control
+  - **Saltam a l'adreça de la funció**
+- **A la funció cridada**:
+  - **Feim push de l'anterior _frame pointer_** a l'stack (%ebp)
+  - **Establim el _frame pointer_** (%ebp) a on es troba el final de la pila ara mateix (%esp)
+  - **Feim push de les variables locals** a la pila
+- **Tornant (return) a la funció de cridada**:
+  - **Restablim el _stack pointer_ anterior**: %esp = %ebp, %ebp = (%ebp)
+  - **Tornam a l'adreça de retorn**: %eip = 4(%esp)
