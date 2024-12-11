@@ -611,3 +611,90 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 - **Tornant (return) a la funció de cridada**:
   - **Restablim el _stack pointer_ anterior**: %esp = %ebp, %ebp = (%ebp)
   - **Tornam a l'adreça de retorn**: %eip = 4(%esp)
+
+---
+
+## Buffer overflow
+
+> Com executam un buffer overflow?
+
+---
+
+## L'error _buffer overflow_
+
+- Buffer =
+  - Memòria contigua associada a una variable o camp
+  - Comú a C
+  - Tots els strings són matrius (arrays) de caràcters (acabats en NUL)
+- Overflow (desbordament) =
+  - Posar més al buffer del que pot contenir
+  - On van les dades desbordades?
+
+---
+
+## Resultat benigne
+
+- Dins la funció func s'intenta copiar l'string "AuthMe!" dins un buffer
+  - Però l'string té 7 caràcters més  el caràcter d'acabament NUL, mentre que el buffer només permet 4 caràcters
+- Així desbordarem el buffer quan cridem _strcpy_
+- En aquest cas, el _frame pointer_ està corromput
+  - Donarà un error de _segmentation fault_
+
+---v
+
+![Buffer overflow](./img/buffer_overflow.png)
+
+![Buffer overflow](./img/buffer_overflow2.png)
+
+![Buffer overflow](./img/buffer_overflow3.png)
+
+---
+
+## Resultat rellevant per a la seguretat
+
+- Aquesta vegada, en lloc de sobreescriure el _frame pointer_, es sobreescriu el contingut de la variable _authenticated_
+  - Ara això és un problema, perquè cada vegada que anem a comprovar _authenticated_, el valor és diferent de zero i la comprovació tindrà èxit
+- Per tant, aquest error tendria un resultat rellevant per a la seguretat en permetre que el programa fes coses que probablement no teníem intenció
+
+---v
+
+![Buffer overflow](./img/buffer_overflow4.png)
+
+![Buffer overflow](./img/buffer_overflow5.png)
+
+![Buffer overflow](./img/buffer_overflow6.png)
+
+---
+
+## Podria ser pitjor?
+
+- _strcpy_ ens dóna la possibilitat de copiar qualsevol quantitat de dades en un buffer que no tingui la mida adequada.
+- Així, podríem sobreescriure molta memòria a la pila
+- Un atacant podria sobreescriure el buffer amb codi
+  - El programa executaria aquest codi quan torni de la funció
+
+---v
+
+![Buffer overflow](./img/buffer_overflow7.png)
+
+![Buffer overflow](./img/buffer_overflow8.png)
+
+![Buffer overflow](./img/buffer_overflow9.png)
+
+---
+
+## Strings subministrats per l'usuari
+
+- Aquests exemples proporcionen els seus propis strings
+- En realitat, els **strings** provenen **d'usuaris** en una infinitat de llocs:
+  - Entrada de **text**
+  - **Paquets**
+  - **Variables d'environment**
+  - Entrada de **fitxers**...
+- **Validar** l'**entrada de l'usuari** és extremadament **important**
+
+---
+
+## Injecció de codi
+
+> Code injection
