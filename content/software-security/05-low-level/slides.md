@@ -614,7 +614,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---
 
-## Buffer overflow
+## Buffer overflow
 
 > Com executam un buffer overflow?
 
@@ -698,3 +698,125 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 ## Injecció de codi
 
 > Code injection
+
+---
+
+## Code injection: idea principal
+
+- Dos reptes principals de la injecció de codi mitjançant un  _buffer overflow_:
+  - Carregar el nostre propi codi a la memòria
+  - Aconseguir que el punter d'instruccions apunti cap a ell, de manera que aquest codi es pugui executar
+
+---v
+
+![Code injection](./img/code_injection.png)
+
+![Code injection](./img/code_injection2.png)
+
+![Code injection](./img/code_injection3.png)
+
+---
+
+## Carregar codi a la memòria
+
+- Han de ser **instruccions del codi màquina** (és a dir, ja compilades i llestes per executar-se)
+  - No codi C --> Ha de ser codi ensamblador
+- Hem de tenir cura de com el construïm:
+  - **No pot contenir** cap byte a zero (_**all-zero byte**_)
+    - En cas contrari, _sprintf_ / _gets_ / _scanf_ / ... deixaran de copiar
+    - Com podríeu escriure un assemblatge per no contenir mai un byte zero complet?
+  - El codi ha de ser **complet**
+    - **No pot utilitzar el carregador o _loader_**(estam injectant) per resoldre adreces dins la memòria
+
+---
+
+## Quin codi executar?
+
+- Objectiu: _**shell**_ d'ús general
+  - Línia d'ordres que dóna a l'atacant **accés general al sistema**
+- El codi per llançar un _**shell**_ s'anomena _**shellcode**_
+- Aquí tenim un exemple de com podria semblar el codi de _shellcode_ que mos agradaria escriure
+  - És una funció que crida a _**execve**_, que transforma el programa actual en el donat com a argument
+  - En aquest cas, l'argument és _**/bin/sh**_, un _**shell**_
+
+---v
+
+![Shellcode](./img/shellcode.png)
+
+---
+
+## Shellcode
+
+- Aquí teniu el codi ensamblador d'aquest codi de shell
+- Si mirem la primera instrucció, aquest és el que podria semblar com un string
+- Aquest seria l'string que proporcioneu com a part de la vostra entrada.
+
+---v
+
+![Shellcode](./img/shellcode2.png)
+
+---
+
+## Exectuar l'_injected code_
+
+- Només per haver carregat el codi no vol dir que el poguem executar
+  - Necessitam una instrucció per "saltar al nostre codi"
+- A més, no sabem exactament on està el codi
+  - Necessitam que el punter d'instrucció %eip hi apunti
+
+![Executar el codi injectat](./img/injected_code.png)
+
+---
+
+## Segrestant el punter %eip
+
+- La clau està en el punter %eip desat, per quan retornem a la funció que ha cridat una funció
+  - Podem emmagatzemar l'adreça del nostre codi en aquesta ubicació
+- Així, quan la funció torni, el programa anirà al nostre codi i aquest s'executarà
+- Ara la pregunta és: **com sabem quina adreça hi hem de posar?**
+
+---v
+
+![Segrestant el punter %eip](./img/eip_hijack.png)
+
+![Segrestant el punter %eip](./img/eip_hijack2.png)
+
+![Segrestant el punter %eip](./img/eip_hijack3.png)
+
+---
+
+## Trobar l'adreça de retorn
+
+- Si no tenim accés al codi, no sabem a quina distància està el buffer del %ebp desat
+- Un enfocament: provar molts valors diferents!
+  - "prova-error"
+  - El pitjor dels casos: és un espai de memòria de 32 (o 64) bits, el que significa 232 (264) respostes possibles
+- Sense aleatorització d'adreces
+  - La **pila sempre comença** des de la mateixa **adreça fixa**
+  - La pila creixerà, però normalment no creix molt profundament (tret que el codi sigui molt recursiu)
+
+---
+
+## Millorant les nostres possibilitats: nop sleds o slides
+
+- _**nop**_: és una instrucció d'un sol byte que només passa a la següent instrucció.
+- Si l'adversari enganxa molts de _nops_ com a farciment abans del seu propi codi, funcionarà saltant a qualsevol part d'aquest trineu _nop_ sled o slide
+  - Així podem millorar les nostres possibilitats
+
+![Nop sleds](./img/nop_sleds.png)
+
+## Resum
+
+- A continuació, es mostra com seria tot el codi adversari injectat
+- Aquesta part anomenada "padding" ha de ser alguna cosa, perquè hem de començar a escriure allà on comenci l'entrada a _gets_, o _sprintf_ o _strcpy_ comenci
+- Però, quan el programa torni a la ubicació escollida, apuntarà al _nop sled_ i començarà a executar el nostre codi maliciós
+
+---v
+
+![Resum](./img/summary.png)
+
+---
+
+## Running a Buffer Overflow Attack_
+
+[![Running a Buffer Overflow Attack](https://img.youtube.com/vi/1S0aBV-Waeo/0.jpg)](https://www.youtube.com/watch?v=1S0aBV-Waeo)
