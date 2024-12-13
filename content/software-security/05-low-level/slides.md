@@ -695,7 +695,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---
 
-## Injecció de codi
+## Injecció de codi
 
 > Code injection
 
@@ -820,3 +820,195 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 ## Running a Buffer Overflow Attack_
 
 [![Running a Buffer Overflow Attack](https://img.youtube.com/vi/1S0aBV-Waeo/0.jpg)](https://www.youtube.com/watch?v=1S0aBV-Waeo)
+
+
+---
+
+## Altres exploits de memòria
+
+> Memory exploits
+
+---
+
+## Altres atacs
+
+- L'atac d'injecció de codi que acabem de veure s'anomena _**stack smashing**_
+  - El terme va ser encunyat pel hacker Aleph One l'any 1996
+- Constitueix una violació de la **integritat**, i possiblement una violació de la **disponibilitat**
+- Altres atacs també exploten errors amb buffers
+
+---
+
+## _Heap overflow_ (1)
+
+- Un _**stack smashing**_ desborda un buffer assignat al _stack_
+  - També podeu desbordar un buffer assignat per _**malloc**_, que resideix al _**heap**_
+
+![Heap overflow](./img/heap_overflow.png)
+
+---
+
+## _Heap overflow_ (i 2)
+
+- Definim una estructura, _vulnerable_struct_, que té dos camps, el primer és _buff_, un punter de caràcter, el segon és el punter de la funció _compare_
+- A continuació, veiem una funció, _foo_, que pren una _vulnerable_struct _com a argument juntament amb dos arguments de punter de caràcters.
+  - Per començar, la primera línia de la funció copia l'un en buff, la segona línia copia el dos més un en buff. Finalment, la tercera línia crida al punter de la funció de comparació, passant buff com a argument i comparant-lo amb el punter del fitxer foobar
+- Aquest codi només funcionarà correctament si la longitud de la cadena de _one_ i _two_ és inferior a la longitud màxima de la memòria intermèdia on es copiaran (MAX_LEN). En cas contrari, sobreescriurem el punter de la funció de comparació
+  - Igual que a un _stack smashing_, l'adversari pot ser capaç de controlar com es produeix aquesta sobreescritura i aconseguir que el programa executi el codi de la seva elecció.
+
+---v
+
+![Heap overflow](./img/heap_overflow2.png)
+
+---
+
+## Variants de _heap overflow_
+
+
+- Desbordament a l'objecte C++ _vtable_
+  - Els objectes C++ (que contenen funcions virtuals) es representen mitjançant una _vtable_, que conté punters als mètodes de l'objecte.
+  - Aquesta taula és anàloga a _s->cmp_ del nostre exemple anterior, i un tipus d'atac similar funcionarà
+- Desbordament cap als objectes adjacents
+  - Per exemple, un que contengui un punter a una funció
+  - On el buff no es col·loca amb un punter de funció, sinó que s'assigna a prop d'un del _heap_
+- Desbordament de metadades del heap
+  - Capçalera oculta just abans del punter retornat per _malloc_
+  - Fluxe cap a aquesta capçalera per corrompre el propi _heap_
+
+---
+
+## _Integer overflow_
+
+- A C, una variable té un valor màxim i, quan se supera aquest valor, el valor de la variable s'ajustarà
+- En aquest cas, estem llegint des de la xarxa mitjançant la funció _packet\_get\_int_
+  - Suposem que l'adversari té el control de l'altra banda de la xarxa i envia un nombre molt gran
+- Suposem que el nombre és 1.073.741.824 i que la mida d'un punter de caràcter a la nostra arquitectura és 4, és a dir, és una arquitectura de 32 bits
+  - _nresp_ és més gran que zero i, per tant, emmagatzemarem amb _malloc_ un buffer on emmagatzemarem una resposta
+  - Aquest nombre molt gran multiplicat per 4, s'ajusta al 0
+- _malloc_ assignarà un buffer de mida zero i, aleshores, les escriptures posteriors a aquesta memòria intermèdia l'estan desbordant
+
+---v
+
+![Integer overflow](./img/integer_overflow.png)
+
+![Integer overflow](./img/integer_overflow2.png)
+
+---
+
+## Corrompre dades
+
+-  Els atacs que hem mostrat fins ara **afecten el codi**
+  - Adreces de retorn i punters de funció
+- Però els atacants també poden **desbordar les dades**
+  - **Modificar una clau secreta** perquè sigui coneguda per l'atacant, per poder desxifrar futurs missatges interceptats
+  - **Modificar les variables d'estat** per evitar les comprovacions d'autorització
+  - **Modificar les cadenes interpretades*- utilitzades com a part de les ordres
+    - Per exemple, per facilitar la injecció SQL
+
+---
+
+## _Read overflow_
+
+- En lloc de permetre escriure més enllà del final d'un buffer, un error podria permetre llegir **més enllà del final _del buffer_**
+  - Pot filtrar informació secreta
+- En aquest exemple, la longitud que s'especifica a la primera lectura pot superar la longitud del missatge proporcionat a la segona lectura
+  - Si ho fa, imprimirà caràcters més enllà del que es va llegir
+
+---v
+
+![Read overflow](./img/read_overflow.png)
+
+---
+
+## Memòria obsoleta (_stale memory_)
+
+- Es produeix un _**dangling pointer bug**_ quan s'allibera un punter, però el programa continua usant-lo
+- Un atacant pot fer que **la memòria alliberada sigui reassignada*- i sota el seu control
+
+![Dangling pointer](./img/dangling_pointer.png)
+
+---
+
+## Vulnerabilitats de format d'string
+
+> Format string vulnerabilities
+
+---
+
+## E/S formatades (Formatted I/O)
+
+- La família _printf_ de C admet E/S formatades
+
+![Formatted I/O](./img/formatted_io.png)
+
+- Especificadors de format
+  - La posició a l'string indica l'argument de l'stack a imprimir
+  - El tipus d'especificador indica el tipus d'argument
+    - %s = string
+    - %d = nombre sencer
+    - etc.
+
+---
+
+## Quina és la diferència?
+
+- En aquest exemple s'assigna un buffer de caràcters a la pila
+- I cridam a _fgets_ per llegir-lo
+- La diferència està a la tercera línia.
+  - La primera funció crida a %s com a cadena de format abans d'imprimir buf
+  - La segona funció renuncia a utilitzar una cadena de format per complet i només hi col·loca buf
+- _buf_ pot contenir especificadors de format
+  - En el primer cas, si ho fa, aquests especificadors només s'imprimiran a la pantalla
+  - En el segon, s'interpretaran
+
+---v
+
+![Quina és la diferència?](./img/whats_the_difference.png)
+
+---
+
+## Vulnerabilitats de format d'string
+
+- `printf("100% dave");`
+  - Imprimeix l'entrada del stack 4 bytes per sobre del %eip guardat
+- `printf("%s");`
+  - Imprimeix els bytes als quals apunta aquesta entrada de pila
+- `printf("%d %d %d %d ...");`
+  - Imprimeix una sèrie d'entrades de l'stack com a nombres enters
+- `printf("%08x %08x %08x %08x ...");`
+  - El mateix, però en hexadecimal
+- `printf("100% no way!");`
+  - Escriu el número 3 a l'adreça indicada per l'entrada de l'stack
+
+---
+
+## Per què això és un stack overflow?
+
+- Hauríem de pensar en això com un stack overflow en el sentit que
+  - L'stack mateix es pot veure com una mena de buffer
+  - La mida d'aquest buffer ve determinada pel nombre i la mida dels arguments passats a una funció
+- Proporcionar una cadena de format falsa indueix el programa a desbordar aquest "buffer"
+
+---
+
+## Format string vulnerabilities
+
+[![Format string vulnerabilities](https://img.youtube.com/vi/DhVRI33s-D0/0.jpg)](https://www.youtube.com/watch?v=DhVRI33s-D0)
+
+---
+
+## Depurant el codi amb _GDB_
+
+> _GDB_ debugger
+
+---
+
+## Debugging - GDB Tutorial
+
+[![Debugging - GDB Tutorial](https://img.youtube.com/vi/bWH-nL7v5F4/0.jpg)](https://www.youtube.com/watch?v=bWH-nL7v5F4)
+
+---
+
+## GDB is REALLY easy! Find Bugs in Your Code with Only A Few Commands
+
+[![GDB is REALLY easy! Find Bugs in Your Code with Only A Few Commands](https://img.youtube.com/vi/Dq8l1_-QgAc/0.jpg)](https://www.youtube.com/watch?v=Dq8l1_-QgAc)
