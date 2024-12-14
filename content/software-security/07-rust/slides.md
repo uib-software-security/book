@@ -92,7 +92,7 @@ fn main() {
 
 ## Cargo: build i package manager
 
-- `cargo new <project\_name>`: crea un nou projecte
+- `cargo new <project_name>`: crea un nou projecte
 - `cargo init`: crea un nou projecte al directori actual
 - `cargo build`: compila el projecte a ./target/debug
 - `cargo build --release`: compila el projecte per publicar (_release_) a ./target/release
@@ -222,20 +222,20 @@ println!("{:?}", (name, age)); // for debug
 - Creació d'una cadena nova
   - String::new() per crear una cadena buida.
     - Exemple: let mut s = String::new();
-  - String::from() o el mètode to\_string() poden crear una cadena a partir d'un literal de cadena.
+  - String::from() o el mètode to_string() poden crear una cadena a partir d'un literal de cadena.
     - Exemple: let s = String::from("hola");
-    - Exemple: let s = "hola".to\_string();
+    - Exemple: let s = "hola".to_string();
 
 ---
 
 ## Tipus de dades: String (i 2)
 
-- Afegiu una cadena al final d’una cadena utilitzant push\_str()
-  - Exemple: s.push\_str("món"); // esdevé "hola món"
+- Afegiu una cadena al final d’una cadena utilitzant push_str()
+  - Exemple: s.push_str("món"); // esdevé "hola món"
 - Afegeix un sol caràcter amb push().
   - Exemple: s.push('!'); // esdevé "hola món!
-- String augmenta automàticament la seva capacitat segons calgui, però també podeu especificar-la amb with\_capacity.
-  - Exemple: let mut s = String::with\_capacity(10);
+- String augmenta automàticament la seva capacitat segons calgui, però també podeu especificar-la amb with_capacity.
+  - Exemple: let mut s = String::with_capacity(10);
 - Comproveu la capacitat actual mitjançant el mètode de capacity().
   - Exemple: println!("Capacitat: {}", s.capacity());
 
@@ -250,7 +250,124 @@ let tup: (i32, f64, u8) == (500, 6.4, 1);
 // or let tup = (500, 6.4, 1);
 
 let (x, y, z) = tup;
-let five\_hundred = tup.0;
-let six\_point\_four = tup.1;
+let five_hundred = tup.0;
+let six_point_four = tup.1;
 let one = tup.2;
 ````
+
+---
+
+## Arrays
+
+- array: [type; length]
+
+```rust
+let a = [1, 2, 3, 4, 5];
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+let a = [3; 5]; // let a = [3, 3, 3, 3, 3];
+let first = a[0];
+let second = a[1];
+```
+
+## Funcions
+
+```rust
+fn function_name(param1: type1, param2: type2... ) -> returnType {
+  // ...
+}
+```
+
+Example:
+
+```rust
+fn five() -> i32 {
+  return 5;
+}
+
+fn five() -> i32 {
+ 5
+}
+```
+
+---
+
+## if expression
+
+```rust
+ if x == 4 {
+   println!("x is four");
+} else if x == 3 {
+   println!("x is three");
+} else {
+   println!("x is something else");
+}
+
+let number = if condition { 5 } else { 6 };
+```
+
+---
+
+## loop bucle
+
+```rust
+loop {
+  break;
+  continue;
+}
+
+// Returning Values from Loops
+let result = loop {
+  counter += 1;
+  if counter == 10 {
+    break counter * 2;
+  }
+};
+
+---
+
+## while bucle
+
+```rust
+let mut i = 0;
+
+while i < 10 {
+  println!("hello");
+  i = i + 1;
+}
+```
+
+---
+
+## for bucle
+
+```rust
+let a = [10, 20, 30, 40, 50];
+for element in a {
+  println!("the value is: {element}");
+}
+
+let mut sum = 0;
+
+for n in 1..11 {
+  sum += n;
+}
+```
+
+---
+
+## Proposta (1)
+
+> Fer un programa que calculi els nombres primers entre 1 i 50.000
+
+![Nombrers primers](./img/prime-numbers.png)
+
+---
+
+## Proposta (2)
+
+> Fer un programa que calculi els primers 100 nombres de la successió de Fibonacci
+
+![Fibonacci](./img/fibonacci.png)
+
+---
+
