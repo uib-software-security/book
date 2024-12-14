@@ -371,3 +371,47 @@ for n in 1..11 {
 
 ---
 
+## Ownership i borrowing (1)
+
+- **Ownership**: cada valor té només un únic propietari
+  - Quan una variable queda fora de l’abast (out of scope), es crida automàticament la funció “**drop**” per alliberar els recursos associats
+- **Moving**: quan assignes una variable a una altra, la propietat (ownership) és transferida
+- **Cloning**: quan es necessita una còpia de les dades, es pot utilitzar el mètode “**clone**”
+
+## Ownership i borrowing (i 2)
+
+```rust
+let name1 = String::from("Bob");
+let name2 = name1; // name1 is moved to name2
+println!("Hello, {}", name1); // Error: value used here after move
+println!("Hello, {}", name2); // OK
+```
+
+```rust
+let name1 = String::from("Bob");
+let name2 = name1.clone(); // Creates a copy of the value
+println!("Hello, {}", name1); // OK
+println!("Hello, {}", name2); // OK
+```
+
+---
+
+## Drop / Copy traits
+
+![Drop / Copy traits](./img/drop-copy.png)
+
+---
+
+## Borrowing
+
+```rust
+fn modify_name(name: &mut String) {
+   name.push_str(" Doe");
+}
+
+fn main() {
+   let mut full_name = String::from("John");
+   modify_name(&mut full_name); // Passing a mutable reference to 'full _name'.
+   println!("Hello, f", full_name); // 'full _name' is still valid and modified.
+}
+```
