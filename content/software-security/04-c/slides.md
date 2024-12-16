@@ -11,6 +11,8 @@
   - [Windows](https://code.visualstudio.com/docs/cpp/config-mingw)
   - [Mac OSX](https://code.visualstudio.com/docs/cpp/config-clang-mac)
 
+![VSCode + C/C++ Extension Pack](./img/vscode_cpp.png)
+
 ---
 
 ## Funció main
@@ -208,7 +210,7 @@ int main() {
 }
 ```
 
-Amb `scanf`, a diferència de `printf`, cal passar punters als arguments perquè `scanf` pugui modificar-ne els valors.
+* Amb `scanf`, a diferència de `printf`, cal passar punters als arguments perquè `scanf` pugui modificar-ne els valors.
 
 ---
 
