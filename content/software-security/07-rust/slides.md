@@ -75,6 +75,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 - Extensió rust-analyzer:
   - [https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
 
+![Rust Analyzer](./img/rust-analyzer.png)
+
 ---
 
 ## Programa "Hello World"
@@ -90,12 +92,14 @@ fn main() {
 - Compilar:`rustc <file.rs>`
 - Donar format: `rustfmt <file.rs>`
 
+---
+
 ## Cargo: build i package manager
 
 - `cargo new <project_name>`: crea un nou projecte
 - `cargo init`: crea un nou projecte al directori actual
-- `cargo build`: compila el projecte a ./target/debug
-- `cargo build --release`: compila el projecte per publicar (_release_) a ./target/release
+- `cargo build`: compila el projecte a `./target/debug`
+- `cargo build --release`: compila el projecte per publicar (_release_) a `./target/release`
 - `cargo run`: compila i executa
 - `cargo check`: comprova el codi per assegurar-se que es compila (no produeix un executable)
 - `cargo fmt`: dona format a tots els fitxers del projecte
@@ -415,3 +419,543 @@ fn main() {
    println!("Hello, f", full_name); // 'full _name' is still valid and modified.
 }
 ```
+
+---
+
+## Ownership
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zF34dRivLOw?si=adrbKL99RwUuwxlk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+
+
+_Ownership_
+===========
+
+_Ownership_
+-----------
+
+**Referències**
+===============
+
+**fn main() {**
+
+**let s1 = String::from("hello");**
+
+**let len = calculate_length(&s1);**
+
+**println!("The length of '{}' is {}.", s1, len);**
+
+**}**
+
+**fn calculate_length(s: &String) -> usize {**
+
+**s.len()**
+
+**}**
+
+**Slices. Tipus str**
+=====================
+
+**let s = String::from("hello world");**
+
+**let hello = &s[0..5];**
+
+**let world = &s[6..11];**
+
+**let a = [1, 2, 3, 4, 5];**
+
+**let slice = &a[1..3];**
+
+**Structs**
+===========
+
+- Un _**struct**_ és un tipus de dades personalitzat que us permet empaquetar i anomenar diversos valors relacionats que formen un grup significatiu
+- És com els atributs de dades d'un objecte
+
+**struct User {**
+
+**active: bool,**
+
+**username: String,**
+
+**email: String,**
+
+**sign_in_count: u64,**
+
+**}**
+
+**let user1 = User {**
+
+**active: true,**
+
+**username: String::from("someusername123"),**
+
+**email: String::from("someone@example.com"),**
+
+**sign_in_count: 1,**
+
+**};**
+
+**let user2 = User {**
+
+**email: String::from("another@example.com"),**
+
+**..user1 // remaining fields of user1**
+
+**};**
+
+**Implementació d’structs**
+===========================
+
+**#[derive(Debug)]**
+
+**struct Rectangle {**
+
+**width: u32,**
+
+**height: u32,**
+
+**}**
+
+**impl Rectangle {**
+
+**fn area(&self) -> u32 {**
+
+**self.width * self.height**
+
+**}**
+
+**}**
+
+**fn main() {**
+
+**let rect1 = Rectangle {**
+
+**width: 30,**
+
+**height: 50,**
+
+**};**
+
+**println!(**
+
+**"The area of the rectangle is {} square pixels.",**
+
+**rect1.area()**
+
+**);**
+
+**}**
+
+**Enums**
+=========
+
+- Els _**enum**_ us permeten definir un tipus enumerant les seves possibles variants
+
+**enum IpAddrKind {**
+
+**V4,**
+
+**V6,**
+
+**}**
+
+**let four = IpAddrKind::V4;**
+
+**let six = IpAddrKind::V6;**
+
+**Enums**
+=========
+
+- Els _**enum**_ també poden incloure dades
+
+**enum IpAddr {**
+
+**V4(u8, u8, u8, u8),**
+
+**V6(String),**
+
+**}**
+
+**let home = IpAddr::V4(127, 0, 0, 1);**
+
+**let loopback = IpAddr::V6(String::from("::1"));**
+
+**Option enum**
+===============
+
+**enum Option<T> {**
+
+**None,**
+
+**Some(T),**
+
+**}**
+
+**let some_number = Some(5);**
+
+**let some_char = Some('e');**
+
+**let absent_number: Option<i32> = None;**
+
+**Instrucció match**
+====================
+
+**enum Coin {**
+
+**Penny,**
+
+**Nickel,**
+
+**Dime,**
+
+**Quarter,**
+
+**}**
+
+**fn value_in_cents(coin: Coin) -> u8 {**
+
+**match coin {**
+
+**Coin::Penny => 1,**
+
+**Coin::Nickel => 5,**
+
+**Coin::Dime => 10,**
+
+**Coin::Quarter => 25,**
+
+**}**
+
+**}**
+
+**Matching amb Option<T>**
+==========================
+
+**fn plus_one(x: Option<i32>) -> Option<i32> {**
+
+**match x {**
+
+**None => None,**
+
+**Some(i) => Some(i + 1),**
+
+**}**
+
+**}**
+
+**let five = Some(5);**
+
+**let six = plus_one(five);**
+
+**let none = plus_one(None);**
+
+**Packages**
+============
+
+- Un conjunt d'un o més _crates_
+- Conté un fitxer cargo.toml (com construir _crates_)
+
+- Conté 0…n _crates_ binaris (src/main.rs i directori src/bin)
+- Conté 0…1 _crates_ de biblioteca (src/lib.rs)
+
+_**Crates**_
+============
+
+- És la menor quantitat de codi que el compilador Rust considera
+- N’hi ha de dos tipus:
+
+- _**Crates**_ **binaris (_binary crate_)**
+
+- _Crate_ root: src/main.rs
+
+- _**Crates**_ **de biblioteca (_library crate_)**
+
+- _Crate_ root: src/lib.rs
+
+- Els _crates_ poden contenir **mòduls**
+
+**Mòduls**
+==========
+
+- Els mòduls de Rust ajuden a dividir un programa en unitats lògiques per a una millor la llegibilitat i organització
+- **Declaració de mòduls**: al fitxer root del _crate_: mod garden;
+
+- El compilador cercarà el codi del mòdul en aquests llocs:
+
+- mod garden{...}
+- Fitxer src/garden.rs
+- Fitxer src/garden/mod.rs
+
+- **Declaració de submòduls**: en qualsevol fitxer que no sigui l'arrel del _crate_: mod vegetables;
+
+- mod vegetables{...}
+- Fitxer src/garden/vegetables.rs
+- Fitxer src/garden/vegetables/mod.rs
+
+- Camí (path) al codi dels mòduls: crate::garden::vegetables::Sparagus
+
+**Mòduls**
+==========
+
+- **Privat** (mod) vs **públic** (pub mod). I elements dins del mòdul: pub…
+
+- Els elements d'un mòdul **pare** no poden utilitzar els elements privats dels mòduls **fill**
+- Els elements dels mòduls **fill** poden utilitzar els elements dels seus mòduls **avantpassats**
+- Podem accedir a **germans** (dins mateix mòdul)
+
+- **Dreceres** (_shortcuts_):
+
+- amb use crate::garden::vegetables::Sparagus;
+- a partir de llavors només cal escriure Sparagus
+
+- Path absolut: crate::garden... (crate és l'arrel del _crate_)
+- Path relatiu:
+
+- garden::...
+- super::...
+
+_Packages, crates i mòduls_
+===========================
+
+_Packages, crates i mòduls_
+---------------------------
+
+**Utilitzant paquets externs**
+==============================
+
+- Llista de paquets a [https://crates.io/](https://crates.io/)
+- Afegir a cargo.toml:
+- Tambe ho podeu fer executant cargo add rand
+- Executar cargo build
+- A partir d’aquell moment podem utilitzar el paquet al nostre codi:
+
+[dependencies]
+
+rand = "0.8.5"
+
+use rand::Rng;
+
+fn main() {
+
+let secret_number = rand::thread_rng().gen_range(1..=100);
+
+}
+
+**Biblioteca estàndard std**
+============================
+
+- La biblioteca estàndard std també és un crate extern al nostre paquet
+
+- No cal que canviem cargo.toml per incloure std
+
+- Però sí que hem de referir-nos-hi amb use per introduir elements d'allà a l'abast del nostre paquet
+- Per exemple, amb HashMap utilitzaríem aquesta línia:
+
+- use std::collections::HashMap;
+
+**Col·leccions**
+================
+
+- La biblioteca estàndard de Rust std inclou una sèrie d'estructures de dades molt útils anomenades **col·leccions**
+- Les col·leccions poden contenir **diversos valors**
+- Les dades a les quals apunten s'emmagatzemen a l'emmagatzematge **dinàmic** (al _**heap**_)
+
+- Poden créixer o reduir-se a mesura que s'executa el programa
+
+- Tres col·leccions que s'utilitzen molt sovint als programes Rust:
+
+- **Vector**: permet emmagatzemar un nombre variable de valors
+
+- let mut v: Vec<i32> = Vec::new();
+
+- **String**: és una col·lecció de caràcters
+
+- let mut s = String::new();
+
+- **Hash map**: permet associar un valor amb una clau determinada
+
+**Hash map**
+============
+
+- Exemple de hash map:
+
+**use std::collections::HashMap;**
+
+**fn main() {**
+
+**let mut scores = HashMap::new();**
+
+**scores.insert(String::from("Blue"), 10);**
+
+**scores.insert(String::from("Yellow"), 50);**
+
+**println!("{:?}", scores);**
+
+**}**
+
+**Tractament d’errors**
+=======================
+
+- Rust agrupa els errors en dues categories:
+
+- **Errors recuperables**.
+
+- Per exemple, un error de fitxer no trobat
+- El més probable és que només volem informar del problema a l'usuari i tornar a intentar l'operació
+- Gestionat amb el tipus enum Result<T, E>
+
+- **Errors irrecuperables**.
+
+- Són símptomes d'errors, com ara intentar accedir a una ubicació més enllà del final d'una matriu
+- Per tant, volem aturar el programa immediatament
+- Gestionat amb el macro panic!
+
+**Result enum**
+===============
+
+- Rust té un tipus integrat per a la gestió d'errors anomenat **Result**
+- És un **enum** que té dues variants:
+
+- **Ok**, que indica que l'operació ha estat correcte
+- **Err**, que indica que l'operació ha fallat
+
+**enum Result<T, E> {**
+
+**Ok(T),**
+
+**Err(E),**
+
+**}**
+
+_Result enum_
+=============
+
+_Result enum_
+-------------
+
+**use std::fs::File;**
+
+**use std::io::{self, Read};**
+
+**fn read_file_contents(path: &str) -> Result<String, io::Error> {**
+
+**let mut file = match File::open(path) {**
+
+**Ok(file) => file,**
+
+**Err(e) => return Err(e),**
+
+**};**
+
+**let mut contents = String::new();**
+
+**match file.read_to_string(&mut contents) {**
+
+**Ok(_) => Ok(contents),**
+
+**Err(e) => Err(e),**
+
+**}**
+
+**}**
+
+**fn main() {**
+
+**let path = "example.txt";**
+
+**match read_file_contents(path) {**
+
+**Ok(contents) => println!("File contents: {}", contents),**
+
+**Err(e) => println!("Failed to read from file: {}", e),**
+
+**}**
+
+**}**
+
+**Errors irrecuperables amb panic!**
+====================================
+
+- Els errors irrecuperables són situacions on el programa no es pot recuperar i s'ha d'acabar abruptament
+- Aquests errors es gestionen mitjançant el macro panic!
+- Exemple:
+
+**use std::fs::File;**
+
+**fn main() {**
+
+**let greeting_file_result = File::open("hello.txt");**
+
+**let greeting_file = match greeting_file_result {**
+
+**Ok(file) => file,**
+
+**Err(error) => panic!("Problem opening the file: {:?}", error),**
+
+**};**
+
+**}**
+
+**Overflow de nombres sencers**
+===============================
+
+- Debug mode: panic at runtime
+- Release mode (--release): wrapping (u8 255+1=0, 255+2=1…). Solution:
+
+- Wrap in all modes with the wrapping_* methods, such as wrapping_add.
+- Return the None value if there is overflow with the checked_* methods.
+- Return the value and a boolean indicating whether there was overflow with the overflowing_* methods.
+- Saturate at the value’s minimum or maximum values with the saturating_* methods
+
+**Lifetime**
+============
+
+- Gestió _**lifetime**_: garanteix que les referències no sobreviuen a les dades a les quals apunten
+
+- Evita les referències penjants (_dangling pointers_)
+- Garanteix la seguretat de la memòria sense necessitat d'un col·lector d'escombraries (_garbage collector_)
+
+_Lifetime_
+==========
+
+_Lifetime_
+----------
+
+**Rust security best practices**
+================================
+
+- Follow naming conventions
+- Use data types effectively
+- Pattern matching for readable code
+- Avoid unnecessary mutability
+- Use borrowing and ownership system
+
+_Rust, Modern Solutions to Modern Problems_
+===========================================
+
+_Rust, Modern Solutions to Modern Problems_
+-------------------------------------------
+
+**Per què Rust és segur?**
+==========================
+
+- **Propietat de Dades**: Rust utilitza un sistema de propietat (_ownership_) amb regles que el compilador verifica en temps de compilació. Cada valor en Rust té un propietari únic, i només hi pot haver un propietari en qualsevol moment. Això ajuda a prevenir errors com els dobles alliberaments de memòria.
+- **Gestió de la Memòria Sense Recollidor d'Escombraries**: Rust gestiona la memòria sense necessitat d'un recollidor d'escombraries, mitjançant el sistema de propietat i el concepte de 'lifetime' (temps de vida) de les dades. Això permet un control més gran sobre l'ús de la memòria i evita problemes com les fuites de memòria.
+- **Verificacions en Temps de Compilació**: El compilador de Rust realitza verificacions exhaustives durant la compilació, incloent la comprovació dels 'lifetimes' de les referències, per assegurar que no hi hagi accessos a memòria invàlids. Això redueix la possibilitat d'errors en temps d'execució com els accessos a memòria fora de límits.
+
+**Per què Rust és segur?**
+==========================
+
+- **El Sistema de Tipus i Seguretat en Concurrència**: Rust té un sistema de tipus estricte i ofereix garanties de seguretat en entorns concurrents. Per exemple, el compilador assegura que les dades compartides entre fils són manejades de manera segura, prevenint condicions de competència (race conditions).
+- **Tipus Enumerats per a Gestió d'Errors**: Rust utilitza 'enums', especialment el tipus Result, per a gestionar errors. Això obliga al programador a tractar els casos d'error de manera explícita, reduint la possibilitat que els errors siguin ignorats o mal gestionats.
+- **Immutabilitat per Defecte**: Les variables en Rust són immutables per defecte, la qual cosa significa que han de ser explícitament marcades com a mutables per a poder ser modificades. Això fa que sigui més fàcil raonar sobre el codi i prevenir errors causats per modificacions inesperades de dades.
+- **Match Expressions i Pattern Matching**: Aquestes característiques permeten al programador comprovar i manejar exhaustivament tots els possibles estats d'un valor, assegurant-se que tots els casos són tractats.
+
+---
+
+## 🔗 Enllaços
+
+- [Rust Crash Course (Youtube)](https://www.youtube.com/watch?v=zF34dRivLOw)
