@@ -37,7 +37,7 @@
 - Seguretat de la memòria (_memory safety_) és una propietat de l'execució dels programes
 - Execució d'un programa amb seguretat de memòria:
   - Només **crea punters** mitjançant **mitjans estàndard**
-    - p = malloc(…), o p = &x, o p = &buf\[5\], etc.
+    - p = malloc(…), o p = &x, o p = &buf[5], etc.
   - Només utilitza un punter per **accedir a la memòria** que **"pertany" a aquest punter**
 - Combina dues idees: **seguretat temporal** (1) i **seguretat espacial** (2)
 
@@ -77,7 +77,7 @@
 
 - Declaram un struct foo, amb dos camps, un buffer de caràcters de mida 4 i un integer
 - Assignam a f de tipus foo els valors "cat" i 5
-  - buf serà igual a "C-A-T-\\0". \\0 = NULL terminator
+  - buf serà igual a "C-A-T-\0". `\0` = NULL terminator
 - Guardam l'adreça d'aquest primer campal punter de caràcter y
 - Si guardam 's' a y+3, està dins els límits
 - Si guardam 'y' a y+4, augmentam més enllà de la regió de memòria associada a buf
@@ -370,7 +370,7 @@ int f() {
 
 ## Utilitzar Address-space Layout Randomization - ASLR (1)
 
-- L'aleatorització del disseny de l'espai d'adreces (_**Address-space Layout Randomization**_ **\- ASLR**) permet derrotar l'atac de **Return-to-libc**
+- L'aleatorització del disseny de l'espai d'adreces (_**Address-space Layout Randomization**_ **- ASLR**) permet derrotar l'atac de **Return-to-libc**
 - La idea és **col·locar aleatòriament les biblioteques** estàndard i altres elements de memòria del sistema com la pila en ubicacions aleatòries i, per tant, fer-los més difícils d'endevinar
   - Per tant, l'atacant no pot crear una explotació única que sàpiga exactament on és l'executiu per a cada programa que s'executa.
 - Això també fa que sigui **difícil trobar el punter de retorn**.  És a dir, la pila s'ha aleatoritzat i, per tant, la seva ubicació no és la mateixa cada vegada.

@@ -946,7 +946,7 @@ int main() {
 ## _Integer overflow_
 
 - A C, una variable té un valor màxim i, quan se supera aquest valor, el valor de la variable s'ajustarà
-- En aquest cas, estem llegint des de la xarxa mitjançant la funció _packet\_get\_int_
+- En aquest cas, estem llegint des de la xarxa mitjançant la funció _packet_get_int_
   - Suposem que l'adversari té el control de l'altra banda de la xarxa i envia un nombre molt gran
 - Suposem que el nombre és 1.073.741.824 i que la mida d'un punter de caràcter a la nostra arquitectura és 4, és a dir, és una arquitectura de 32 bits
   - _nresp_ és més gran que zero i, per tant, emmagatzemarem amb _malloc_ un buffer on emmagatzemarem una resposta
