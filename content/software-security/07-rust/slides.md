@@ -254,7 +254,7 @@ println!("{:?}", (name, age)); // for debug
 
 ## Tuples
 
-- (type1, type2, … typeN)
+- (type1, type2, ... typeN)
 
 ```rust
 let tup: (i32, f64, u8) == (500, 6.4, 1);
@@ -846,7 +846,7 @@ fn main() {
 ## Overflow de nombres sencers
 
 - Debug mode: panic at runtime
-- Release mode (`--release`): wrapping (u8 255+1=0, 255+2=1…). Solution:
+- Release mode (`--release`): wrapping (u8 255+1=0, 255+2=1...). Solution:
   - Wrap in all modes with the `wrapping_*` methods, such as `wrapping_add`.
   - Return the `None` value if there is overflow with the `checked_*` methods.
   - Return the value and a boolean indicating whether there was overflow with the `overflowing_*` methods.

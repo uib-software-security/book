@@ -489,7 +489,7 @@ Phases, documents and roles of the Scrum methodology
 - Les **eines de trencament de contrasenyes** entrenen les dades publicades per endevinar ràpidament les contrasenyes habituals
   - John the Ripper, [http://www.openwall.com/john/](http://www.openwall.com/john/)
   - Project Rainbow, [http://project-rainbowcrack.com/](http://project-rainbowcrack.com/)
-  - molts més …
+  - molts més ...
   - Les **10 pitjors contrasenyes** de 2022: 123456, 123456789, qwerty, password, 1234567, 12345678, 12345, iloveyou, 111111, 123123 (de [SplashData](https://www.emcrc.co.uk/post/most-common-passwords-of-the-year-revealed-is-yours-on-the-list))
 
 ---
@@ -789,7 +789,7 @@ Phases, documents and roles of the Scrum methodology
 ## Error: ignorar quines dades són sensibles
 
 - **Penseu bé en les fonts de dades**: quines requereixen protecció?
-  - Informació d'identificació personal, lectures de sensors, claus criptogràfiques, fitxes de sessió, dades de geolocalització, …
+  - Informació d'identificació personal, lectures de sensors, claus criptogràfiques, fitxes de sessió, dades de geolocalització, ...
     - Falla: dades privades exposades a l'accés general
 - Com canvien les dades i la seva exposició a mesura que l'**aplicació evoluciona al llarg del temps**?
 

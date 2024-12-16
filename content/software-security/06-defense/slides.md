@@ -37,7 +37,7 @@
 - Seguretat de la memòria (_memory safety_) és una propietat de l'execució dels programes
 - Execució d'un programa amb seguretat de memòria:
   - Només **crea punters** mitjançant **mitjans estàndard**
-    - p = malloc(…), o p = &x, o p = &buf[5], etc.
+    - p = malloc(...), o p = &x, o p = &buf[5], etc.
   - Només utilitza un punter per **accedir a la memòria** que **"pertany" a aquest punter**
 - Combina dues idees: **seguretat temporal** (1) i **seguretat espacial** (2)
 
