@@ -399,15 +399,15 @@ int f() {
 
 ---
 
-## _Introduction to return oriented programming (ROP)
+## Introduction to return oriented programming (ROP)
 
-[![Introduction to return oriented programming (ROP)](https://img.youtube.com/vi/yS9pGmY_xuo/0.jpg)](https://www.youtube.com/watch?v=yS9pGmY_xuo)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yS9pGmY_xuo?si=u0CP769N7UYPzWVS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
 ## Exploiting Return Oriented Programming (ROP) tutorial
 
-[![Exploiting Return Oriented Programming (ROP) tutorial](https://img.youtube.com/vi/8zRoMAkGYQE/0.jpg)](https://www.youtube.com/watch?v=8zRoMAkGYQE)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8zRoMAkGYQE?si=gzimRUyLTZLvQCQA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -419,7 +419,7 @@ int f() {
 
 ## Understanding Control Flow Integrity
 
-[![Understanding Control Flow Integrity](https://img.youtube.com/vi/mDeOJmUkXOQ/0.jpg)](https://www.youtube.com/watch?v=mDeOJmUkXOQ)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mDeOJmUkXOQ?si=p3cRbQTq0leZ4-Xu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -580,7 +580,7 @@ while (!done() && buf_ptr < (buf + SIZE)) {
 
 ## Dangling pointers (punters penjants)
 
-[![Dangling pointers (punters penjants)](https://img.youtube.com/vi/qNgV7oAHElk/0.jpg)](https://www.youtube.com/watch?v=qNgV7oAHElk)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qNgV7oAHElk?si=2TRqpApHVMuCeDe5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
