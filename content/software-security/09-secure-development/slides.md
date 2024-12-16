@@ -68,11 +68,11 @@ Phases, documents and roles of the Scrum methodology
 
 - Volem escriure un programari que permeti als titulars de comptes d'un banc tenir accés en línia als seus comptes
 - Requisits:
-  - Que els titulars de comptes poguessin dipositar fons als seus comptes
-  - Evitar que altres persones que no estiguin autoritzades pel titular del compte retirin aquests fons, per exemple, iniciant una transferència bancària
-  - Que el titular del compte, en el moment que ho desitgi, accedeixi als seus fons, per exemple, retirant-los o transferint-los del seu compte
-  - No volem que un tercer impedeixi l'accés
-  - I... altres propietats de seguretat que anirem vegent
+  - Permetre dipòsits als comptes
+  - Garantir que només els titulars autoritzats gestionin els fons
+  - Assegurar l'accés del titular per retirar o transferir fons
+  - Evitar interferències de tercers
+  - Altres requisits de seguretat a determinar
 
 ![Banca en línia](img/online-banking.png)
 
@@ -103,6 +103,9 @@ Phases, documents and roles of the Scrum methodology
   - realitzar **sessions paral·leles**
   - proporcionar **entrades amb format incorrecte, missatges amb format incorrecte**
   - **deixar anar o enviar missatges addicionals**
+
+---v
+
 - **Exemples d'atacs**: injecció SQL, cross site-scripting (XSS), cross site request fogerty (CSRF), buffer overrun/ROP payloads,...
 
 ![Usuari de xarxa](img/network-user.png)
@@ -116,6 +119,9 @@ Phases, documents and roles of the Scrum methodology
 - Per tant, pot:
   - **Llegir/mesurar** els **missatges** dels altres
   - **Interceptar**, **duplicar** i **modificar missatges**
+
+---v
+
 - **Exemples d'atacs**: **segrest de sessions** (i altres robatoris de dades), llegir comunicació no encriptada, aprendre coses de les comunicacions xifrades inferint propietats en funció de la mida o la freqüència dels missatges, **denegació de servei**
 
 ![Usuari espia](img/snooping-user.png)
@@ -130,6 +136,9 @@ Phases, documents and roles of the Scrum methodology
   - **Llegir/escriure** fitxers de l'usuari (p. ex., _cookies_) i memòria
   - **Llegir pressions de tecles** i altres esdeveniments
   - Llegir/escriure la **pantalla** de l'usuari (p. ex., per **falsificar**)
+
+---v
+
 - **Exemples d'atacs**: **robatori de contrasenya** (i altres credencials/secrets)
 
 ![Usuari co-ubicat](img/co-located-user.png)
@@ -487,18 +496,21 @@ Phases, documents and roles of the Scrum methodology
 
 ## Gestor de contrasenyes (_password manager_)
 
+![Password manager](img/password-manager.png)
+
 - Un **gestor de contrasenyes** (_**Password Manager**_**, PM**) emmagatzema una **base de dades de contrasenyes, indexades per lloc**
   - Xifrat amb **una única contrasenya mestra** escollida (i recordada) per l'usuari, utilitzada com a clau
   - **PM genera contrasenyes complicades per cada lloc web**
     - Difícil d'endevinar, difícil de recordar, però això últim no importa!
+
+---v
+
 - **Beneficis**
   - Només una única contrasenya perquè l'usuari la recordi
   - La contrasenya de l'usuari en qualsevol lloc és difícil d'endevinar
   - El compromís de la contrasenya en un lloc no permet un compromís immediat en altres llocs
 - **Però**:
   - Encara s'ha de **protegir** i **recordar** la **contrasenya mestra** segura
-
-![Password manager](img/password-manager.png)
 
 ---
 
@@ -806,7 +818,7 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-##Microsoft Security Development Lifecycle
+## Microsoft Security Development Lifecycle
 
 > MSDL
 
