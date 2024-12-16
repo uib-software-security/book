@@ -134,3 +134,11 @@ Phases, documents and roles of the Scrum methodology
 ---
 
 ![Scrum](./img/scrum-diagram.png)
+
+---
+
+## 🔗 Enllaços
+
+- [Scrum: The Art of Doing Twice the Work in Half the Time (Jeff Sutherland)](https://amzn.eu/d/fBbLyZd)
+- [Mastering Professional Scrum (Ockerman Stephanie, Reindl Simon)](https://amzn.eu/d/781dVum)
+- [Essential Scrum: A Practical Guide to the Most Popular Agile Process (Kenneth S. Rubin)](https://amzn.eu/d/aFBOZ14)
