@@ -630,8 +630,6 @@ Phases, documents and roles of the Scrum methodology
 
 ![Sandboxes](img/sandboxes.png)
 
-![alt text](image.png)
-
 ---
 
 ## Categoria de disseny: Defensa en profunditat, Seguiment/Traçabilitat
