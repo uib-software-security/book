@@ -107,12 +107,9 @@ git diff <filename>
 
 - Mostrar els canvis (commits) realitzats al **HEAD** (Repositori)
   - `-p` mostra els detalls de cada commit.
-  - `--graph` mostra un esquema de l'historial de commits.
-  - `--all` mostra commits de totes les branques.
-  - `--oneline` mostra els commits en una sola línia.
 
 ```bash
-git log [-p] [--graph] [--all] [--oneline]
+git log [-p]
 ```
 
 - Mostrar informació d'un commit
@@ -303,6 +300,12 @@ git rebase <branch_name>
 - **Pull requests**: per proposar canvis al projecte.
 - **Actions**: per automatitzar el flux de treball.
 - **Insights**: per analitzar el projecte.
+
+---
+
+## Using Projects for feature planning
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yFQ-p6wMS_Y?si=SeHLx1WPU0aaDS7S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
