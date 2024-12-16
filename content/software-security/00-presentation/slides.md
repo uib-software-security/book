@@ -31,6 +31,10 @@
 
 ---
 
+![Temes](./img/topics.png)
+
+---
+
 ## Continguts
 
 ### 🔥 Atacs de baix nivell
