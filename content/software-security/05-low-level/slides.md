@@ -125,9 +125,9 @@
 
 ---
 
-## The Code Red Worm Documentary - Hacking the White House
+## Code Red Worm
 
-[![The Code Red Worm Documentary - Hacking the White House](https://img.youtube.com/vi/_pMF_3vDO4k/0.jpg)](https://www.youtube.com/watch?v=_pMF_3vDO4k)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_pMF_3vDO4k?si=5BShYynR0Ez2niQq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -142,9 +142,9 @@
 
 ---
 
-## Conficker worm
+## Conficker Worm
 
-[![Conficker worm](https://img.youtube.com/vi/5FuQ9aRZL3E/0.jpg)](https://www.youtube.com/watch?v=5FuQ9aRZL3E)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5FuQ9aRZL3E?si=UHIekCxYkN27cQJq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -167,13 +167,13 @@
 
 ## Social Engineering - How Bad Guys Hack Users
 
-[![Social Engineering - How Bad Guys Hack Users](https://img.youtube.com/vi/uMkOphesrqI/0.jpg)](https://www.youtube.com/watch?v=uMkOphesrqI)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uMkOphesrqI?si=RPJYUOWN8PIvjiFl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
 ## Malware vs Exploits: What's the Difference?
 
-[![Malware vs Exploits: What's the Difference?](https://img.youtube.com/vi/a9u8-rNCHUs/0.jpg)](https://www.youtube.com/watch?v=a9u8-rNCHUs)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a9u8-rNCHUs?si=idB-mc2qgZRZFaM4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -487,7 +487,13 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---v
 
-![Funció i pila](./img/func_stack.png)
+```c
+void func(char *arg1, int arg2, int arg3) {
+  char loc1[4];
+  int loc2;
+  // ...
+}
+```
 
 ![Funció i pila](./img/func_stack2.png)
 
@@ -504,7 +510,13 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---v
 
-![Accés a variables](./img/func_stack3.png)
+```c
+void func(char *arg1, int arg2, int arg3) {
+  // ...
+  loc2++; // Question: Where is (this) loc2?
+  // ...
+}
+```
 
 ![Accés a variables](./img/func_stack4.png)
 
@@ -530,7 +542,13 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---v
 
-![Retornant de funcions](./img/func_stack6.png)
+```c
+int main () {
+  // ...
+  func("Hey", 10, -3); // Question: How do we restore %ebp?
+  // ...
+}
+```
 
 ![Retornant de funcions](./img/func_stack7.png)
 
@@ -547,8 +565,6 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---v
 
-![Retornant de funcions](./img/func_stack8.png)
-
 ![Retornant de funcions](./img/func_stack9.png)
 
 ![Retornant de funcions](./img/func_stack10.png)
@@ -564,7 +580,13 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 
 ---v
 
-![Retornant de funcions](./img/func_stack12.png)
+```c
+int main () {
+  // ...
+  func("Hey", 10, -3); // Question: How do we restore %ebp?
+  // ...
+}
+```
 
 ![Retornant de funcions](./img/func_stack13.png)
 
@@ -575,9 +597,7 @@ De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu d
 - A mesura que `main` s'executa, el **punter d'instruccions** (**_instruction pointer_**), `eip`, es mou per les diferents instruccions que implementen `main`
 - Quan crida a `func`, `eip` es mourà cap amunt i començarà a executar aquestes altres instruccions
 
-![Instruccions a la memòria](./img/instructions1.png)
-
-![Instruccions a la memòria](./img/instructions2.png)
+![Instruccions a la memòria](./img/instructions.png)
 
 ---
 
