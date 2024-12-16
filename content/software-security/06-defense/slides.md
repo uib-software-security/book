@@ -113,8 +113,8 @@ char *buf = "%d %d %d\n";
 printf(buf);
 ```
 
-- La crida a printf desreferencia punters il·legals, ja que espera tres nombres sencers com a arguments, i no en proporcionam cap:
-  - printf accedirà més enllà dels límits del seu marc de pila
+- La crida a `printf` desreferencia punters il·legals, ja que espera tres nombres sencers com a arguments, i no en proporcionam cap:
+  - `printf` accedirà més enllà dels límits del seu marc de pila
   - Podem veure la pila com un buffer definit pel nombre i tipus d'arguments que proporciona
   - Els especificadors de format addicional construeixen punters més enllà del final d'aquesta memòria intermèdia i els desferencien
 - Essencialment és una mena de desbordament del buffer
@@ -182,6 +182,8 @@ int f() {
   - Haskell, Scala, Go, Objective Caml, Rust
 - De fet, aquests llenguates són **amb seguretat de tipus**, que és encara millor (més sobre això en breu)
 
+![Memory safe languages](./img/memory-safe-languages.png)
+
 ---
 
 ## Seguretat de la memòria per a C
@@ -210,6 +212,8 @@ int f() {
   - Properament: maquinari **Intel MPX**
     - Suport de hardware per fer la comprovació més ràpida
 
+![Memory safety progress](./img/memory-safety-progress.png)
+
 ---
 
 ## Seguretat de tipus
@@ -224,8 +228,6 @@ int f() {
 - Les operacions sobre l'objecte sempre són _compatibles_ amb el tipus d'objecte
   - Els programes segurs no "van malament" en temps d'execució
 - La **seguretat de tipus** és **més forta** que la seguretat de la memòria
-
----v
 
 ![Seguretat de tipus](./img/type-safety-01.png)
 
@@ -307,6 +309,8 @@ int f() {
 - Podem fer el mateix per comprovar si la pila s'ha trencat o no
   - _Stack integrity_
 
+![Canaris](./img/canaries.png)
+
 ---
 
 ## Detectant _overflows_ amb canaris (_canaries_) (i 2)
@@ -360,7 +364,7 @@ int f() {
 
 ## _Return-to-libc attack_
 
-![Return-to-libc](./img/return-to-libc-02.png)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FvQYGAM1X9U?si=qC44eiqWL8a44nhH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -477,9 +481,7 @@ char digit_to_char(int i) {
 
 ## Regla: comprovar les entrades (i 2)
 
-![Comprovar les entrades](./img/check-input-01.png)
-
-![Comprovar les entrades](./img/check-input-02.png)
+![Comprovar les entrades](./img/check-input.png)
 
 ---
 
@@ -522,13 +524,13 @@ strlcat(buf, "day to you", sizeof(buf)); // fails
 ## Regla: utilitzeu funcions de cadena segures (i 2)
 
 - Reemplaçaments de funcions orientades a strings:
-  - strcat ==> strlcat
-  - strcpy ==> strlcpy
-  - strncat ==> strlcat
-  - strncpy ==> strlcpy
-  - sprintf ==> snprintf
-  - vsprintf ==> vsnprintf
-  - gets ==> fgets
+  - `strcat` ==> `strlcat`
+  - `strcpy` ==> `strlcpy`
+  - `strncat` ==> `strlcat`
+  - `strncpy` ==> `strlcpy`
+  - `sprintf` ==> `snprintf`
+  - `vsprintf` ==> `vsnprintf`
+  - `gets` ==> `fgets`
 
 ---
 
@@ -556,7 +558,7 @@ int x = strlen(str);    // returns 2
 
 ## Regla: entendre l'aritmètica del punter
 
-- sizeof() retorna el nombre de _bytes_, però l'aritmètica del punter el multiplica pel syzeof del tipus
+- `sizeof()` retorna el nombre de _bytes_, però l'aritmètica del punter el multiplica pel syzeof del tipus
 - A aquest exemple, s'afegirà quadre vegades més del que realment es requereix (mida del buffer x 4 (mida de int = 4)
 
 ```c
@@ -589,6 +591,4 @@ while (!done() && buf_ptr < (buf + SIZE)) {
 - Hem d'evitar els **punters penjants** (**explicat abans**)
 - Ho podem arreglar **assignant NULL al punter després d'alliberar-lo**
 
-![Dangling pointers](./img/dangling-pointers-01.png)
-
-![Dangling pointers](./img/dangling-pointers-02.png)
+![Dangling pointers](./img/dangling-pointers.png)
