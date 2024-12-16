@@ -662,7 +662,19 @@ int main () {
 
 ---v
 
-![Buffer overflow](./img/buffer_overflow.png)
+```c
+void func(char *arg1) {
+  char buffer[4];
+  strcpy(buffer, arg1);
+  // ...
+}
+
+int main() {
+  char *mystr = "AuthMe!";
+  func(mystr);
+  // ...
+}
+```
 
 ![Buffer overflow](./img/buffer_overflow2.png)
 
@@ -678,7 +690,20 @@ int main () {
 
 ---v
 
-![Buffer overflow](./img/buffer_overflow4.png)
+```c
+void func(char *arg1) {
+  int authenticated = 0;
+  char buffer[4];
+  strcpy(buffer, arg1);
+  if (authenticated) { //... }
+}
+
+int main() {
+  char *mystr = "AuthMe!";
+  func(mystr);
+  // ...
+}
+```
 
 ![Buffer overflow](./img/buffer_overflow5.png)
 
@@ -695,7 +720,13 @@ int main () {
 
 ---v
 
-![Buffer overflow](./img/buffer_overflow7.png)
+```c
+void func(char *arg1) {
+  char buffer[4];
+  strcpy(buffer, arg1);
+  // ...
+}
+```
 
 ![Buffer overflow](./img/buffer_overflow8.png)
 
@@ -729,7 +760,13 @@ int main () {
 
 ---v
 
-![Code injection](./img/code_injection.png)
+```c
+void func(char *arg1) {
+  char buffer[4];
+  sprintf(buffer, arg1);
+  // ...
+}
+```
 
 ![Code injection](./img/code_injection2.png)
 
@@ -759,9 +796,15 @@ int main () {
   - És una funció que crida a _**execve**_, que transforma el programa actual en el donat com a argument
   - En aquest cas, l'argument és _**/bin/sh**_, un _**shell**_
 
----v
-
-![Shellcode](./img/shellcode.png)
+```c
+#include <stdio.h>
+int main() {
+  char *name[2];
+  name[0] = "/bin/sh";
+  name[1] = NULL;
+  execve(name[0], name, NULL);
+}
+```
 
 ---
 
@@ -770,8 +813,6 @@ int main () {
 - Aquí teniu el codi ensamblador d'aquest codi de shell
 - Si mirem la primera instrucció, aquest és el que podria semblar com un string
 - Aquest seria l'string que proporcioneu com a part de la vostra entrada.
-
----v
 
 ![Shellcode](./img/shellcode2.png)
 
@@ -825,6 +866,8 @@ int main () {
 
 ![Nop sleds](./img/nop_sleds.png)
 
+---
+
 ## Resum
 
 - A continuació, es mostra com seria tot el codi adversari injectat
@@ -837,9 +880,9 @@ int main () {
 
 ---
 
-## Running a Buffer Overflow Attack_
+## Running a Buffer Overflow Attack
 
-[![Running a Buffer Overflow Attack](https://img.youtube.com/vi/1S0aBV-Waeo/0.jpg)](https://www.youtube.com/watch?v=1S0aBV-Waeo)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1S0aBV-Waeo?si=Ub1oqC4LVRFtY8vT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ---
@@ -873,10 +916,13 @@ int main () {
 - Definim una estructura, _vulnerable_struct_, que té dos camps, el primer és _buff_, un punter de caràcter, el segon és el punter de la funció _compare_
 - A continuació, veiem una funció, _foo_, que pren una _vulnerable_struct _com a argument juntament amb dos arguments de punter de caràcters.
   - Per començar, la primera línia de la funció copia l'un en buff, la segona línia copia el dos més un en buff. Finalment, la tercera línia crida al punter de la funció de comparació, passant buff com a argument i comparant-lo amb el punter del fitxer foobar
-- Aquest codi només funcionarà correctament si la longitud de la cadena de _one_ i _two_ és inferior a la longitud màxima de la memòria intermèdia on es copiaran (MAX_LEN). En cas contrari, sobreescriurem el punter de la funció de comparació
-  - Igual que a un _stack smashing_, l'adversari pot ser capaç de controlar com es produeix aquesta sobreescritura i aconseguir que el programa executi el codi de la seva elecció.
+
+![Heap overflow](./img/heap_overflow2.png)
 
 ---v
+
+- Aquest codi només funcionarà correctament si la longitud de la cadena de _one_ i _two_ és inferior a la longitud màxima de la memòria intermèdia on es copiaran (MAX_LEN). En cas contrari, sobreescriurem el punter de la funció de comparació
+  - Igual que a un _stack smashing_, l'adversari pot ser capaç de controlar com es produeix aquesta sobreescritura i aconseguir que el programa executi el codi de la seva elecció.
 
 ![Heap overflow](./img/heap_overflow2.png)
 
@@ -959,7 +1005,11 @@ int main () {
 
 - La família _printf_ de C admet E/S formatades
 
-![Formatted I/O](./img/formatted_io.png)
+```c
+void print_record(int age, char *name) {
+  printf("Name: %s, Age: %d\n", name, age);
+}
+```
 
 - Especificadors de format
   - La posició a l'string indica l'argument de l'stack a imprimir
@@ -1013,7 +1063,7 @@ int main () {
 
 ## Format string vulnerabilities
 
-[![Format string vulnerabilities](https://img.youtube.com/vi/DhVRI33s-D0/0.jpg)](https://www.youtube.com/watch?v=DhVRI33s-D0)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DhVRI33s-D0?si=yl4nffjpWgeyPFMv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -1025,10 +1075,10 @@ int main () {
 
 ## Debugging - GDB Tutorial
 
-[![Debugging - GDB Tutorial](https://img.youtube.com/vi/bWH-nL7v5F4/0.jpg)](https://www.youtube.com/watch?v=bWH-nL7v5F4)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bWH-nL7v5F4?si=FRXOHe-coyZzYVaO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
 ## GDB is REALLY easy! Find Bugs in Your Code with Only A Few Commands
 
-[![GDB is REALLY easy! Find Bugs in Your Code with Only A Few Commands](https://img.youtube.com/vi/Dq8l1_-QgAc/0.jpg)](https://www.youtube.com/watch?v=Dq8l1_-QgAc)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Dq8l1_-QgAc?si=FmQUO7WpITW2mUvK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
