@@ -492,7 +492,7 @@ char digit_to_char(int i) {
   - Si algú fa alguna cosa inesperada, no estavellaràs (o pitjor)
   - Es tracta de **minimitzar la confiança**
 - Cada mòdul **verifica de manera pessimista les seves suposades precondicions** (als _callers_ externs)
-  - Encara que “sàpigues” que els clients no t'enviaran un punter NULL
+  - Encara que "sàpigues" que els clients no t'enviaran un punter NULL
   - ... És millor llançar una excepció (o fins i tot sortir) que executar codi maliciós
 - _**Robust Programming**_:
   - [http://nob.cs.ucdavis.edu/bishop/secprog/robust.html](http://nob.cs.ucdavis.edu/bishop/secprog/robust.html)

@@ -39,7 +39,7 @@
 
 - Web oficial:
   - [https://www.rust-lang.org/](https://www.rust-lang.org/)
-- Llibre “_The Rust Programming Language_”
+- Llibre "_The Rust Programming Language_"
   - [https://doc.rust-lang.org/stable/book/](https://doc.rust-lang.org/stable/book/)
 - Rust by example:
   - [https://doc.rust-lang.org/rust-by-example/](https://doc.rust-lang.org/rust-by-example/)
@@ -81,7 +81,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ## Programa "Hello World"
 
-- Programa “Hello World”:
+- Programa "Hello World":
 
 ```rust
 fn main() {
@@ -387,9 +387,9 @@ for n in 1..11 {
 ## Ownership i borrowing (1)
 
 - **Ownership**: cada valor té només un únic propietari
-  - Quan una variable queda fora de l’abast (out of scope), es crida automàticament la funció “**drop**” per alliberar els recursos associats
+  - Quan una variable queda fora de l’abast (out of scope), es crida automàticament la funció "**drop**" per alliberar els recursos associats
 - **Moving**: quan assignes una variable a una altra, la propietat (ownership) és transferida
-- **Cloning**: quan es necessita una còpia de les dades, es pot utilitzar el mètode “**clone**”
+- **Cloning**: quan es necessita una còpia de les dades, es pot utilitzar el mètode "**clone**"
 
 ---
 
