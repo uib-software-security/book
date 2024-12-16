@@ -16,10 +16,12 @@
 - **Seguretat**: Es preocupa de prevenir **comportaments no desitjats**.
   - Considera un enemic/oponent/hacker/adversari que intenta de forma **activa** i **maliciosa** eludir qualsevol mesura de protecció
 
-### Diferència clau
+---
 
-- **Correcció** -> Què _ha de fer_ un sistema.
-- **Seguretat** -> Què _no ha de fer_ un sistema.
+## Diferència clau
+
+* **Correcció** -> Què _ha de fer_ un sistema.
+* **Seguretat** -> Què _no ha de fer_ un sistema.
 
 ---
 
@@ -86,9 +88,11 @@
   - Per a un usuari típic, trobar un _bugs_ (accidentalment) provocarà un error, que després intentarà evitar.
   - Un adversari treballarà per trobar un _bugs_ i explotar-lo per assolir els seus objectius
 
-### Solució
+---
 
-- Per garantir la seguretat, hem d'**eliminar els bugs i defectes de disseny** i/o fer-los més **difícils d'explotar**
+## Solució
+
+> Per garantir la seguretat, hem d'**eliminar els bugs i defectes de disseny** i/o fer-los més **difícils d'explotar**
 
 ---
 
