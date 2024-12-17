@@ -147,7 +147,9 @@
 
 ---
 
+<!-- markdownlint-disable MD024 -->
 ## Anàlisi de flux
+<!-- markdownlint-enable MD024 -->
 
 - L'**anàlisi de flux** és un mètode d'**anàlisi estàtica** que estudia el camí que segueixen les dades a través del codi per identificar possibles problemes de lògica o seguretat.
   - L'**objectiu** és detectar condicions errònies, fluxos de dades incorrectes, i altres vulnerabilitats que podrien no ser evidents només amb una revisió de codi estàtica o durant l'execució normal.
@@ -184,7 +186,9 @@
 
 ---
 
+<!-- markdownlint-disable MD024 -->
 ## Execució simbòlica
+<!-- markdownlint-enable MD024 -->
 
 - És un mètode de test que analitza el codi executant-lo amb **valors simbòlics** en lloc de **valors reals**, permetent explorar molts camins de execució diferents simultàniament
 - **Objectiu**: Identificar errors, condicions d'error i vulnerabilitats de seguretat en el codi analitzant com aquest reaccionaria a una àmplia gamma de condicions d'entrada, incloent aquelles poc probables en una execució normal.
@@ -198,7 +202,7 @@
 
 ---
 
-## Mètodes i tècniques
+## Mètodes i tècniques de l'execució simbòlica
 
 - **Restriccions de Camí**: Durante l'execució, es van acumulant condicions o restriccions sobre els valors simbòlics que determinen quins camins són possibles.
 - _**Solver**_ **de Restriccions**: Utilitza solucionadors matemàtics per avaluar les restriccions i determinar els valors d'entrada que cobreixen diferents camins de codi.
@@ -239,14 +243,16 @@
 
 ---
 
+<!-- markdownlint-disable MD024 -->
 ## Tests unitaris
+<!-- markdownlint-enable MD024 -->
 
 - Els **tests unitaris** són procediments que verifiquen el comportament d'una **unitat específica de codi** per assegurar-se que funciona correctament.
 - **Unitat**: Una unitat pot ser una **funció**, un **mètode**, o una **classe** dins del software que es pot provar de forma aïllada.
 
 ---
 
-## Principis bàsics
+## Principis bàsics dels tests unitaris
 
 - **Aïllament**: Cada test unitari ha de ser independent dels altres; això implica que no ha d'interactuar amb bases de dades, fitxers, o components de xarxa, i es deuen utilitzar tècniques com a _**mockups**_ (**maquetes**) o _**stubs**_.
   - _**Stub**_: tros de codi que es fa servir per representar alguna funcionalitat d'un component al procés de desenvolupament de programari
@@ -255,7 +261,7 @@
 
 ---
 
-## Mètodes i tècniques
+## Mètodes i tècniques de tests unitaris
 
 - **Frameworks de Testing**: Utilització de frameworks especialitzats, com **JUnit** per **Java**, **PyTest** per **Python**, o **NUnit** per **C#**. Aquests frameworks faciliten la creació, execució, i organització dels tests.
 - _**Asserts**_: S'utilitzen afirmacions per comprovar que el codi realitza les operacions correctes. Per exemple, verificar que el resultat d'una funció és el valor esperat.
@@ -298,21 +304,23 @@
 
 ---
 
+<!-- markdownlint-disable MD024 -->
 ## Tests d’integració
+<!-- markdownlint-enable MD024 -->
 
 - Els **tests d'integració** verifiquen la correcta interacció i funcionament conjunt de múltiples components o mòduls d'un sistema de software.
 - **Objectiu**: Detectar problemes associats amb les interfícies entre components, garantint que funcionen junts com s'espera.
 
 ---
 
-## Principis bàsics
+## Principis bàsics dels tests d'integració
 
 - **Integració Incremental**: Aquesta tècnica comença amb dos components, testeja la seva interacció, i afegeix progressivament més components per testejar. Això pot seguir un enfocament "big bang", "top-down", "bottom-up" o "sandwich".
 - Ús de **Stubs** i **Drivers**: En absència d'alguns mòduls, s'utilitzen **stubs** (per mòduls **cridats**) i **drivers** (per mòduls **que criden**) per simular les funcions dels components encara no desenvolupats o integrats.
 
 ---
 
-## Mètodes i tècniques
+## Mètodes i tècniques de tests d'integració
 
 - **Top-Down**: Comença amb els nivells superiors de control del programa i progressivament integra els nivells inferiors.
 - **Bottom-Up**: Contràriament al top-down, aquest enfocament comença amb els mòduls a nivell més baix i avança cap als nivells superiors.
@@ -349,21 +357,23 @@
 
 ---
 
+<!-- markdownlint-disable MD024 -->
 ## Tests de sistema
+<!-- markdownlint-enable MD024 -->
 
 - Els t**ests de sistema** són la validació d'un programa de software **complet** i **integrat** per verificar que compleix amb els **requisits** especificats.
 - **Objectiu**: Confirmar que totes les parts integrades del software funcionen en harmonia sota condicions que simulen l'ús real, cobrint totes les funcionalitats i fluxos de l'usuari.
 
 ---
 
-## Principis bàsics
+## Principis bàsics dels tests de sistema
 
 - **Cobertura Completa**: Engloba totes les funcions del sistema en un entorn que imita la producció, incluint la interacció amb bases de dades, xarxes, i altres aplicacions.
 - **Tests d'Escenaris d'Usuari**: S'executen escenaris que un usuari real podria realitzar, des de l'inici fins al final, per verificar la resposta del sistema.
 
 ---
 
-## Mètodes i tècniques
+## Mètodes i tècniques de tests de sistema
 
 - **Automatització de Tests**: Molts tests de sistema són automatitzats per cobrir escenaris complexos i repetitius, utilitzant eines com _Selenium_, _TestComplete_, o _Cypress_.
 - **Tests Manual**: Alguns escenaris, especialment els que impliquen percepcions subjectives com la usabilitat, poden requerir intervenció manual.
@@ -385,7 +395,7 @@
 
 ---
 
-## Consideracions
+## Consideracions dels tests de sistema
 
 - **Complexitat**: Els tests de sistema poden ser complexos i costosos de planificar i executar degut a la seva naturalesa exhaustiva i el necessari entorn de simulació de producció.
 - **Manteniment d'Escenaris**: Els tests E2E requereixen manteniment regular per assegurar que segueixen sent rellevants a mesura que el software evoluciona.
@@ -436,7 +446,7 @@
 
 ---
 
-# Clean code i tests
+## Clean code i tests
 
 <!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AlK4Vir5fMQ?si=FsBi8WWJyuq86_Wv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
