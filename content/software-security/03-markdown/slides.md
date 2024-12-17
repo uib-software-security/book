@@ -17,18 +17,18 @@
 <!-- markdownlint-disable MD050 -->
 
 ```markdown
-Emphasis, aka italics, with *asterisks* or _underscores_.
+Emphasis, aka italics, with _underscores_.
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+Strong emphasis, aka bold, with **asterisks**.
 
 Combined emphasis with **asterisks and _underscores_**.
 
 Strikethrough uses two tildes. ~~Scratch this.~~
 ```
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
+Emphasis, aka italics, with _underscores_.
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+Strong emphasis, aka bold, with **asterisks**.
 
 Combined emphasis with **asterisks and _underscores_**.
 
