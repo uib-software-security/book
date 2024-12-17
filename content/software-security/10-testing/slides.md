@@ -82,7 +82,9 @@
 
 ## Static Code Analysis: Scan All Your Code For Bugs
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Heor8BVa4A0?si=_bV778tveEKrdccu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -133,7 +135,9 @@
 
 ## Linting Rust Code With Clippy CLI Rules
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_YFZZc5jIfY?si=wTml1CftD01OjVH9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -282,7 +286,9 @@
 
 ## Write Unit Tests in Rust
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0G_5uUe_NXk?si=IqnoBNKgtUo-odrx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -432,4 +438,6 @@
 
 # Clean code i tests
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AlK4Vir5fMQ?si=FsBi8WWJyuq86_Wv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->

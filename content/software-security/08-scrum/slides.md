@@ -31,7 +31,7 @@
 
 ---
 
-## Example of agile methodology: SCRUM
+## Example of agile methodology: SCRUM
 
 - **Agile** software development **methodologies** are based on the **adaptability** of any **change** to increase the chances of success of a project
 - **Scrum** is an agile framework for developing, delivering, and sustaining complex product
@@ -42,9 +42,11 @@
 
 ---
 
-## Introduction to Scrum
+## Introduction to Scrum
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9TycLR0TqFA?si=23BW6jMyI44x22eq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -101,7 +103,9 @@ Phases, documents and roles of the Scrum methodology
 
 ## Agile Estimating and Planning
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gE7srp2BzoM?si=QWUp0FxcKBICWav8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 

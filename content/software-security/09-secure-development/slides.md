@@ -193,7 +193,7 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Requisits de seguretat
+## Requisits de seguretat del software
 
 - Els **requisits de software** generalment són sobre **què hauria de fer el software**
 - També volem tenir **requisits de seguretat**
@@ -814,7 +814,9 @@ Phases, documents and roles of the Scrum methodology
 
 ## Security Design Principles
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LUW8FCTgS2I?si=CulWeFo4CRw8Wrli" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -842,10 +844,14 @@ Phases, documents and roles of the Scrum methodology
 
 ## Simplified Implementation of the Microsoft SDL
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/WQTvv0Gek58?si=_vw_lrodKDNJYi-v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
 ## Microsoft SDL Review
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rPfoD7jEXnU?si=54YVv4dMcCZ5EXOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
