@@ -335,6 +335,7 @@ let result = loop {
     break counter * 2;
   }
 };
+```
 
 ---
 
