@@ -265,6 +265,7 @@
   - Servidor Microsoft SQL, MySQL, redis, memcached
 - Molts **sistemes encastats** (_embedded systems_)
   - Rover de Mart, sistemes de control industrial, automòbils
+
 **Un atac a aquests sistemes és especialment perillós!**
 
 ---
@@ -350,7 +351,7 @@ segons Common Vulnerabilities and Exposures (CVE)
 
 - Just a sobre del segment de text hi ha el **segment de dades**, on s'hi guarden les variables estàtiques (**_static_**):
   - El seu temps de vida s'extèn durant tota l'execució del programa
-Té dues parts
+- Té dues parts
   - **Àrea de dades inicialitzada**. Dades estàtiques inicialitzades
   - **Àrea de dades no inicialitzades**. Dades estàtiques no inicialitzades
 - El model de procés garanteix que les **variables globals** no inicialitzades pel programa són zero
@@ -464,7 +465,7 @@ array = NULL;
 
 - El compilador emet les instruccions que ajusten l'_stack_ en temps d'execució.
 - La memòria que utilitza el _heap_ la distribueix el sistema operatiu, però les dades individuals que s'emmagatzemen dins del _heap_ són gestionades per **_malloc_**
-De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu del primer atac que tindrem en compte.
+- De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu del primer atac que tindrem en compte.
 
 ---v
 

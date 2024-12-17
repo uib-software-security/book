@@ -264,7 +264,7 @@ let (x, y, z) = tup;
 let five_hundred = tup.0;
 let six_point_four = tup.1;
 let one = tup.2;
-````
+```
 
 ---
 
@@ -474,7 +474,7 @@ let s = String::from("hello world");
 
 let hello = &s[0..5];
 let world = &s[6..11];
-````
+```
 
 Slice de array:
 

@@ -278,7 +278,7 @@ Phases, documents and roles of the Scrum methodology
 - Quin és el **subjecte** de les **polítiques de seguretat**?
   - Necessitat de definir una **noció d'identitat** i una **manera de connectar una acció amb una identitat**
     - també conegut com a **director** (persona, servei o programa)
--  **Com pot el sistema dir que un usuari és qui diu que és?**
+- **Com pot el sistema dir que un usuari és qui diu que és?**
   - Què (només) **sap** (per exemple, contrasenya)
   - Què **és** (p. ex., biomètric)
   - Què **té** (p. ex., telèfon intel·ligent, targeta)
@@ -498,7 +498,7 @@ Phases, documents and roles of the Scrum methodology
 
 ![Password manager](img/password-manager.png)
 
-- Un **gestor de contrasenyes** (_**Password Manager**_**, PM**) emmagatzema una **base de dades de contrasenyes, indexades per lloc**
+- Un **gestor de contrasenyes** (_**Password Manager**_, **PM**) emmagatzema una **base de dades de contrasenyes, indexades per lloc**
   - Xifrat amb **una única contrasenya mestra** escollida (i recordada) per l'usuari, utilitzada com a clau
   - **PM genera contrasenyes complicades per cada lloc web**
     - Difícil d'endevinar, difícil de recordar, però això últim no importa!

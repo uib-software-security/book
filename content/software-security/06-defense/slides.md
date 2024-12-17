@@ -144,7 +144,7 @@ int *p = malloc(sizeof(int));
 *p = 5;
 free(p);
 printf("%d\n", *p); // violation
-````
+```
 
 - L'accés a punters no inicialitzats tampoc és legal
 
@@ -576,7 +576,7 @@ int *buf_ptr = buf;
 while (!done() && buf_ptr < (buf + sizeof(buf))) {
   *buf_ptr++ = gennext(); // will overflow
 }
-````
+```
 
 - Per tant, cal utilitzar les unitats adequades
 
