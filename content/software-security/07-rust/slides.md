@@ -439,7 +439,9 @@ fn main() {
 
 ## Ownership
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DJdUjjOmyx8?si=RFc_3PIgnLssEiul" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -618,7 +620,7 @@ fn value_in_cents(coin: Coin) -> u8 {
 
 ---
 
-## Matching amb Option<T>
+## Matching amb `Option<T>`
 
 ```rust
 fn plus_one(x: Option<i32>) -> Option<i32> {
@@ -695,8 +697,7 @@ let none = plus_one(None);
 
 ---
 
-**Utilitzant paquets externs**
-==============================
+## Utilitzant paquets externs
 
 - Llista de paquets a [https://crates.io/](https://crates.io/)
 - Afegir a `cargo.toml`:
@@ -823,7 +824,6 @@ fn main() {
 
 ## Errors irrecuperables amb `panic!`
 
-
 - Els errors irrecuperables són situacions on el programa no es pot recuperar i s'ha d'acabar abruptament
 - Aquests errors es gestionen mitjançant el macro `panic!`
 - Exemple:
@@ -864,11 +864,13 @@ fn main() {
 
 ## Lifetime (i 2)
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4-8M-5uQhKA?si=luAAEWAgn5zg3HSO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
-## Rust security best practices
+## Rust security best practices
 
 1. Follow naming conventions
 2. Use data types effectively
@@ -878,9 +880,11 @@ fn main() {
 
 ---
 
-# Rust, Modern Solutions to Modern Problems
+## Rust, Modern Solutions to Modern Problems
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pNWKI6xtveQ?si=IGFeTPHkCReC6SOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
