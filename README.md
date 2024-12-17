@@ -1,6 +1,6 @@
 # Seguretat del Software
 
-![Logo UIB](./img/logo-uib.png)
+![Logo UIB](./content/img/logo-uib.png)
 
 > **Universitat de les Illes Balears**
 >
