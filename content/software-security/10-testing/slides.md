@@ -148,7 +148,9 @@
 ---
 
 <!-- markdownlint-disable MD024 -->
+
 ## Anàlisi de flux
+
 <!-- markdownlint-enable MD024 -->
 
 - L'**anàlisi de flux** és un mètode d'**anàlisi estàtica** que estudia el camí que segueixen les dades a través del codi per identificar possibles problemes de lògica o seguretat.
@@ -187,7 +189,9 @@
 ---
 
 <!-- markdownlint-disable MD024 -->
+
 ## Execució simbòlica
+
 <!-- markdownlint-enable MD024 -->
 
 - És un mètode de test que analitza el codi executant-lo amb **valors simbòlics** en lloc de **valors reals**, permetent explorar molts camins de execució diferents simultàniament
@@ -244,7 +248,9 @@
 ---
 
 <!-- markdownlint-disable MD024 -->
+
 ## Tests unitaris
+
 <!-- markdownlint-enable MD024 -->
 
 - Els **tests unitaris** són procediments que verifiquen el comportament d'una **unitat específica de codi** per assegurar-se que funciona correctament.
@@ -305,7 +311,9 @@
 ---
 
 <!-- markdownlint-disable MD024 -->
+
 ## Tests d’integració
+
 <!-- markdownlint-enable MD024 -->
 
 - Els **tests d'integració** verifiquen la correcta interacció i funcionament conjunt de múltiples components o mòduls d'un sistema de software.
@@ -358,7 +366,9 @@
 ---
 
 <!-- markdownlint-disable MD024 -->
+
 ## Tests de sistema
+
 <!-- markdownlint-enable MD024 -->
 
 - Els t**ests de sistema** són la validació d'un programa de software **complet** i **integrat** per verificar que compleix amb els **requisits** especificats.
