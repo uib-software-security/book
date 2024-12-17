@@ -165,26 +165,26 @@ println!("{:?}", (name, age)); // for debug
 
 ## Tipus de dades: sencers (1)
 
-| **Signed**    | **Unsigned**  | **Length**      |
-|---------------|---------------|-----------------|
-| `i8`            | `u8`            | 8-bit           |
-| `i16`           | `u16`           | 16-bit          |
-| `i32` (default) | `u32`           | 32-bit          |
-| `i64`           | `u64`           | 64-bit          |
-| `i128`          | `u128`          | 128-bit         |
-| `isize`         | `usize`         | arch (32 or 64) |
+| **Signed**      | **Unsigned** | **Length**      |
+| --------------- | ------------ | --------------- |
+| `i8`            | `u8`         | 8-bit           |
+| `i16`           | `u16`        | 16-bit          |
+| `i32` (default) | `u32`        | 32-bit          |
+| `i64`           | `u64`        | 64-bit          |
+| `i128`          | `u128`       | 128-bit         |
+| `isize`         | `usize`      | arch (32 or 64) |
 
 ---
 
 ## Tipus de dades: sencers (i 2)
 
-| **Number literals**  | **Example** |
-|----------------------|-------------|
-| Decimal              | `98_222`      |
-| Hex                  | `0xff`        |
-| Octal                | `0o77`        |
-| Binary               | `0b1111_0000` |
-| Byte (u8 only)       | `b'A'`        |
+| **Number literals** | **Example**   |
+| ------------------- | ------------- |
+| Decimal             | `98_222`      |
+| Hex                 | `0xff`        |
+| Octal               | `0o77`        |
+| Binary              | `0b1111_0000` |
+| Byte (u8 only)      | `b'A'`        |
 
 ---
 
@@ -192,10 +192,10 @@ println!("{:?}", (name, age)); // for debug
 
 - Floating point:
 
-| **Signed** | **Length** | **Description**            |
-|------------|------------|----------------------------|
-| `f32`        | 32-bit     | single-precision           |
-| `f64`        | 64-bit     | double-precision (default) |
+| **Signed** | **Length** | **Description**            |
+| ---------- | ---------- | -------------------------- |
+| `f32`      | 32-bit     | single-precision           |
+| `f64`      | 64-bit     | double-precision (default) |
 
 ---
 
@@ -213,16 +213,16 @@ println!("{:?}", (name, age)); // for debug
 
 - Boolean:
 
-| **Type** | **Values**  |
-|----------|-------------|
-| `bool`     | `true`, `false` |
+| **Type** | **Values**      |
+| -------- | --------------- |
+| `bool`   | `true`, `false` |
 
 - Char:
 
-| **Signed** | **Length** | **Values** |
-|------------|------------|------------|
-| `char`       | 4 bytes    | `U+0000` to `U+D7FF` and `U+E000` to `U+10FFFF` inclusive |
-|            |            | `'a'`, `'b'`... |
+| **Signed** | **Length** | **Values**                                                |
+| ---------- | ---------- | --------------------------------------------------------- |
+| `char`     | 4 bytes    | `U+0000` to `U+D7FF` and `U+E000` to `U+10FFFF` inclusive |
+|            |            | `'a'`, `'b'`...                                           |
 
 ---
 
