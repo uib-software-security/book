@@ -2,47 +2,47 @@
 
 ---
 
-## Software development
+## Desenvolupament de software
 
-- **Software development** is computer **programming**, **documentation**, **testing** and **error correction** involved in creating and maintaining applications
-  - It results in a software product
-- It refers to the **structured** and **planned** process of writing and maintaining source code, but in a broader sense of the term
-- Most important **development methodologies**:
-  - **"Waterfall" methodology**
-  - **"Agile" methodology**. For example, **Scrum**
-
----
-
-## Phases of the software development process
-
-- Most methodologies share some combination of the following phases of software development:
-  - **Requirements analysis**: documentation of customer needs
-  - **Design**: choice of technology, design of the project architecture and its components
-  - **Implementation/coding**: programming the project code
-  - **Testing**: tests, trying to detect imperfections in order to correct them
-  - **Deployment**: installation, or all of the activities that make a software system available for use
-  - **Maintenance**: help, technical service, software improvement
+- **El desenvolupament de software** és la **programació**, la **documentació**, les **proves** (_tests_) i la **correcció d'errors** informàtiques necessàries per crear i mantenir aplicacions.
+  - Això dona com a resultat un producte de software.
+- Es refereix al procés **estructurat** i **planificat** d'escriure i mantenir el codi font, però en un sentit més ampli del terme.
+- Les **metodologies de desenvolupament** més importants són:
+  - Metodologia **"Waterfall"**
+  - Metodologia **"Agile"**, per exemple, **Scrum**.
 
 ---
 
-## Waterfall model
+## Fases del procés de desenvolupament de software
+
+- La majoria de metodologies comparteixen alguna combinació de les fases següents del desenvolupament de software:
+  - **Anàlisi de requisits**: documentació de les necessitats del client
+  - **Disseny**: elecció de la tecnologia, disseny de l'arquitectura del projecte i dels seus components
+  - **Implementació/codificació**: programació del codi del projecte
+  - **Proves**: tests, intentar detectar imperfeccions per tal de corregir-les
+  - **Desplegament**: instal·lació, o totes les activitats que fan que un sistema de software estigui disponible per al seu ús
+  - **Manteniment**: ajuda, servei tècnic, millora del software
+
+---
+
+## Model _Waterfall_ (cascada)
 
 ![Waterfall model](img/waterfall-model.png)
 
 ---
 
-## Example of agile methodology: SCRUM
+## Exemple de metodologia àgil: SCRUM
 
-- **Agile** software development **methodologies** are based on the **adaptability** of any **change** to increase the chances of success of a project
-- **Scrum** is an agile framework for developing, delivering, and sustaining complex product
-  - The goal is to develop and create a product in a given period where a team of different people work together to reach a common goal.
-  - It is based on the premise that, during product development, customers will change their opinions about what they want and what they need.
-  - Accepts that the problem is not fully understood and defined
-  - It focuses on maximizing the team's ability to deliver quickly on time and respond to last-minute needs
+- Les **metodologies** de desenvolupament de software **àgil** es basen en l'**adaptabilitat** a qualsevol **canvi** per augmentar les possibilitats d'èxit d'un projecte.
+- **Scrum** és un marc de treball àgil per desenvolupar, lliurar i mantenir productes complexos.
+  - L'objectiu és desenvolupar i crear un producte en un període determinat, on un equip format per persones diferents treballa junt per assolir un objectiu comú.
+  - Es basa en la premissa que, durant el desenvolupament del producte, els clients canviaran d'opinió sobre allò que volen i necessiten.
+  - Accepta que el problema no està completament comprès ni definit.
+  - Se centra a maximitzar la capacitat de l'equip per lliurar ràpidament en el temps previst i respondre a necessitats d'última hora.
 
 ---
 
-## Introduction to Scrum
+## Introducció a Scrum
 
 <!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9TycLR0TqFA?si=23BW6jMyI44x22eq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -50,9 +50,9 @@
 
 ---
 
-## SCRUM, an agile methodology
+## SCRUM, una metodologia àgil
 
-Phases, documents and roles of the Scrum methodology
+Fases, documents i rols de la metodologia Scrum
 
 ![Metodologia SCRUM](./img/scrum-methodolody.png)
 
@@ -60,48 +60,48 @@ Phases, documents and roles of the Scrum methodology
 
 ## Scrum: sprint
 
-- An **Sprint** (or **iteration**) is the **basic unit of development** in Scrum
-  - The length is between one week and one month
-  - **Starts** with a **sprint planning** event that establishes a sprint goal
-  - **Ends** with a **sprint review** and **sprint retrospective**, that reviews progress to show to stakeholders and identify lessons and improvements
+- Un **Sprint** (o **iteració**) és la **unitat bàsica de desenvolupament** en Scrum
+  - La durada és d'entre una setmana i un mes
+  - **Comença** amb un esdeveniment de **planificació de l'sprint** (**_sprint planning_**) que estableix un objectiu d'sprint
+  - **Acaba** amb una **revisió de l'sprint** (**_sprint review_**) i una **retrospectiva de l'sprint** (**_sprint retrospective_**), on es revisa el progrés per mostrar-lo als interessats i s'identifiquen lliçons i millores.
 
 ---
 
-## Scrum: roles
+## Scrum: rols
 
 - **Product Owner**
-  - Represents stakeholders and the voice of the customer
-  - Is responsible for maximizing the value of the product resulting from work of the Development Team
-- **Scrum Team** (development team)
-  - Responsible for delivering the different parts of the product within the established periods (Sprint)
+  - Representa les parts interessades (_stakeholders_) i la veu del client
+  - És responsable de maximitzar el valor del producte resultant del treball de l'Equip de Desenvolupament
+- **Scrum Team** (equip de desenvolupament)
+  - Responsable de lliurar les diferents parts del producte dins els períodes establerts (Sprint)
 - **Scrum Master**
-  - Eliminates obstacles that prevent the team from reaching the goal of each sprint
-  - He is not the leader of the team (since it’s self-organized), but acts as a protection between the team and any influence that distracts him
+  - Elimina els obstacles que impedeixen que l'equip assoleixi l'objectiu de cada sprint
+  - No és el líder de l'equip (ja que aquest és autoorganitzat), però actua com a protecció entre l'equip i qualsevol influència que el distregui
 
 ---
 
-## Scrum roles
+## Rols d'Scrum
 
-![Scrum roles](./img/scrum-roles.png)
+![Rols d'Scrum](./img/scrum-roles.png)
 
 ---
 
-## Scrum: meetings
+## Scrum: reunions
 
 - **Daily Scrum**
-  - **Every day of the Sprint** a meeting is held on the status of the project, typically at the beginning of the day.
-  - 15-minute time-boxed event
-  - Three questions are answered: "What did I do yesterday?", "What will I do today?", "Do I see any impediment that prevents me from meeting the Sprint Goal?"
-- **Sprint Planning Meeting**
-  - At the **beginning of the Sprint**, this meeting plans the work to be performed
-- **Sprint Review Meeting**
-  - At the **end of the Sprint**, to review work that has been completed and work that has not
-- **Sprint Retrospective**
-  - At the **end of the Sprint**, to identify the positive aspects and those that need to be improved to optimize team performance
+  - **Cada dia de l'Sprint** es fa una reunió sobre l'estat del projecte, normalment a primera hora del dia.
+  - Esdeveniment limitat a 15 minuts
+  - Es responen tres preguntes: "Què vaig fer ahir?", "Què faré avui?", "Hi ha algun impediment que m'impedeixi assolir l'objectiu de l'Sprint?"
+- **Reunió de Planificació de l'Sprint** (**Sprint Planning**)
+  - A l'**inici de l'Sprint**, aquesta reunió planifica la feina que s'ha de dur a terme
+- **Reunió de Revisió de l'Sprint** (**Sprint Review**)
+  - Al **final de l'Sprint**, per revisar la feina que s'ha completat i la que no
+- **Retrospectiva de l'Sprint** (**Sprint Retrospective**)
+  - Al **final de l'Sprint**, per identificar els aspectes positius i aquells que cal millorar per optimitzar el rendiment de l'equip
 
 ---
 
-## Agile Estimating and Planning
+## Estimació i planificació àgil
 
 <!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gE7srp2BzoM?si=QWUp0FxcKBICWav8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -112,13 +112,13 @@ Phases, documents and roles of the Scrum methodology
 ## Scrum: documents
 
 - **Product backlog**
-  - It contains generic descriptions of the requirements, desirable functionalities, existing errors to be solved, etc.
-  - Prioritized according to the criteria of the Product Owner
+  - Conté descripcions genèriques dels requisits, de les funcionalitats desitjables, dels errors existents a resoldre, etc.
+  - Es prioritza segons els criteris del Product Owner
 - **Sprint backlog**
-  - Defines the tasks required to perform the requirements assigned to the current Sprint
-  - Tasks should be detailed enough for their duration to be short (e.g. less than 2 days).
+  - Defineix les tasques necessàries per dur a terme els requisits assignats a l'Sprint actual
+  - Les tasques han de ser prou detallades perquè la seva durada sigui curta (p. ex., menys de 2 dies)
 - **Sprint burn-down chart**
-  - Measures the number of Product Backlog requirements assigned to the current Sprint that are pending to be finished
+  - Mesura el nombre de requisits del Product Backlog assignats a l'Sprint actual que encara estan pendents de finalitzar
 
 ---v
 
@@ -126,14 +126,14 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Advantages of Scrum
+## Avantatges de Scrum
 
-- Flexibility to change
-- Reduced time to be able to see the product, even if it is not finished
-- Better software quality
-- Better productivity
-- Best time estimates
-- Risk reductions
+- Flexibilitat per al canvi
+- Reducció del temps per poder veure el producte, fins i tot sense estar acabat
+- Millor qualitat del software
+- Millor productivitat
+- Millors estimacions de temps
+- Reducció de riscos
 
 ---
 
