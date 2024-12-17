@@ -724,7 +724,7 @@ Phases, documents and roles of the Scrum methodology
 
 ## Els 10 defectes principals (i 2)
 
-> Ja n'hem tractat diversos. Anem a veurer-ne d’altres
+> Ja n'hem tractat diversos. Anem a veurer-ne d'altres
 
 1. Assumeixen la confiança, en lloc de donar-la o concedir-la explícitament
 2. **Utilitzen un mecanisme d'autenticació que es pugui evitar o manipular**

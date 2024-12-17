@@ -29,7 +29,7 @@
 
 ---
 
-## Corva d’aprenentatge de Rust
+## Corva d'aprenentatge de Rust
 
 ![Rust learning curve](./img/rust-learning-curve.png)
 
@@ -241,7 +241,7 @@ println!("{:?}", (name, age)); // for debug
 
 ## Tipus de dades: String (i 2)
 
-- Afegiu una cadena al final d’una cadena utilitzant `push_str()`
+- Afegiu una cadena al final d'una cadena utilitzant `push_str()`
   - Exemple: `s.push_str("món"); // esdevé "hola món"`
 - Afegeix un sol caràcter amb `push()`
   - Exemple: `s.push('!'); // esdevé "hola món!`
@@ -388,7 +388,7 @@ for n in 1..11 {
 ## Ownership i borrowing (1)
 
 - **Ownership**: cada valor té només un únic propietari
-  - Quan una variable queda fora de l’abast (out of scope), es crida automàticament la funció "**drop**" per alliberar els recursos associats
+  - Quan una variable queda fora de l'abast (out of scope), es crida automàticament la funció "**drop**" per alliberar els recursos associats
 - **Moving**: quan assignes una variable a una altra, la propietat (ownership) és transferida
 - **Cloning**: quan es necessita una còpia de les dades, es pot utilitzar el mètode "**clone**"
 
@@ -519,7 +519,7 @@ let user2 = User {
 
 ---
 
-## Implementació d’structs
+## Implementació d'structs
 
 ```rust
 #[derive(Debug)]
@@ -650,7 +650,7 @@ let none = plus_one(None);
 ## Crates
 
 - És la menor quantitat de codi que el compilador Rust considera
-- N’hi ha de dos tipus:
+- N'hi ha de dos tipus:
   - _**Crates**_ **binaris (_binary crate_)**
     - _Crate_ root: `src/main.rs`
   - _**Crates**_ **de biblioteca (_library crate_)**
@@ -710,7 +710,7 @@ rand = "0.8.5"
 
 - Tambe ho podeu fer executant `cargo add rand`
 - Executar `cargo build`
-- A partir d’aquell moment podem utilitzar el paquet al nostre codi:
+- A partir d'aquell moment podem utilitzar el paquet al nostre codi:
 
 ```rust
 use rand::Rng;
@@ -765,7 +765,7 @@ fn main() {
 
 ---
 
-## Tractament d’errors
+## Tractament d'errors
 
 - Rust agrupa els errors en dues categories:
   - **Errors recuperables**.
@@ -851,7 +851,7 @@ fn main() {
   - Wrap in all modes with the `wrapping_*` methods, such as `wrapping_add`.
   - Return the `None` value if there is overflow with the `checked_*` methods.
   - Return the value and a boolean indicating whether there was overflow with the `overflowing_*` methods.
-  - Saturate at the value’s minimum or maximum values with the `saturating_*` methods
+  - Saturate at the value's minimum or maximum values with the `saturating_*` methods
 
 ---
 

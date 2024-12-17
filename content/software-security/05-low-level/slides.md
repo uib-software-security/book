@@ -196,7 +196,7 @@
 ## Zero-day
 
 - Forat o vulnerabilitat en el programari que és desconegut per al fabricant o desenvolupador
-- Pot ser explotat pels hackers abans que el venedor ho descobreixi i creï un _patch_ per tal d’eliminar-ne la vulnerabilitat
+- Pot ser explotat pels hackers abans que el venedor ho descobreixi i creï un _patch_ per tal d'eliminar-ne la vulnerabilitat
 - Són els més perillosos
 
 ---
@@ -211,7 +211,7 @@
 
 ## Responsible disclosure
 
-- El fabricant descobreix o és informat de l’error però no es fa públic
+- El fabricant descobreix o és informat de l'error però no es fa públic
 - Quan el fabricant té disponible el _patch_ i el posa a disposició dels clients és quan es dóna a conèixer i es fa públic
 - Sistema molt comú en les grans empreses de programari com Microsoft
   - S'aplica el principi de no publicar res que pugui afectar la seguretat dels seus clients.

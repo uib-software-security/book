@@ -22,12 +22,12 @@ La darrera versió està disponible a: [https://uib-software-security.github.io/
 
 Heu d'[instal·lar Rust](https://www.rust-lang.org/tools/install) abans de continuar.
 
-Per a fer-vos la vida més senzilla amb `make` 😉, disposeu d’un conjunt de tasques que utilitzen [`cargo make`](https://sagiegurari.github.io/cargo-make/#overview).
+Per a fer-vos la vida més senzilla amb `make` 😉, disposeu d'un conjunt de tasques que utilitzen [`cargo make`](https://sagiegurari.github.io/cargo-make/#overview).
 
 Un cop tingueu [`cargo make`](https://sagiegurari.github.io/cargo-make/#installation) instal·lat, podeu llistar totes les tasques incloses per facilitar la instal·lació, compilació, servei, formatació i més amb:
 
 ```sh
-# Executeu-ho des del directori arrel d’aquest repositori
+# Executeu-ho des del directori arrel d'aquest repositori
 makers --list-all-steps
 ```
 
@@ -35,4 +35,4 @@ Les tasques haurien de ser autoexplicatives.
 
 ## Llicència
 
-Tots els materials d’aquest repositori estan llicenciats sota la Llicència Mozilla Public License Versió 2.0. Consulteu la [Llicència](./LICENSE.md) per a més detalls.
+Tots els materials d'aquest repositori estan llicenciats sota la Llicència Mozilla Public License Versió 2.0. Consulteu la [Llicència](./LICENSE.md) per a més detalls.

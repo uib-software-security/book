@@ -40,7 +40,7 @@
 - **Inconvenients**
   - Només pot analitzar propietats limitades
   - Poden faltar alguns errors o tenir falses alarmes
-  - Pot ser molt llarg d’executar
+  - Pot ser molt llarg d'executar
 
 ---
 
@@ -52,7 +52,7 @@
 - **Fomenta millors pràctiques de desenvolupament**
   - Desenvolupa models de programació que eviten errors típics
   - Encoratja els programadors a reflexionar i posar de manifest els seus supòsits
-    - Moltes eines d’anàlisi estàtica permeten l’ús d'anotacions que milloren la precisió de l'eina
+    - Moltes eines d'anàlisi estàtica permeten l'ús d'anotacions que milloren la precisió de l'eina
 
 ---
 
@@ -88,7 +88,7 @@
 
 ---
 
-## Exemples d’eines d’anàlisi estàtica**
+## Exemples d'eines d'anàlisi estàtica**
 
 - Java
   - **Checkstyle**: Es centra en la conformitat amb els estàndards de codificació.
@@ -108,7 +108,7 @@
 
 ---
 
-## Exemples d’eines d’anàlisi estàtica
+## Exemples d'eines d'anàlisi estàtica
 
 - **Python**
   - **Pylint**: Analitza codi Python per trobar bugs i senyals de codi de mala qualitat.
@@ -158,7 +158,7 @@
 
 ---
 
-## Tipus d’anàlisi de flux
+## Tipus d'anàlisi de flux
 
 - **Anàlisi de Flux de Dades**: Se centra en els camins que les dades prenen a través del programa
   - Aquesta anàlisi ajuda a identificar usos de dades no inicialitzades, fugues de memòria, i accessos a memòria no vàlids.
@@ -263,7 +263,7 @@
 - **Aïllament**: Cada test unitari ha de ser independent dels altres; això implica que no ha d'interactuar amb bases de dades, fitxers, o components de xarxa, i es deuen utilitzar tècniques com a _**mockups**_ (**maquetes**) o _**stubs**_.
   - _**Stub**_: tros de codi que es fa servir per representar alguna funcionalitat d'un component al procés de desenvolupament de programari
 - **Repetibilitat**: Cada test ha de poder ser executat múltiples vegades i en qualsevol entorn, sempre amb el mateix resultat.
-- **Automatització**: Els tests unitaris són generalment escrits i executats automàticament per eines de software. Això permet integrar-los en processos d’integració contínua.
+- **Automatització**: Els tests unitaris són generalment escrits i executats automàticament per eines de software. Això permet integrar-los en processos d'integració contínua.
 
 ---
 
@@ -304,7 +304,7 @@
 
 ---
 
-## Tests d’integració
+## Tests d'integració
 
 > Integration tests
 
@@ -312,7 +312,7 @@
 
 <!-- markdownlint-disable MD024 -->
 
-## Tests d’integració
+## Tests d'integració
 
 <!-- markdownlint-enable MD024 -->
 
@@ -448,7 +448,7 @@
 
 ---
 
-## Beneficis de l’auditoria de codi
+## Beneficis de l'auditoria de codi
 
 - **Millora de la Seguretat**: Redueix el risc de vulnerabilitats de seguretat i exposició a atacs.
 - **Augment de la Qualitat del Producte**: Assegura una major estabilitat i rendiment del software.
