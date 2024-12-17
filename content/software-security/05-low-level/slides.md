@@ -127,7 +127,9 @@
 
 ## Code Red Worm
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_pMF_3vDO4k?si=5BShYynR0Ez2niQq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -144,7 +146,9 @@
 
 ## Conficker Worm
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5FuQ9aRZL3E?si=UHIekCxYkN27cQJq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -167,13 +171,17 @@
 
 ## Social Engineering - How Bad Guys Hack Users
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uMkOphesrqI?si=RPJYUOWN8PIvjiFl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
 ## Malware vs Exploits: What's the Difference?
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/a9u8-rNCHUs?si=idB-mc2qgZRZFaM4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -618,7 +626,7 @@ int main () {
 
 ---
 
-## Resum
+## Resum de la disposició de la memòria
 
 - **Cridant una funció**:
   - **Introduïm els arguments** a l'_stack_ (al revés)
@@ -868,7 +876,7 @@ int main() {
 
 ---
 
-## Resum
+## Resum de la injecció de codi
 
 - A continuació, es mostra com seria tot el codi adversari injectat
 - Aquesta part anomenada "padding" ha de ser alguna cosa, perquè hem de començar a escriure allà on comenci l'entrada a _gets_, o _sprintf_ o _strcpy_ comenci
@@ -882,8 +890,9 @@ int main() {
 
 ## Running a Buffer Overflow Attack
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1S0aBV-Waeo?si=Ub1oqC4LVRFtY8vT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -930,7 +939,6 @@ int main() {
 
 ## Variants de _heap overflow_
 
-
 - Desbordament a l'objecte C++ _vtable_
   - Els objectes C++ (que contenen funcions virtuals) es representen mitjançant una _vtable_, que conté punters als mètodes de l'objecte.
   - Aquesta taula és anàloga a _s->cmp_ del nostre exemple anterior, i un tipus d'atac similar funcionarà
@@ -968,7 +976,7 @@ int main() {
 - Però els atacants també poden **desbordar les dades**
   - **Modificar una clau secreta** perquè sigui coneguda per l'atacant, per poder desxifrar futurs missatges interceptats
   - **Modificar les variables d'estat** per evitar les comprovacions d'autorització
-  - **Modificar les cadenes interpretades*- utilitzades com a part de les ordres
+  - **Modificar les cadenes interpretades** utilitzades com a part de les ordres
     - Per exemple, per facilitar la injecció SQL
 
 ---
@@ -989,13 +997,13 @@ int main() {
 ## Memòria obsoleta (_stale memory_)
 
 - Es produeix un _**dangling pointer bug**_ quan s'allibera un punter, però el programa continua usant-lo
-- Un atacant pot fer que **la memòria alliberada sigui reassignada*- i sota el seu control
+- Un atacant pot fer que **la memòria alliberada sigui reassignada** i sota el seu control
 
 ![Dangling pointer](./img/dangling_pointer.png)
 
 ---
 
-## Vulnerabilitats de format d'string
+## Vulnerabilitats de format de string
 
 > Format string vulnerabilities
 
@@ -1063,7 +1071,9 @@ void print_record(int age, char *name) {
 
 ## Format string vulnerabilities
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DhVRI33s-D0?si=yl4nffjpWgeyPFMv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -1075,10 +1085,14 @@ void print_record(int age, char *name) {
 
 ## Debugging - GDB Tutorial
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bWH-nL7v5F4?si=FRXOHe-coyZzYVaO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
 ## GDB is REALLY easy! Find Bugs in Your Code with Only A Few Commands
 
+<!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Dq8l1_-QgAc?si=FmQUO7WpITW2mUvK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->

@@ -20,8 +20,8 @@
 
 ## Diferència clau
 
-* **Correcció** -> Què _ha de fer_ un sistema.
-* **Seguretat** -> Què _no ha de fer_ un sistema.
+- **Correcció** -> Què _ha de fer_ un sistema.
+- **Seguretat** -> Què _no ha de fer_ un sistema.
 
 ---
 

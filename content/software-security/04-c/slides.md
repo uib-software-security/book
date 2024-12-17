@@ -210,7 +210,7 @@ int main() {
 }
 ```
 
-* Amb `scanf`, a diferència de `printf`, cal passar punters als arguments perquè `scanf` pugui modificar-ne els valors.
+- Amb `scanf`, a diferència de `printf`, cal passar punters als arguments perquè `scanf` pugui modificar-ne els valors.
 
 ---
 
