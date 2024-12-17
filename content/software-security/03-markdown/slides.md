@@ -13,6 +13,8 @@
 
 ## Sintaxi: negreta, cursiva i ratllat
 
+<!-- markdownlint-disable MD049 -->
+<!-- markdownlint-disable MD050 -->
 ```markdown
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
@@ -23,8 +25,6 @@ Combined emphasis with **asterisks and _underscores_**.
 Strikethrough uses two tildes. ~~Scratch this.~~
 ```
 
-<!-- markdownlint-disable MD049 -->
-<!-- markdownlint-disable MD050 -->
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
 Strong emphasis, aka bold, with **asterisks** or __underscores__.
@@ -63,6 +63,8 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 ## Sintaxi: llistes
 
+<!-- markdownlint-disable MD004 -->
+<!-- markdownlint-disable MD032 -->
 ```markdown
 1. First ordered list item
 2. Another item
@@ -75,8 +77,6 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 1. First ordered list item
 2. Another item
 
-<!-- markdownlint-disable MD004 -->
-<!-- markdownlint-disable MD032 -->
 * Unordered list can use asterisks
 - Or minuses
 + Or pluses
