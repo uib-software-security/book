@@ -889,6 +889,14 @@ fn main() {
 
 ---
 
+## A New Era for C and C++? Goodbye, Rust?
+
+<!-- markdownlint-disable MD033 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/V_QAJAhbH9A?si=RHWnlpvDLWv5zmx6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
+
+---
+
 ## Per què Rust és segur?
 
 - **Propietat de Dades**: Rust utilitza un sistema de propietat (_ownership_) amb regles que el compilador verifica en temps de compilació. Cada valor en Rust té un propietari únic, i només hi pot haver un propietari en qualsevol moment. Això ajuda a prevenir errors com els dobles alliberaments de memòria.
