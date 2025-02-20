@@ -130,7 +130,6 @@ git show <id_commit>
 - Per registrar-te a GitHub:
   - Ves a [https://github.com](https://github.com)
   - Registra un nou compte ("**Sign up**") amb el teu correu electrònic
-  - Informa el professor del teu nom d'usuari perquè puguis unir-te a l'organització `@uib-software-security` [https://github.com/uib-software-security](https://github.com/uib-software-security)
 
 ---
 
@@ -295,10 +294,10 @@ git rebase <branch_name>
 ## Altres eines de GitHub
 
 - **Issues**: per informar d'errors, sol·licitar noves funcionalitats o fer preguntes.
-- **Projects**: per organitzar i prioritzar la feina.
-- **Wiki**: per documentar el projecte.
 - **Pull requests**: per proposar canvis al projecte.
 - **Actions**: per automatitzar el flux de treball.
+- **Projects**: per organitzar i prioritzar la feina.
+- **Wiki**: per documentar el projecte.
 - **Insights**: per analitzar el projecte.
 
 ---
