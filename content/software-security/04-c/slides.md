@@ -67,6 +67,21 @@ Hello, World!
 
 ---
 
+## Variables
+
+```c
+int x;       // declaració
+x = 123;     // inicialització
+int x = 123; // declaració i inicialització
+
+int age = 21;     // integer
+float gpa = 2.05; // floating point number
+char grade = 'C'; // single character
+char name[] = "Mike"; // array of characters - string
+```
+
+---
+
 ## Caràcters d'escapament (_scape characters_)
 
 ```c
@@ -79,21 +94,6 @@ Hello, World!
 // \x         - Valor hexadecimal, com \xFFFF
 // \uhhhh     - Codi Unicode per davall de 10000 hexadecimal 
 // \Uhhhhhhhh - Codi Unicode on h és un dígit hexadecimal
-```
-
----
-
-## Variables
-
-```c
-int x;       // declaració
-x = 123;     // inicialització
-int x = 123; // declaració i inicialització
-
-int age = 21;     // integer
-float gpa = 2.05; // floating point number
-char grade = 'C'; // single character
-char name[] = "Mike"; // array of characters - string
 ```
 
 ---
@@ -148,7 +148,7 @@ int j = 2147483647； // 4 bytes (-2,147,483,648 to +2,147,483,647) %d
 unsigned int k = 4294967295; // 4 bytes (0 to +4,294,967, 295) %u
 // long int = int
 
-long long int 1 = 9223372036854775807; // 8 bytes (-9 quintillion to +9 quintillion) %lld
+long long int i = 9223372036854775807; // 8 bytes (-9 quintillion to +9 quintillion) %lld
 unsigned long long int m = 18446744073709551615; // 8 bytes (0 to +18 quintillion) %llu
 ```
 
