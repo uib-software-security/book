@@ -924,8 +924,8 @@ int main() {
 ## _Heap overflow_ (i 2)
 
 - Definim una estructura, _vulnerable_struct_, que té dos camps, el primer és _buff_, un punter de caràcter, el segon és el punter de la funció _compare_
-- A continuació, veiem una funció, _foo_, que pren una _vulnerable_struct _com a argument juntament amb dos arguments de punter de caràcters.
-  - Per començar, la primera línia de la funció copia l'un en buff, la segona línia copia el dos més un en buff. Finalment, la tercera línia crida al punter de la funció de comparació, passant buff com a argument i comparant-lo amb el punter del fitxer foobar
+- A continuació, veiem una funció, _foo_, que pren una _vulnerable_struct_ com a argument juntament amb dos arguments de punter de caràcters.
+  - Per començar, la primera línia de la funció copia el paràmetre _one_ a _buff_, la segona línia copia _two_ més un a _buff_. Finalment, la tercera línia crida al punter de la funció de comparació, passant _buff_ com a argument i comparant-lo amb el punter del fitxer foobar
 
 ![Heap overflow](./img/heap_overflow2.png)
 
