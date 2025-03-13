@@ -940,15 +940,13 @@ int main() {
 
 ## Variants de _heap overflow_
 
-- Desbordament a l'objecte C++ _vtable_
-  - Els objectes C++ (que contenen funcions virtuals) es representen mitjançant una _vtable_, que conté punters als mètodes de l'objecte.
-  - Aquesta taula és anàloga a _s->cmp_ del nostre exemple anterior, i un tipus d'atac similar funcionarà
-- Desbordament cap als objectes adjacents
-  - Per exemple, un que contengui un punter a una funció
-  - On el buff no es col·loca amb un punter de funció, sinó que s'assigna a prop d'un del _heap_
-- Desbordament de metadades del heap
-  - Capçalera oculta just abans del punter retornat per _malloc_
-  - Fluxe cap a aquesta capçalera per corrompre el propi _heap_
+- **Desbordament a la _vtable_ de C++**
+  - La _vtable_ conté punters als mètodes de l'objecte.
+  - Es pot atacar de manera similar a _s->cmp_ en exemples anteriors.
+
+- **Desbordament cap a objectes adjacents**
+  - Especialment si contenen punters a funcions.
+  - Pot afectar un _buffer_ assignat a prop d'un altre objecte al _heap_.
 
 ---
 
