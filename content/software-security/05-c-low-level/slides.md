@@ -1,4 +1,54 @@
-# Seguretat de baix nivell: atacs i exploits
+# Programació en C i vulnerabilitats de baix nivell
+
+---
+
+## Requisits per programar en C
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
+- Compilador de C (`gcc`):
+  - [Linux](https://code.visualstudio.com/docs/cpp/config-linux)
+  - [Windows](https://code.visualstudio.com/docs/cpp/config-mingw)
+  - [Mac OSX](https://code.visualstudio.com/docs/cpp/config-clang-mac)
+
+![VSCode + C/C++ Extension Pack](./img/vscode_cpp.png)
+
+---
+
+## Funció main
+
+Fitxer `test.c`
+
+```c
+#include <stdio.h>
+
+int main() {
+  printf("Hello, World!\n");
+  return 0;
+}
+```
+
+---
+
+## Compilar i executar
+
+- Instrucció per compilar:
+
+```bash
+gcc test.c -o test
+```
+
+- Instrucció per executar:
+
+```bash
+./test
+```
+
+- Resultat:
+
+```bash
+Hello, World!
+```
 
 ---
 
