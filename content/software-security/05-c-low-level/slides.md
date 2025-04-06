@@ -52,7 +52,7 @@ Hello, World!
 
 ---
 
-## Introducció
+## Riscos i vulnerabilitats del programari
 
 - Els **sistemes d'informació i comunicació** i el **programari** són **susceptibles** de **contenir errors**
   - Errors en el seu **disseny** (**_flaw_**) o **desenvolupament** (**_bug_**)
@@ -359,7 +359,7 @@ segons Common Vulnerabilities and Exposures (CVE)
 
 ---
 
-## Disposició de la memòria (1)
+## Disposició de la memòria: introducció
 
 - Com es disposen les dades del programa a la memòria?
 - Com és la pila (_stack_)?
@@ -375,94 +375,93 @@ segons Common Vulnerabilities and Exposures (CVE)
   - Aquest procés rep memòria del sistema operatiu per tal que s'executi
 - Aquí representem l'espai dels processos.
   - A la part inferior hi ha l'adreça zero, l'adreça més baixa
-  - A la part superior hi ha l'adreça de quatre gigabytes, que és l'adreça més alta d'un sistema de 32 bits
+  - A la part superior hi ha l'adreça més alta, que en un sistema de 32 bits seria de quatre gigabytes (2^32)
 - El procés veu la memòria com si fos tota seva
-- En realitat, aquestes són adreces virtuals, que el sistema operatiu i el processador assignen a adreces físiques reals per a la memòria de la màquina
-
----v
-
-![Programa a la memoria](./img/program_in_memory.png)
+- En realitat, **aquestes són adreces virtuals**, que el sistema operatiu i el processador assignen a adreces físiques reals per a la memòria de la màquina
 
 ---
 
-## Disposició de la memòria (2)
+## Gràfic de la disposició de la memòria
+
+![Programa a la memoria](./img/memlayout.png)
+
+---
+
+## Disposició de la memòria: segment de text
 
 - A la part inferior de l'espai d'adreces hi ha el **segment de text** (o codi de text)
-  - _Text segment_
-- Aquí veiem algunes instruccions x86 que podrien constituir el codi del nostre programa
+  - _Text segment_, on s'emmagatzema el codi executable del programa (instruccions x86 en llenguatge màquina)
 
----v
-
-![Text segment](./img/text_segment.png)
+```text
+...
+0x4c2 sub $0x224, 8esp
+0x4cl push %ex
+Ox4bf mov %esp, &ebp
+Ox4be push %ebp
+...
+```
 
 ---
 
-## Disposició de la memòria (3)
+## Disposició de la memòria: segment de dades
 
 - Just a sobre del segment de text hi ha el **segment de dades**, on s'hi guarden les variables estàtiques (**_static_**):
   - El seu temps de vida s'extèn durant tota l'execució del programa
 - Té dues parts
-  - **Àrea de dades inicialitzada**. Dades estàtiques inicialitzades
+  - **Àrea de dades inicialitzada**. Dades estàtiques inicialitzades:
+    - `static const int a = 5;`
   - **Àrea de dades no inicialitzades**. Dades estàtiques no inicialitzades
+    - `static int b;`
 - El model de procés garanteix que les **variables globals** no inicialitzades pel programa són zero
   - Això no és cert amb les **variables locals** no inicialitzades
 
----v
-
-![Dades estàtiques](./img/static_data.png)
-
 ---
 
-## Disposició de la memòria (4)
+## Disposició de la memòria en temps de compilació
 
-- Totes aquestes dades es coneixen en el moment de la compilació
+- El **segment de text** i el **segment de dades** es coneixen en temps de compilació
 - Així, el compilador pot determinar on va  aquesta informació i pot especificar-ho el màxim possible a l'executable.
 
----v
-
-![Dades conegudes en temps de compilació](./img/compile_time.png)
-
 ---
 
-## Disposició de la memòria (5)
+## Disposició de la memòria: arguments i variables d'entorn
 
-- A la part superior de l'espai d'adreces apareixen els arguments de la línia d'ordres i les variables d'entorn
+- A la part superior de l'espai d'adreces apareixen els **arguments de la línia d'ordres** i les **variables d'entorn**
 - Aquests s'estableixen quan comença el procés.
 
----v
-
-![Arguments i variables d'entorn](./img/arguments_env.png)
+```sh
+GIT_AUTHOR_NAME="Miquel"
+git commit -m "Primera versió"
+```
 
 ---
 
-## Disposició de la memòria (6)
+## Disposició de la memòria: stack
 
 - Just a sota d'ells, hi ha la **pila** (_stack_)
-- La **pila** és el que conté les variables locals, juntament amb les metadades que el programa utilitza per cridar i tornar de funcions.
+- La **pila** és el que conté les **variables locals**, juntament amb les **metadades** que el programa utilitza per cridar i tornar de funcions.
 
----v
-
-![Pila](./img/stack.png)
+```c
+int a = 5;
+int b = 10;
+int c = a + b;
+```
 
 ---
 
-## Disposició de la memòria (7)
+## Disposició de la memòria: heap
 
 - A sobre del segment de dades hi ha el _heap_ (**emmagatzematge dinàmic**). Aquesta és la zona que gestiona _malloc_
   - **_Memory allocation_**: assignació dinàmica de memòria
-- Totes aquestes dades s'organitzen i es gestionen en temps d'execució
-- És a dir, com es comporta depèn del que faci el programa. Amb què interactua, quines dades i fitxers d'entrada llegeix o escriu, etc.
-
----v
-
-![Heap](./img/heap.png)
+- Totes aquestes dades, tant de l'stack com del heap, s'organitzen i es gestionen en **temps d'execució**
+  - És a dir, com es comporta depèn del que faci el programa. Amb què interactua, quines dades i fitxers d'entrada llegeix o escriu, etc.
 
 ---
 
 ## Memory allocation: assignació dinàmica de memòria
 
 ```c
-/* Assignar espai per una matriu de 10 elements de tipus int */
+/* Assignar espai per una matriu de 10 elements de tipus int (4 bytes) */
 int *array = malloc(10 * sizeof(int));
 
 /* Comprova que la memòria s'ha assignat correctament, en cas contrari es gestiona l'error. */
