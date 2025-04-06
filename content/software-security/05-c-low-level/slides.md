@@ -34,19 +34,19 @@ int main() {
 
 - Instrucció per compilar:
 
-```bash
+```sh
 gcc test.c -o test
 ```
 
 - Instrucció per executar:
 
-```bash
+```sh
 ./test
 ```
 
 - Resultat:
 
-```bash
+```sh
 Hello, World!
 ```
 
