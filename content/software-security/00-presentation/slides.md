@@ -77,8 +77,8 @@
 ## Avaluació
 
 - **Activitats pràctiques**: 60% de la nota fina
-  - Pràctica 1: Temes 1 a 3
-  - Pràctica 2: Temes 4 a 6
+  - Pràctica 1: Temes 1 a 4
+  - Pràctica 2: Temes 5 a 6
   - Pràctica 3: Temes 7 a 8
   - Pràctica 4: Temes 9 a 10
 - **Exàmens escrits**: 40% de la nota final
