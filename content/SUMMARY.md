@@ -21,5 +21,5 @@
 
 ---
 
-[📚 Recursos](./recursos.md)
+[📚 Recursos](./resources.md)
 [📜 Llicència](./LICENSE.md)
