@@ -91,11 +91,11 @@
 ## Programació en Rust
 
 - Algunes pràctiques es faran utilitzant el llenguatge Rust
-- **Llibre recomanat**:
-  - _The Rust Programming Language_, Steve Klabnik i Carol Nichols
-  - Disponible online: [Rust Book](https://doc.rust-lang.org/book/)
+- **Llibres recomanats**:
+  - [The Rust Programming Language](https://doc.rust-lang.org/book/), Steve Klabnik i Carol Nichols
+  - [Effective Rust](https://effective-rust.com/), David Drysdale
 
-![The Rust Programming Language](./img/rust_book.png)
+![The Rust Programming Language](./img/rust_books.png)
 
 ---
 
