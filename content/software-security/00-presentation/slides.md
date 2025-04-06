@@ -20,14 +20,13 @@
 1. Introducció a la seguretat del software
 2. Git i GitHub. Sistemes de control de versions
 3. Llenguatge de marques Markdown
-4. Programació en C
-5. Seguretat de baix nivell: atacs i exploits
+4. Metodologia Scrum
+5. Programació en C i vulnerabilitats de baix nivell
 6. Defensa contra exploits de baix nivell
 7. Programació en Rust
-8. Metodologia Scrum
-9. Desenvolupament segur de software
-10. Revisió del codi: testing i anàlisi
-11. Proves de penetració (Pentesting)
+8. Desenvolupament segur de software
+9. Revisió del codi: testing i anàlisi
+10. Proves de penetració (Pentesting)
 
 ---
 
@@ -81,27 +80,17 @@
   - Pràctica 1: Temes 1 a 3
   - Pràctica 2: Temes 4 a 6
   - Pràctica 3: Temes 7 a 8
-  - Pràctica 4: Temes 9 a 11
+  - Pràctica 4: Temes 9 a 10
 - **Exàmens escrits**: 40% de la nota final
   - Exàmen 1r parcial: Temes 1 a 6
-  - Exàmen 2n parcial: Temes 7 a 11
+  - Exàmen 2n parcial: Temes 7 a 10
 - **Exàmen de recuperació**
-
----
-
-## Programació en C
-
-- Algunes pràctiques es faran amb llenguatge C
-- **Llibre recomanat**:
-  - _Effective C: An Introduction to Professional C Programming_, Robert C. Seacord
-
-![Effective C](./img/effective_c.png)
 
 ---
 
 ## Programació en Rust
 
-- També es faran pràctiques amb llenguatge Rust
+- Algunes pràctiques es faran utilitzant el llenguatge Rust
 - **Llibre recomanat**:
   - _The Rust Programming Language_, Steve Klabnik i Carol Nichols
   - Disponible online: [Rust Book](https://doc.rust-lang.org/book/)
