@@ -480,29 +480,15 @@ array = NULL;
 
 ---
 
-## Stack i Heap
-
-- Ara la imatge està girada al costat de manera que l'adreça més baixa està a l'esquerra i l'adreça més alta a la dreta
-- Veiem l'_stack_ i el _heap_ representats i també mostrem la direcció en què creixen
-  - A mesura que es necessita més memòria al _heap_, creix cap a les adreces més altes
-  - Quan es necessita més memòria per a l'_stack_, creix cap a la baixa cap a l'adreça inferior.
-
-```text
-Low address                                                         High address
-0x00000000                                                            0xffffffff
---------------------------------------------------------------------------------
-  |  Heap   | -->                                              <-- |  Stack  |
---------------------------------------------------------------------------------
-```
-
----
-
 ## Punter d'stack
 
+- Ara la imatge està girada al costat de manera que l'adreça més baixa està a l'esquerra i l'adreça més alta a la dreta
 - Mentre el programa s'executa, manté un punter d'_stack_ (**_stack pointer_** o **_SP_**) que indica la part superior de l'_stack_
   - Quan el programa emet una instrucció **_push_**, mourà el punter d'_stack_ després de guardar el valor
 
 ```text
+Low address                                                         High address
+0x00000000                                                            0xffffffff
 --------------------------------------------------------------------------------
   |  Heap   | -->                                  <-- | 3 | 2 | 1 |  Stack  |
 --------------------------------------------------------------------------------
@@ -526,9 +512,7 @@ Low address                                                         High address
                        return
 ```
 
----
-
-## Punter d'stack: resum
+---v
 
 - El **compilador emet les instruccions que ajusten l'_stack_ en temps d'execució**
 - La memòria que utilitza el _heap_ la distribueix el sistema operatiu, però les dades individuals que s'emmagatzemen dins del _heap_ són gestionades per **_malloc_**
@@ -1165,26 +1149,4 @@ void print_record(int age, char *name) {
 
 <!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DhVRI33s-D0?si=yl4nffjpWgeyPFMv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<!-- markdownlint-enable MD033 -->
-
----
-
-## Depurant el codi amb _GDB_
-
-> _GDB_ debugger
-
----
-
-## Debugging - GDB Tutorial
-
-<!-- markdownlint-disable MD033 -->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bWH-nL7v5F4?si=FRXOHe-coyZzYVaO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<!-- markdownlint-enable MD033 -->
-
----
-
-## GDB is REALLY easy! Find Bugs in Your Code with Only A Few Commands
-
-<!-- markdownlint-disable MD033 -->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Dq8l1_-QgAc?si=FmQUO7WpITW2mUvK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <!-- markdownlint-enable MD033 -->
