@@ -480,45 +480,69 @@ array = NULL;
 
 ---
 
-## Disposició de la memòria (8)
+## Stack i Heap
 
 - Ara la imatge està girada al costat de manera que l'adreça més baixa està a l'esquerra i l'adreça més alta a la dreta
 - Veiem l'_stack_ i el _heap_ representats i també mostrem la direcció en què creixen
   - A mesura que es necessita més memòria al _heap_, creix cap a les adreces més altes
   - Quan es necessita més memòria per a l'_stack_, creix cap a la baixa cap a l'adreça inferior.
 
-![Stack i Heap](./img/stack_heap.png)
+```text
+Low address                                                         High address
+0x00000000                                                            0xffffffff
+--------------------------------------------------------------------------------
+  |  Heap   | -->                                              <-- |  Stack  |
+--------------------------------------------------------------------------------
+```
 
 ---
 
-## Disposició de la memòria (9)
+## Punter d'stack
 
-- Mentre el programa s'executa, manté un punter d'_stack que indica la part superior de l'_stack_
+- Mentre el programa s'executa, manté un punter d'_stack_ (**_stack pointer_** o **_SP_**) que indica la part superior de l'_stack_
   - Quan el programa emet una instrucció **_push_**, mourà el punter d'_stack_ després de guardar el valor
+
+```text
+--------------------------------------------------------------------------------
+  |  Heap   | -->                                  <-- | 3 | 2 | 1 |  Stack  |
+--------------------------------------------------------------------------------
+                       push 1                          ^ Stack pointer (SP)
+                       push 2
+                       push 3
+```
+
+---v
+
 - Ara, suposem que després d'executar-se durant un temps, la funció que havia guardat aquests valors retorna (fa **_return_**)
   - En aquest cas, la funció eliminarà (farà **_pop_**) d'una gran part de la pila eliminant totes les seves variables i arguments locals
 
----v
-
-![Stack i return](./img/stack_return1.png)
-
-![Stack i return](./img/stack_return2.png)
-
-![Stack i return](./img/stack_return3.png)
-
-![Stack i return](./img/stack_return4.png)
+```text
+--------------------------------------------------------------------------------
+  |  Heap   | -->                                  <-- | 3 | 2 | 1 |  Stack  |
+--------------------------------------------------------------------------------
+                       push 1                   Stack pointer (SP) ^
+                       push 2
+                       push 3
+                       return
+```
 
 ---
 
-## Disposició de la memòria (i 10)
+## Punter d'stack: resum
 
-- El compilador emet les instruccions que ajusten l'_stack_ en temps d'execució.
+- El **compilador emet les instruccions que ajusten l'_stack_ en temps d'execució**
 - La memòria que utilitza el _heap_ la distribueix el sistema operatiu, però les dades individuals que s'emmagatzemen dins del _heap_ són gestionades per **_malloc_**
 - De moment ens centrarem en l'**_stack_** perquè aquest és el nostre objectiu del primer atac que tindrem en compte.
 
----v
-
-![Stack i return](./img/stack_return5.png)
+```text
+--------------------------------------------------------------------------------
+  |  Heap   | -->                                  <-- | 3 | 2 | 1 |  Stack  |
+--------------------------------------------------------------------------------
+   Managed             push 1                   Stack pointer (SP) ^
+   in-process          push 2
+   by malloc           push 3
+                       return
+```
 
 ---
 
@@ -553,11 +577,20 @@ void func(char *arg1, int arg2, int arg3) {
 }
 ```
 
-![Funció i pila](./img/func_stack2.png)
+- Com es guardaria a la pila?
+
+```text
+--------------------------------------------------------------------------------
+  ... | loc2 | loc1 | ??? | ??? | arg1 | arg2 | arg3 | caller's data |
+--------------------------------------------------------------------------------
+  Local variables pushed             Arguments pushed
+  in the same order as they          in reverse order
+  appear in the code                 of code
+```
 
 ---
 
-## Accés a variables (1)
+## Accés a variables
 
 - Com pot el programa saber on estàn les variables locals?
   - Per exemple volem accedir a `loc2`
@@ -576,18 +609,29 @@ void func(char *arg1, int arg2, int arg3) {
 }
 ```
 
-![Accés a variables](./img/func_stack4.png)
+- No es pot saber l'adreça absoluta en temps de compilació
 
----
+```text
+--------------------------------------------------------------------------------
+  ... | loc2 | loc1 | ??? | ??? | arg1 | arg2 | arg3 | caller's data |
+--------------------------------------------------------------------------------
+      ^ 0xbffff323
+```
 
-## Accés a variables (i 2)
+---v
 
 - Necessitem un punt de referència dins del **marc de la pila** (**_stack frame_**)
   - L'anomenam **punter de marc** (**_frame pointer_**)
   - Normalment, els compiladors emmagatzemen el **_frame pointer_** (o **_base pointer_**) al registre **EBP**
 - Per tant, el compilador sap que des d'on es crida aquesta funció, la variable `loc2` sempre estarà a vuit bytes de distància del valor actual del **_frame pointer_**
 
-![Accés a variables](./img/func_stack5.png)
+```text
+      < ----------- Stack frame for func ----------->
+--------------------------------------------------------------------------------
+  ... | loc2 | loc1 | ??? | ??? | arg1 | arg2 | arg3 | caller's data |
+--------------------------------------------------------------------------------
+      ^ 0xbffff323  ^ %ebp
+```
 
 ---
 
