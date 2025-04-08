@@ -688,7 +688,7 @@ int main () {
 - La següent pregunta és: com reprendrem al mateix lloc del codi on estàvem, a `main`, quan vàrem cridar a `func`?
 
 ```text
-                v %esp
+  v %esp
 --------------------------------------------------------------------------------
   | loc2 | loc1 | (%ebp) | ??? | arg1 | arg2 | arg3 | caller's data |
 --------------------------------------------------------------------------------
@@ -709,9 +709,15 @@ int main () {
 - El que volem és tornar a on estàvem quan vam cridar la funció
 - Podem fer el mateix truc que vam fer amb el _frame pointer_
   - Podem emmagatzemar el punter d'instrucció _eip_ just abans de cridar la funció a la pila
-- Ara, quan anem a tornar, només hem de posar el punter d'instruccions al valor que està a 4 bytes després del _frame pointer_ actual
+- Ara, quan anem a tornar, només hem de posar el punter d'instruccions _eip_ al valor que està a 4 bytes després del _frame pointer_ actual
 
-![Retornant de funcions](./img/func_stack14.png)
+```text
+  v %esp
+--------------------------------------------------------------------------------
+  | loc2 | loc1 | (%ebp) | (%eip) | arg1 | arg2 | arg3 | caller's data |
+--------------------------------------------------------------------------------
+                ^ %ebp                                        ^ (%ebp) main
+```
 
 ---
 
