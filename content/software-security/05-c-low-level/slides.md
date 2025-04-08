@@ -704,9 +704,7 @@ int main () {
 
 ![Instruccions a la memòria](./img/instructions.png)
 
----
-
-## Retornant de funcions (i 4)
+---v
 
 - El que volem és tornar a on estàvem quan vam cridar la funció
 - Podem fer el mateix truc que vam fer amb el _frame pointer_
