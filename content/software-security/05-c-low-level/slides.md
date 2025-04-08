@@ -320,7 +320,7 @@ Hello, World!
 
 ---
 
-## Història dels _buffer_ overflows (1)
+## Història dels _buffer_ overflows
 
 - 1988: **_Morris worm_** (cuc de Morris)
   - Propagat entre màquines (massa agressiu, gràcies a un bug)
@@ -330,9 +330,7 @@ Hello, World!
 
 ![Morris worm](./img/morris_worm.png)
 
----
-
-## Història dels _buffer_ overflows (i 2)
+---v
 
 - 2001: CodeRed
   - Va provocar un desbordament (_overflow_) al servidor MS-IIS
@@ -483,7 +481,7 @@ array = NULL;
 ## Punter d'stack
 
 - Ara la imatge està girada al costat de manera que l'adreça més baixa està a l'esquerra i l'adreça més alta a la dreta
-- Mentre el programa s'executa, manté un punter d'_stack_ (**_stack pointer_** o **_SP_**) que indica la part superior de l'_stack_
+- Mentre el programa s'executa, manté un punter d'_stack_ (**_stack pointer_** o **_%esp_**) que indica la part superior de l'_stack_
   - Quan el programa emet una instrucció **_push_**, mourà el punter d'_stack_ després de guardar el valor
 
 ```text
@@ -492,7 +490,7 @@ Low address                                                         High address
 --------------------------------------------------------------------------------
   |  Heap   | -->                                  <-- | 3 | 2 | 1 |  Stack  |
 --------------------------------------------------------------------------------
-                       push 1                          ^ Stack pointer (SP)
+                       push 1                          ^ Stack pointer (%esp)
                        push 2
                        push 3
 ```
@@ -506,7 +504,7 @@ Low address                                                         High address
 --------------------------------------------------------------------------------
   |  Heap   | -->                                  <-- | 3 | 2 | 1 |  Stack  |
 --------------------------------------------------------------------------------
-                       push 1                   Stack pointer (SP) ^
+                       push 1                 Stack pointer (%esp) ^
                        push 2
                        push 3
                        return
@@ -522,7 +520,7 @@ Low address                                                         High address
 --------------------------------------------------------------------------------
   |  Heap   | -->                                  <-- | 3 | 2 | 1 |  Stack  |
 --------------------------------------------------------------------------------
-   Managed             push 1                   Stack pointer (SP) ^
+   Managed             push 1                 Stack pointer (%esp) ^
    in-process          push 2
    by malloc           push 3
                        return
@@ -610,7 +608,7 @@ void func(char *arg1, int arg2, int arg3) {
 - Per tant, el compilador sap que des d'on es crida aquesta funció, la variable `loc2` sempre estarà a vuit bytes de distància del valor actual del **_frame pointer_**
 
 ```text
-      < ----------- Stack frame for func ----------->
+      < ----------- Stack frame for func ------------>
 --------------------------------------------------------------------------------
   ... | loc2 | loc1 | ??? | ??? | arg1 | arg2 | arg3 | caller's data |
 --------------------------------------------------------------------------------
@@ -619,12 +617,11 @@ void func(char *arg1, int arg2, int arg3) {
 
 ---
 
-## Retornant de funcions (1)
+## Retornant de funcions
 
 - Ara, si cridam a `func` des de `main`, `main` està utilitzant el punter de marc (**_stack frame_**) de la mateixa manera que `func` ho fa per accedir a les seves pròpies variables locals
 - Quan tornem de `func`, `main` voldrà utilitzar el mateix **_stack frame_** que tenia abans
   - De manera que quan accedeixi a les seves variables, va a les adreces correctes
-- La pregunta és: com desam i restauram el punter de marc perquè funcioni correctament?
 
 ---v
 
@@ -636,11 +633,17 @@ int main () {
 }
 ```
 
-![Retornant de funcions](./img/func_stack7.png)
+- La pregunta és: com desam i restauram el punter de marc perquè funcioni correctament?
 
----
+```text
+      < ----------- Stack frame for func ------------>
+--------------------------------------------------------------------------------
+  ... | loc2 | loc1 | ??? | ??? | arg1 | arg2 | arg3 | caller's data |
+--------------------------------------------------------------------------------
+                    ^ %ebp                                  ^ %ebp main
+```
 
-## Retornant de funcions (2)
+---v
 
 - Pensem en com `main` cridarà a `func`:
   - El que farà és que guardarà els seus tres arguments, `arg3`, `arg2`, `arg1`: `"Hey"`, `10`, `i –3`
@@ -651,18 +654,25 @@ int main () {
 
 ---v
 
-![Retornant de funcions](./img/func_stack9.png)
+```text
+                          v %esp
+--------------------------------------------------------------------------------
+                          | ??? | arg1 | arg2 | arg3 | caller's data |
+--------------------------------------------------------------------------------
+                                                            ^ (%ebp) main
+```
 
-![Retornant de funcions](./img/func_stack10.png)
+- Push de _(%ebp)_ abans de les variables locals
+- Actualitzam _%ebp_ al valor actual de _%esp_
+- Establirem _%ebp_ al valor de _(%ebp)_ que hem guardat a la pila al retornar a _main_
 
-![Retornant de funcions](./img/func_stack11.png)
-
----
-
-## Retornant de funcions (3)
-
-- Ara, quan la funció `func` comenci a executar-se, guardarà les seves variables locals després de l'**_stack frame_** actual
-- La següent pregunta és: com reprendrem al mateix lloc on estàvem, a `main`, quan vàrem cridar a `func`
+```text
+                v %esp
+--------------------------------------------------------------------------------
+                | (%ebp) | ??? | arg1 | arg2 | arg3 | caller's data |
+--------------------------------------------------------------------------------
+                ^ %ebp                                      ^ (%ebp) main
+```
 
 ---v
 
@@ -674,7 +684,16 @@ int main () {
 }
 ```
 
-![Retornant de funcions](./img/func_stack13.png)
+- Ara, quan la funció `func` comenci a executar-se, guardarà les seves variables locals després de l'**_stack frame_** actual
+- La següent pregunta és: com reprendrem al mateix lloc del codi on estàvem, a `main`, quan vàrem cridar a `func`?
+
+```text
+                v %esp
+--------------------------------------------------------------------------------
+  | loc2 | loc1 | (%ebp) | ??? | arg1 | arg2 | arg3 | caller's data |
+--------------------------------------------------------------------------------
+                ^ %ebp                                      ^ (%ebp) main
+```
 
 ---
 
