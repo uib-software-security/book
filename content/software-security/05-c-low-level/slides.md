@@ -882,7 +882,7 @@ int foo(vulnerable* s, char* one, char* two) {
 ---v
 
 - **Exemple:**
-  - Si `nresp` és un `1.073.741.824`, la multiplicació `nresp * sizeof(char*)` **excedeix el límit dels enters de 32 bits**
+  - Si `nresp` és un `1.073.741.824`, la multiplicació `nresp * sizeof(char*)` **excedeix el límit dels enters sense signe de 32 bits (`4.294.967.295`)**
   - Això fa que el resultat sigui `0` per **_wrap-around_**
   - Aleshores, `malloc(0)` no assigna **cap memòria**...
   - ...però després el bucle **escriu moltes vegades** a `response[i]`, **desbordant la memòria**
@@ -890,7 +890,7 @@ int foo(vulnerable* s, char* one, char* two) {
 ```c
 void vulnerable() {
     char *response;
-    int nresp = packet_get_int();         // valor rebut de la xarxa
+    unsigned int nresp = packet_get_int();         // valor rebut de la xarxa
 
     if (nresp > 0) {
         response = malloc(nresp * sizeof(char*));   // assignem memòria
