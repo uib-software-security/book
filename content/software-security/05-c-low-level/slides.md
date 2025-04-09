@@ -547,9 +547,9 @@ int main () {
 
 ## Resultat benigne
 
-- Dins la funció func s'intenta copiar l'string "AuthMe!" dins un buffer
-  - Però l'string té 7 caràcters més  el caràcter d'acabament NUL, mentre que el buffer només permet 4 caràcters
-- Així desbordarem el buffer quan cridem _strcpy_
+- Dins la funció func s'intenta copiar l'string `"AuthMe!"` dins un buffer
+  - Però l'string té 7 caràcters més  el caràcter d'acabament `NUL`, mentre que el buffer només permet 4 caràcters
+- Així desbordarem el buffer quan cridem `strcpy`
 - En aquest cas, el _frame pointer_ està corromput
   - Donarà un error de _segmentation fault_
 
@@ -569,16 +569,27 @@ int main() {
 }
 ```
 
-![Buffer overflow](./img/buffer_overflow2.png)
+```text
+--------------------------------------------------------------------------------
+  | 00 00 00 00 |     %ebp    | %eip | &arg1 | ...
+--------------------------------------------------------------------------------
+    buffer
+```
 
-![Buffer overflow](./img/buffer_overflow3.png)
+```text
+                  m  e  ! \0
+--------------------------------------------------------------------------------
+  | A  u  t  h  | 4d 65 21 00 | %eip | &arg1 | ...
+--------------------------------------------------------------------------------
+    buffer        ^ Resultat: SEGFAULT (0x00216551)
+```
 
 ---
 
 ## Resultat rellevant per a la seguretat
 
-- Aquesta vegada, en lloc de sobreescriure el _frame pointer_, es sobreescriu el contingut de la variable _authenticated_
-  - Ara això és un problema, perquè cada vegada que anem a comprovar _authenticated_, el valor és diferent de zero i la comprovació tindrà èxit
+- Aquesta vegada, en lloc de sobreescriure el _frame pointer_, es sobreescriu el contingut de la variable `authenticated`
+  - Ara això és un problema, perquè cada vegada que anem a comprovar `authenticated`, el valor és diferent de zero i la comprovació tindrà èxit
 - Per tant, aquest error tendria un resultat rellevant per a la seguretat en permetre que el programa fes coses que probablement no teníem intenció
 
 ---v
@@ -598,15 +609,26 @@ int main() {
 }
 ```
 
-![Buffer overflow](./img/buffer_overflow5.png)
+```text
+--------------------------------------------------------------------------------
+  | 00 00 00 00 | 00 00 00 00 | %ebp | %eip | &arg1 | ...
+--------------------------------------------------------------------------------
+    buffer        authenticated
+```
 
-![Buffer overflow](./img/buffer_overflow6.png)
+```text
+                  m  e  ! \0
+--------------------------------------------------------------------------------
+  | A  u  t  h  | 4d 65 21 00 | %ebp | %eip | &arg1 | ...
+--------------------------------------------------------------------------------
+    buffer        authenticated
+```
 
 ---
 
 ## Podria ser pitjor?
 
-- _strcpy_ ens dóna la possibilitat de copiar qualsevol quantitat de dades en un buffer que no tingui la mida adequada.
+- `strcpy` ens dóna la possibilitat de copiar qualsevol quantitat de dades en un buffer que no tingui la mida adequada.
 - Així, podríem sobreescriure molta memòria a la pila
 - Un atacant podria sobreescriure el buffer amb codi
   - El programa executaria aquest codi quan torni de la funció
@@ -621,9 +643,15 @@ void func(char *arg1) {
 }
 ```
 
-![Buffer overflow](./img/buffer_overflow8.png)
+- `strcpy` ens deixa escriure tota la memòria que vulguem (fins trobar un `\0`)
 
-![Buffer overflow](./img/buffer_overflow9.png)
+```text
+   --------------------------------------------->> All yours!
+--------------------------------------------------------------------------------
+  | 00 00 00 00 | %ebp | %eip | &arg1 | ...
+--------------------------------------------------------------------------------
+    buffer
+```
 
 ---
 
