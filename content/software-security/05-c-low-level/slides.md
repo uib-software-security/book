@@ -689,9 +689,16 @@ void func(char *arg1) {
 }
 ```
 
-![Code injection](./img/code_injection2.png)
+- Necessitam carregar el nostre codi a la memòria
+- Aconseguir que `%eip` apunti cap a aquest codi
 
-![Code injection](./img/code_injection3.png)
+```text
+    v %eip  --> He d'aconseguir que %eip apunti cap a aquest codi --> v
+--------------------------------------------------------------------------------
+  | T e x t | . . . | 00 00 00 00 | %ebp | %eip | &arg1 | ... | Haxx0r c0d3 |
+--------------------------------------------------------------------------------
+                      buffer
+```
 
 ---
 
