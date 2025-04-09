@@ -831,26 +831,24 @@ int main() {
 
 ---
 
-## _Heap overflow_ (1)
+## _Heap overflow_
 
 - Un _**stack smashing**_ desborda un buffer assignat al _stack_
   - També podeu desbordar un buffer assignat per _**malloc**_, que resideix al _**heap**_
 
 ![Heap overflow](./img/heap_overflow.png)
 
----
+---v
 
-## _Heap overflow_ (i 2)
-
-- Definim una estructura, _vulnerable_struct_, que té dos camps, el primer és _buff_, un punter de caràcter, el segon és el punter de la funció _compare_
-- A continuació, veiem una funció, _foo_, que pren una _vulnerable_struct_ com a argument juntament amb dos arguments de punter de caràcters.
-  - Per començar, la primera línia de la funció copia el paràmetre _one_ a _buff_, la segona línia copia _two_ més un a _buff_. Finalment, la tercera línia crida al punter de la funció de comparació, passant _buff_ com a argument i comparant-lo amb el punter del fitxer foobar
+- Definim una estructura, `vulnerable_struct`, que té dos camps, el primer és `buff`, un punter de caràcter, el segon és el punter de la funció `compare`
+- A continuació, veiem una funció, `foo`, que pren una `vulnerable_struct` com a argument juntament amb dos arguments de punter de caràcters.
+  - Per començar, la primera línia de la funció copia el paràmetre `one` a `buff`, la segona línia copia `two` més un a `buff`. Finalment, la tercera línia crida al punter de la funció de comparació, passant `buff` com a argument i comparant-lo amb el punter del fitxer `foobar`
 
 ![Heap overflow](./img/heap_overflow2.png)
 
 ---v
 
-- Aquest codi només funcionarà correctament si la longitud de la cadena de _one_ i _two_ és inferior a la longitud màxima de la memòria intermèdia on es copiaran (MAX_LEN). En cas contrari, sobreescriurem el punter de la funció de comparació
+- Aquest codi només funcionarà correctament si la longitud de la cadena de `one` i `two` és inferior a la longitud màxima de la memòria intermèdia on es copiaran (`MAX_LEN`). En cas contrari, sobreescriurem el punter de la funció de comparació
   - Igual que a un _stack smashing_, l'adversari pot ser capaç de controlar com es produeix aquesta sobreescritura i aconseguir que el programa executi el codi de la seva elecció.
 
 ![Heap overflow](./img/heap_overflow2.png)
@@ -861,7 +859,7 @@ int main() {
 
 - **Desbordament a la _vtable_ de C++**
   - La _vtable_ conté punters als mètodes de l'objecte.
-  - Es pot atacar de manera similar a _s->cmp_ en exemples anteriors.
+  - Es pot atacar de manera similar a `s->cmp` en exemples anteriors.
 
 - **Desbordament cap a objectes adjacents**
   - Especialment si contenen punters a funcions.
