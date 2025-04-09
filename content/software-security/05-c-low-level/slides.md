@@ -942,12 +942,81 @@ int main() {
 
 ---
 
-## Memòria obsoleta (_stale memory_)
+## _Dangling pointer_
 
-- Es produeix un _**dangling pointer bug**_ quan s'allibera un punter, però el programa continua usant-lo
-- Un atacant pot fer que **la memòria alliberada sigui reassignada** i sota el seu control
+- Un **punter es queda apuntant** a memòria que **ja no és vàlida**
+  - Si l’usem, el programa pot fallar o llegir/escriure dades errònies
+  - Un atacant pot fer que **la memòria alliberada sigui reassignada** i sota el seu control
 
-![Dangling pointer](./img/dangling_pointer.png)
+```c
+int main() {
+    int *ptr = malloc(sizeof(int));
+    *ptr = 42;
+
+    free(ptr);       // Alliberem la memòria
+    // ERROR: el punter encara apunta a memòria lliure
+    printf("%d\n", *ptr); // Comportament indefinit
+
+    return 0;
+}
+````
+
+---
+
+## _Memory leak_ (fuga de memòria)
+
+- Reservam memòria amb `malloc` però no l’alliberem mai (`free`)
+  - La memòria queda ocupada però inaccessible
+  - Si això passa sovint (ex. dins un bucle), pot fer que el programa **vagi ocupant més memòria amb el temps**
+
+```c
+int main() {
+    for (int i = 0; i < 1000; i++) {
+        char *buffer = malloc(1024); // Reservem 1 KB
+
+        // Fem veure que fem servir el buffer
+        buffer[0] = 'a';
+
+        // ERROR: no alliberem la memòria amb free(buffer)
+    }
+
+    return 0;
+}
+```
+
+---
+
+## _Data race_ (condició de competència)
+
+- Dos fils **accedeixen a la mateixa variable alhora**, i almenys un d’ells l’escriu
+  - El resultat depèn de l’ordre d’execució dels fils
+  - Pot provocar errors difícils de reproduir
+
+---v
+
+```c
+int counter = 0;
+
+void* increment(void* arg) {
+    for (int i = 0; i < 100000; i++) {
+        counter++;  // ERROR: accés concurrent sense protecció
+    }
+    return NULL;
+}
+
+int main() {
+    pthread_t t1, t2;
+    pthread_create(&t1, NULL, increment, NULL);
+    pthread_create(&t2, NULL, increment, NULL);
+
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+
+    printf("Counter: %d\n", counter); // Valor inconsistent
+
+    return 0;
+}
+```
 
 ---
 
@@ -959,7 +1028,7 @@ int main() {
 
 ## E/S formatades (Formatted I/O)
 
-- La família _printf_ de C admet E/S formatades
+- La família `printf` de C admet E/S formatades
 
 ```c
 void print_record(int age, char *name) {
@@ -968,43 +1037,33 @@ void print_record(int age, char *name) {
 ```
 
 - Especificadors de format
-  - La posició a l'string indica l'argument de l'stack a imprimir
+  - La posició a l'_string_ indica l'argument de l'_stack_ a imprimir
   - El tipus d'especificador indica el tipus d'argument
-    - %s = string
-    - %d = nombre sencer
+    - `%s` = _string_
+    - `%d` = nombre sencer
     - etc.
 
 ---
 
-## Quina és la diferència?
+## Exemple de vulnerabilitat de format de string
 
-- En aquest exemple s'assigna un buffer de caràcters a la pila
-- I cridam a _fgets_ per llegir-lo
-- La diferència està a la tercera línia.
-  - La primera funció crida a %s com a cadena de format abans d'imprimir buf
-  - La segona funció renuncia a utilitzar una cadena de format per complet i només hi col·loca buf
-- _buf_ pot contenir especificadors de format
-  - En el primer cas, si ho fa, aquests especificadors només s'imprimiran a la pantalla
-  - En el segon, s'interpretaran
+- Si passem **input de l'usuari directament** a `printf`, i aquest conté `%`, el programa pot accedir a memòria **sense voler-ho**
 
----v
+```c
+int main() {
+    char buf[100];
 
-![Quina és la diferència?](./img/whats_the_difference.png)
+    printf("Introdueix el teu nom: ");
+    fgets(buf, sizeof(buf), stdin);
 
----
+    // Vulnerable!
+    printf(buf);
+    // ❌ buf pot contenir especificadors com %d, %x (hexadecimal), %s, etc.
+    // Millor utilitzar printf("%s", buf) per evitar-ho
 
-## Vulnerabilitats de format d'string
-
-- `printf("100% dave");`
-  - Imprimeix l'entrada del stack 4 bytes per sobre del %eip guardat
-- `printf("%s");`
-  - Imprimeix els bytes als quals apunta aquesta entrada de pila
-- `printf("%d %d %d %d ...");`
-  - Imprimeix una sèrie d'entrades de l'stack com a nombres enters
-- `printf("%08x %08x %08x %08x ...");`
-  - El mateix, però en hexadecimal
-- `printf("100% no way!");`
-  - Escriu el número 3 a l'adreça indicada per l'entrada de l'stack
+    return 0;
+}
+```
 
 ---
 
