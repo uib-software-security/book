@@ -876,7 +876,10 @@ int foo(vulnerable* s, char* one, char* two) {
 ## _Integer overflow_
 
 - **Què és un integer overflow?**
-  - En llenguatges com C, els enters tenen una mida màxima (ex. 32 bits → màxim 2.147.483.647)
+  - En llenguatges com C, els enters tenen una mida màxima
+    - Per exemple:
+      - 32 bits → màxim `2.147.483.647`
+      - 32 bits sense signe → màxim `4.294.967.295`
   - Si se supera aquest límit, el valor “fa la volta” (**_wrap-around_**) i comença des de zero o negatiu **sense cap error**
 
 ---v
