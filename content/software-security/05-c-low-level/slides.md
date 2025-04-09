@@ -695,7 +695,7 @@ void func(char *arg1) {
 ```text
     v %eip  --> He d'aconseguir que %eip apunti cap a aquest codi --> v
 --------------------------------------------------------------------------------
-  | T e x t | . . . | 00 00 00 00 | %ebp | %eip | &arg1 | ... | Haxx0r c0d3 |
+  | T e x t | ... | 00 00 00 00 | %ebp | %eip | &arg1 | ... | Haxx0r c0d3 |
 --------------------------------------------------------------------------------
                       buffer
 ```
@@ -742,7 +742,7 @@ int main() {
 - Si mirem la primera instrucció, aquest és el que podria semblar com un string
 - Aquest seria l'string que proporcioneu com a part de la vostra entrada.
 
-![Shellcode](./img/shellcode2.png)
+![Shellcode](./img/shellcode.png)
 
 ---
 
@@ -751,32 +751,38 @@ int main() {
 - Només per haver carregat el codi no vol dir que el poguem executar
   - Necessitam una instrucció per "saltar al nostre codi"
 - A més, no sabem exactament on està el codi
-  - Necessitam que el punter d'instrucció %eip hi apunti
+  - Necessitam que el punter d'instrucció `%eip` hi apunti
 
-![Executar el codi injectat](./img/injected_code.png)
+```text
+    v %eip
+--------------------------------------------------------------------------------
+  | T e x t | ... | 00 00 00 00 | %ebp | %eip | &arg1 | ... | \x0f \x3c \x2f |
+--------------------------------------------------------------------------------
+                      buffer
+```
 
 ---
 
 ## Segrestant el punter %eip
 
-- La clau està en el punter %eip desat, per quan retornem a la funció que ha cridat una funció
+- La clau està en el punter `%eip` desat, per quan retornem a la funció que ha cridat una funció
   - Podem emmagatzemar l'adreça del nostre codi en aquesta ubicació
 - Així, quan la funció torni, el programa anirà al nostre codi i aquest s'executarà
 - Ara la pregunta és: **com sabem quina adreça hi hem de posar?**
 
----v
-
-![Segrestant el punter %eip](./img/eip_hijack.png)
-
-![Segrestant el punter %eip](./img/eip_hijack2.png)
-
-![Segrestant el punter %eip](./img/eip_hijack3.png)
+```text
+    v %eip                               vvvvv
+--------------------------------------------------------------------------------
+  | T e x t | ... | 00 00 00 00 | %ebp | 0xbff | &arg1 | ... | \x0f \x3c \x2f |
+--------------------------------------------------------------------------------
+                      buffer                                 ^ 0xbff
+```
 
 ---
 
 ## Trobar l'adreça de retorn
 
-- Si no tenim accés al codi, no sabem a quina distància està el buffer del %ebp desat
+- Si no tenim accés al codi, no sabem a quina distància està el buffer del `%ebp` desat
 - Un enfocament: provar molts valors diferents!
   - "prova-error"
   - El pitjor dels casos: és un espai de memòria de 32 (o 64) bits, el que significa 232 (264) respostes possibles
@@ -788,23 +794,17 @@ int main() {
 
 ## Millorant les nostres possibilitats: nop sleds o slides
 
-- _**nop**_: és una instrucció d'un sol byte que només passa a la següent instrucció.
-- Si l'adversari enganxa molts de _nops_ com a farciment abans del seu propi codi, funcionarà saltant a qualsevol part d'aquest trineu _nop_ sled o slide
+- `nop`: és una instrucció d'un sol byte que només passa a la següent instrucció.
+- Si l'adversari enganxa molts de `nop`'s com a farciment abans del seu propi codi, funcionarà saltant a qualsevol part d'aquest trineu `nop` _sled_ o _slide_
   - Així podem millorar les nostres possibilitats
 
-![Nop sleds](./img/nop_sleds.png)
-
----
-
-## Resum de la injecció de codi
-
-- A continuació, es mostra com seria tot el codi adversari injectat
-- Aquesta part anomenada "padding" ha de ser alguna cosa, perquè hem de començar a escriure allà on comenci l'entrada a _gets_, o _sprintf_ o _strcpy_ comenci
-- Però, quan el programa torni a la ubicació escollida, apuntarà al _nop sled_ i començarà a executar el nostre codi maliciós
-
----v
-
-![Resum](./img/summary.png)
+```text
+    v %eip                      v %ebp           vvvvvvvvvvvvvvv
+--------------------------------------------------------------------------------
+  | T e x t | ... | 00 00 00 00 | %ebp | 0xbdf | nop nop nop ... | \x0f \x3c \x2f |
+--------------------------------------------------------------------------------
+                      buffer                                     ^ 0xbff
+```
 
 ---
 
