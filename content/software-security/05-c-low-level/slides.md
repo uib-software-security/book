@@ -875,19 +875,31 @@ int foo(vulnerable* s, char* one, char* two) {
 
 ## _Integer overflow_
 
-- A C, una variable té un valor màxim i, quan se supera aquest valor, el valor de la variable s'ajustarà
-- En aquest cas, estem llegint des de la xarxa mitjançant la funció _packet_get_int_
-  - Suposem que l'adversari té el control de l'altra banda de la xarxa i envia un nombre molt gran
-- Suposem que el nombre és 1.073.741.824 i que la mida d'un punter de caràcter a la nostra arquitectura és 4, és a dir, és una arquitectura de 32 bits
-  - _nresp_ és més gran que zero i, per tant, emmagatzemarem amb _malloc_ un buffer on emmagatzemarem una resposta
-  - Aquest nombre molt gran multiplicat per 4, s'ajusta al 0
-- _malloc_ assignarà un buffer de mida zero i, aleshores, les escriptures posteriors a aquesta memòria intermèdia l'estan desbordant
+- **Què és un integer overflow?**
+  - En llenguatges com C, els enters tenen una mida màxima (ex. 32 bits → màxim 2.147.483.647)
+  - Si se supera aquest límit, el valor “fa la volta” (**_wrap-around_**) i comença des de zero o negatiu **sense cap error**
 
 ---v
 
-![Integer overflow](./img/integer_overflow.png)
+- **Exemple:**
+  - Si `nresp` és un `1.073.741.824`, la multiplicació `nresp * sizeof(char*)` **excedeix el límit dels enters de 32 bits**
+  - Això fa que el resultat sigui `0` per **_wrap-around_**
+  - Aleshores, `malloc(0)` no assigna **cap memòria**...
+  - ...però després el bucle **escriu moltes vegades** a `response[i]`, **desbordant la memòria**
 
-![Integer overflow](./img/integer_overflow2.png)
+```c
+void vulnerable() {
+    char *response;
+    int nresp = packet_get_int();         // valor rebut de la xarxa
+
+    if (nresp > 0) {
+        response = malloc(nresp * sizeof(char*));   // assignem memòria
+        for (i = 0; i < nresp; i++) {
+            response[i] = packet_get_string(NULL);  // omplim-la
+        }
+    }
+}
+```
 
 ---
 
@@ -899,7 +911,7 @@ int foo(vulnerable* s, char* one, char* two) {
   - **Modificar una clau secreta** perquè sigui coneguda per l'atacant, per poder desxifrar futurs missatges interceptats
   - **Modificar les variables d'estat** per evitar les comprovacions d'autorització
   - **Modificar les cadenes interpretades** utilitzades com a part de les ordres
-    - Per exemple, per facilitar la injecció SQL
+    - Per exemple, per facilitar la **injecció SQL**
 
 ---
 
