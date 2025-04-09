@@ -834,24 +834,30 @@ int main() {
 ## _Heap overflow_
 
 - Un _**stack smashing**_ desborda un buffer assignat al _stack_
-  - També podeu desbordar un buffer assignat per _**malloc**_, que resideix al _**heap**_
+  - També podeu desbordar un buffer assignat per _**malloc**_, que resideix al _**heap**_  (memòria dinàmica)
 
 ![Heap overflow](./img/heap_overflow.png)
 
 ---v
 
-- Definim una estructura, `vulnerable_struct`, que té dos camps, el primer és `buff`, un punter de caràcter, el segon és el punter de la funció `compare`
-- A continuació, veiem una funció, `foo`, que pren una `vulnerable_struct` com a argument juntament amb dos arguments de punter de caràcters.
-  - Per començar, la primera línia de la funció copia el paràmetre `one` a `buff`, la segona línia copia `two` més un a `buff`. Finalment, la tercera línia crida al punter de la funció de comparació, passant `buff` com a argument i comparant-lo amb el punter del fitxer `foobar`
+- A l'exemple següent tenim una estructura anomenada `vulnerable_struct` amb dos camps:
+  - `buff`: un array de caràcters amb mida `MAX_LEN`.
+  - `cmp`: un punter a funció que compara cadenes.
+- Aquest codi només funcionarà bé si `strlen(one) + strlen(two) < MAX_LEN`
+  - En cas contrari, es desborda `buff` i s'acaba sobreescrivint el punter `s->cmp`
 
-![Heap overflow](./img/heap_overflow2.png)
+```c
+typedef struct vulnerable_struct {
+  char buff[MAX_LEN];
+  int (*cmp)(char*, char*);
+} vulnerable;
 
----v
-
-- Aquest codi només funcionarà correctament si la longitud de la cadena de `one` i `two` és inferior a la longitud màxima de la memòria intermèdia on es copiaran (`MAX_LEN`). En cas contrari, sobreescriurem el punter de la funció de comparació
-  - Igual que a un _stack smashing_, l'adversari pot ser capaç de controlar com es produeix aquesta sobreescritura i aconseguir que el programa executi el codi de la seva elecció.
-
-![Heap overflow](./img/heap_overflow2.png)
+int foo(vulnerable* s, char* one, char* two) {
+  strcpy(s->buff, one);   // Copia 'one' dins 'buff'
+  strcat(s->buff, two);   // Afegeix 'two' al final de 'buff'
+  return s->cmp(s->buff, "file://foobar");  // Crida cmp()
+}
+```
 
 ---
 
