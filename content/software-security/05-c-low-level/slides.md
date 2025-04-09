@@ -922,12 +922,23 @@ void vulnerable() {
 
 - En lloc de permetre escriure més enllà del final d'un buffer, un error podria permetre llegir **més enllà del final _del buffer_**
   - Pot filtrar informació secreta
-- En aquest exemple, la longitud que s'especifica a la primera lectura pot superar la longitud del missatge proporcionat a la segona lectura
-  - Si ho fa, imprimirà caràcters més enllà del que es va llegir
+- En aquest exemple, el buffer només conté 3 caràcters (`'H'`, `'i'`, i el `'\0'` final), però el programa intenta llegir **10 caràcters**.
+  - Això fa que imprimeixi contingut de memòria **fora del buffer**, que el programa **mai hauria de llegir**
 
----v
+```c
+#include <stdio.h>
 
-![Read overflow](./img/read_overflow.png)
+int main() {
+    char buffer[5] = "Hi";
+
+    // Llegeix i imprimeix 10 caràcters del buffer... que només té 5!
+    for (int i = 0; i < 10; i++) {
+        printf("buffer[%d] = %c\n", i, buffer[i]);
+    }
+
+    return 0;
+}
+```
 
 ---
 
