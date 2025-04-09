@@ -1,4 +1,4 @@
-# Programació en C i vulnerabilitats de baix nivell
+# Llenguatge C i vulnerabilitats de baix nivell
 
 ---
 
@@ -677,7 +677,7 @@ void func(char *arg1) {
 
 - Dos reptes principals de la injecció de codi mitjançant un  _buffer overflow_:
   - Carregar el nostre propi codi a la memòria
-  - Aconseguir que el punter d'instruccions apunti cap a ell, de manera que aquest codi es pugui executar
+  - Aconseguir que el punter d'instruccions `%eip` apunti cap a ell, de manera que aquest codi es pugui executar
 
 ---v
 
@@ -701,7 +701,7 @@ void func(char *arg1) {
   - No codi C --> Ha de ser codi ensamblador
 - Hem de tenir cura de com el construïm:
   - **No pot contenir** cap byte a zero (_**all-zero byte**_)
-    - En cas contrari, _sprintf_ / _gets_ / _scanf_ / ... deixaran de copiar
+    - En cas contrari, `sprintf` / `gets` / `scanf` / ... deixaran de copiar
     - Com podríeu escriure un assemblatge per no contenir mai un byte zero complet?
   - El codi ha de ser **complet**
     - **No pot utilitzar el carregador o _loader_**(estam injectant) per resoldre adreces dins la memòria

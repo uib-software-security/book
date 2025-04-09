@@ -21,7 +21,7 @@
 2. Metodologia Scrum
 3. Git i GitHub. Sistemes de control de versions
 4. Llenguatge de marques Markdown
-5. Programació en C i vulnerabilitats de baix nivell
+5. Llenguatge C i vulnerabilitats de baix nivell
 6. Defensa contra exploits de baix nivell
 7. Programació en Rust
 8. Desenvolupament segur de software
