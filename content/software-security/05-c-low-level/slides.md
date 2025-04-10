@@ -961,6 +961,25 @@ int main() {
 }
 ````
 
+---v
+
+- Un altre exemple de _dangling pointer_ és quan un punter apunta a una variable local d'una funció que ja ha tornat:
+
+```c
+#include <stdio.h>
+
+int* dangling_pointer() {
+    int x = 42;      // Variable local a la pila
+    return &x;       // ❌ Retornem un punter a memòria que desapareixerà
+}
+
+int main() {
+    int *p = dangling_pointer(); // p ara és un dangling pointer
+    printf("Valor: %d\n", *p); // ❌ Comportament indefinit
+    return 0;
+}
+```
+
 ---
 
 ## _Memory leak_ (fuga de memòria)
