@@ -41,6 +41,8 @@
   - [https://www.rust-lang.org/](https://www.rust-lang.org/)
 - Llibre "_The Rust Programming Language_"
   - [https://doc.rust-lang.org/stable/book/](https://doc.rust-lang.org/stable/book/)
+- Effective Rust
+  - [https://effective-rust.com/title-page.html](https://effective-rust.com/title-page.html)
 - Rust by example:
   - [https://doc.rust-lang.org/rust-by-example/](https://doc.rust-lang.org/rust-by-example/)
 - Rustlings:
