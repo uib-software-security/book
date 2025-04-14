@@ -47,8 +47,6 @@
   - [https://doc.rust-lang.org/rust-by-example/](https://doc.rust-lang.org/rust-by-example/)
 - Rustlings:
   - [https://github.com/rust-lang/rustlings](https://github.com/rust-lang/rustlings)
-- Rust by practice:
-  - [https://practice.course.rs/why-exercise.html](https://practice.course.rs/why-exercise.html)
 
 ![The Rust Programming Language](./img/rust-book.png)
 
