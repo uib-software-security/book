@@ -21,6 +21,25 @@
 
 ---
 
+## Vulnerabilitats de seguretat en C/C++
+
+- Una [anàlisi de Microsoft](http://mng.bz/yZKy) va revelar que el **70% de les vulnerabilitats de seguretat** als seus productes estaven relacionades amb errors de seguretat de memòria en codi C i C++
+
+![Vulnerabilitats de seguretat en C/C++](./img/c-vulnerabilities.png)
+
+---v
+
+- Exemples típics d'aquests errors:
+  - Lectura o escriptura **fora dels límits d'un array**
+  - **Desreferenciació de punters invàlids**, com punters nuls
+  - Ús de **memòria ja alliberada**
+  - Intentar **alliberar memòria dues vegades** (double-free)
+  - **No gestionar correctament els errors**
+
+> 🔐 Aquests problemes es poden evitar amb llenguatges que garanteixen la seguretat de la memòria, com **Rust**
+
+---
+
 ## Llenguatge més estimat des del 2016 (Stack Overflow)
 
 ![Most loved programming language since 2016](./img/loved-lang.png)
