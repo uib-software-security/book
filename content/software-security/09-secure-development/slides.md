@@ -50,20 +50,6 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Software vs. Hardware
-
-- **El disseny del sistema conté programari i maquinari**
-  - Principalment, ens centrarem en el software
-- **El programari és maleable** i es pot canviar fàcilment
-  - Avantatges per a la funcionalitat bàsica
-  - **Perjudicial per a la seguretat** (i el rendiment)
-- **El maquinari és ràpid**, però difícil de canviar
-  - Desavantatge per a l'evolució
-  - **Avantatge per a la seguretat**
-    - No es pot explotar fàcilment, ni es pot canviar per un atac
-
----
-
 ## Exemple de funcionament: banca en línia
 
 - Volem escriure un programari que permeti als titulars de comptes d'un banc tenir accés en línia als seus comptes
@@ -86,12 +72,15 @@ Phases, documents and roles of the Scrum methodology
 
 ## Modelització d'amenaces
 
-- La **modelització d'amenaces** fa **explícits els poders assumits per l'adversari**
-  - Conseqüència: la modelització d'amenaces ha de coincidir amb la realitat, en cas contrari l'anàlisi de risc del sistema serà errònia
-- El  modelització d'amenaces és **de vital importància**
-  - Si no sou explícit sobre què pot fer l'atacant, com podeu avaluar si el vostre disseny repel·lirà aquest atacant?
-- Això forma part de l'**anàlisi del risc arquitectònic**
-  - És el procés d'avaluació del risc d'una fallada de seguretat en funció de la probabilitat i el cost de diversos atacs. I fent el possible per minimitzar aquest risc.
+- La **modelització d'amenaces** consisteix a identificar i fer **explícites les capacitats i objectius potencials d'un adversari**.
+  - Si aquestes suposicions no reflecteixen la realitat, l'anàlisi de riscos serà **enganyosa** i el sistema pot quedar exposat.
+- Aquesta activitat és **fonamental per a la seguretat del software**, ja que permet avaluar si les mesures de protecció seran efectives contra els escenaris d'atac possibles.
+- Forma part de l'**anàlisi del risc arquitectònic**, que avalua:
+  - La **probabilitat** que es produeixin determinades amenaces,
+  - L'**impacte** que tindrien en el sistema,
+  - I les **mesures** per minimitzar aquest risc.
+
+> 🔎 Sense una modelització clara de l'adversari, no podem saber si el nostre disseny el podrà resistir.
 
 ---
 
@@ -145,18 +134,41 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Disseny orientat a amenaces**
+## Disseny orientat a amenaces
 
-- Diferents models d'amenaça provocaran respostes diferents
-- Els **atacants només de xarxa** impliquen que el trànsit de **missatges** és **segur**
-  - No cal xifrar les comunicacions
-  - Això és el que suposava el programari d'inici de sessió remot de telnet
-- **Atacants _snooping_** impliquen que el trànsit de **missatges** és **visible**
-  - Per tant, utilitzeu wifi encriptat (WPA2, capa d'enllaç), capa de xarxa xifrada (IPsec) o capa d'aplicació xifrada (SSL).
-    - Quin és el més adequat per al vostre sistema?
-- L'**atacant co-ubicat** pot **accedir a fitxers locals, i a la memòria**
-  - No es poden emmagatzemar secrets sense xifrar, com ara contrasenyes
-  - Proporcionar als usuaris un dispositiu independent que participi en el procés d'autenticació, però que no estigui connectat a l'ordinador (p. ex., login als bancs)
+- Cada **model d'amenaça** defineix un perfil diferent d'adversari, i això condiciona directament les decisions de disseny.
+- Exemple de casos típics:
+
+---v
+
+### 1. Atacants només de xarxa
+
+- Es pressuposa que l'atacant només pot **interactuar amb el sistema a través de la xarxa**, però **no pot llegir el trànsit**.
+- En aquest escenari, **no és necessari xifrar les comunicacions**.
+  - Aquesta era la suposició en sistemes antics com **telnet**.
+
+---v
+
+### 2. Atacants espies (_snooping attackers_)
+
+- Es pressuposa que l'atacant pot **escoltar el trànsit de xarxa** (ex: en una Wi-Fi oberta).
+- Cal **xifrar les comunicacions** per garantir la confidencialitat:
+  - A nivell de **capa d'enllaç** (ex: WPA2),
+  - A nivell de **capa de xarxa** (ex: IPsec),
+  - O a nivell de **capa d'aplicació** (ex: TLS/SSL).
+- El dissenyador ha de decidir **quina capa és la més adequada** segons els requisits del sistema.
+
+---v
+
+### 3. Atacants co-ubicats (_co-located attackers_)
+
+- L'adversari té **accés al mateix dispositiu físic** que l'usuari (ex: malware instal·lat).
+- Pot accedir a:
+  - **Fitxers locals** (ex: cookies),
+  - **Memòria compartida**,
+  - O fins i tot capturar **pantalles i pulsacions de teclat**.
+- En aquest cas, **no s'han d'emmagatzemar secrets en text pla**.
+  - És recomanable l'ús de **dispositius externs i independents** per l'autenticació (ex: 2FA amb hardware token o SMS).
 
 ---
 
@@ -244,77 +256,89 @@ Phases, documents and roles of the Scrum methodology
 
 ## Integritat
 
-- Definició: **informació sensible no danyada** per (computacions que actuen en nom de) parts no autoritzades
-- Exemple: només el propietari del compte pot autoritzar retirades del seu compte
-- Les violacions de la integritat també poden ser **directes** o **indirectes**
-  - Exemple: poder retirar-se específicament del compte versus confondre el sistema perquè ho faci (amb un _cross-site request fogery_)
+- La **integritat** vol dir que la **informació no es pot modificar** sense autorització.
+- Exemple: **només el propietari d'un compte** pot fer retirades.
+- Tipus de violacions:
+  - **Directa**: l'atacant modifica les dades ell mateix.
+  - **Indirecta**: l'atacant **enganya el sistema** perquè ho faci per ell (ex: _Cross-Site Request Forgery_)
+  - El **Cross-Site Request Forgery (CSRF)** és un atac en què un usuari autenticat és enganyat per enviar una petició no desitjada a una aplicació web en què està connectat, sense adonar-se'n
 
 ---
 
 ## Disponibilitat
 
-- Definició: un sistema **té capacitat de resposta davant les peticions**
-- Exemple: un usuari sempre pot accedir al seu compte per a consultes o retirades de saldo
-- Els **atacs de denegació de servei** (_**Denial of Service, DoS**_) intenten **comprometre la disponibilitat**
-  - ocupant un sistema amb feina inútil
-  - o tallant l'accés a la xarxa
+- La **disponibilitat** vol dir que el sistema està **actiu i accessible quan es necessita**.
+- Exemple: poder entrar al banc online i consultar el saldo en qualsevol moment.
+- Els **atacs de denegació de servei (DoS)** busquen **fer caure el sistema**:
+  - Saturant-lo amb peticions falses
+  - Tallant l'accés a la xarxa
 
 ---
 
 ## Mecanismes de suport
 
-- Mecanismes proporcionats per un sistema per fer complir els seus requisits:
-  - **Au**tenticació
-  - **Au**torització
-  - **Au**ditoria
-- Els mecanismes de suport són **alhora requisits i una mena de disseny**
-  - El tipus de polítiques que s'autoritzen determina el mecanisme d'autorització
-  - El tipus d'usuaris que té un sistema determina com s'han d'autenticar
+- Són eines que ajuden a **fer complir els requisits de seguretat** d'un sistema:
+  - **Autenticació**: saber qui ets
+  - **Autorització**: saber què pots fer
+  - **Auditoria**: deixar constància del que ha passat
+- Aquests mecanismes depenen del **tipus d'usuaris** i de les **normes de seguretat** que es volen aplicar.
+
+> 🔐 Sense aquests mecanismes, les polítiques de seguretat no es poden fer efectives.
 
 ---
 
 ## Autenticació
 
-- Quin és el **subjecte** de les **polítiques de seguretat**?
-  - Necessitat de definir una **noció d'identitat** i una **manera de connectar una acció amb una identitat**
-    - també conegut com a **director** (persona, servei o programa)
-- **Com pot el sistema dir que un usuari és qui diu que és?**
-  - Què (només) **sap** (per exemple, contrasenya)
-  - Què **és** (p. ex., biomètric)
-  - Què **té** (p. ex., telèfon intel·ligent, targeta)
-  - Els mecanismes d'autenticació que utilitzen més d'un d'aquests factors s'anomenen **autenticació multifactor**
-    - Per exemple, el banc pot utilitzar contrasenyes i el text d'un codi especial al telèfon intel·ligent d'un usuari
+- L'**autenticació** serveix per saber **qui és realment un usuari** abans de deixar-lo fer res.
+- Es pot basar en:
+  - **Què sap** (ex: contrasenya)
+  - **Què és** (ex: empremta digital)
+  - **Què té** (ex: mòbil o targeta)
+- Si es combinen diversos d'aquests mètodes, en diem **autenticació multifactor**.
+  - Exemple: entrar al banc amb contrasenya i codi SMS.
+
+> 🧾 Sense autenticació, no es pot aplicar cap política de seguretat.
 
 ---
 
 ## Autorització
 
-- Defineix **quan un director pot realitzar una acció**
-- Exemple: Bob està autoritzat a accedir al seu propi compte, però no al compte de l'Alice
-- Hi ha una gran varietat de **polítiques** que defineixen quines accions es poden autoritzar
-  - Per exemple, polítiques de control d'accés, que podrien estar basades en **rols**, basades en **usuaris**, etc.
+- L'**autorització** decideix **què pot fer cada usuari** dins del sistema.
+- Exemple: Bob pot accedir al seu compte, però **no al de l'Alice**.
+- Les regles d'autorització es poden basar en:
+  - **Usuaris concrets**
+  - **Rols** (ex: administrador, usuari, convidat)
+
+> ✅ Un cop sabem qui ets (autenticació), cal decidir **què tens permís per fer**.
 
 ---
 
 ## Auditoria
 
-- Conservar la informació suficient per poder **determinar les circumstàncies d'una infracció o una mala conducta** (o establir que no s'ha produït cap)
-  - Aquesta informació, que sovint s'emmagatzema en **fitxers de registre (_logs_)**, s'ha de protegir de manipulacions i d'accés que pugui infringir altres polítiques.
-- Exemple: cada acció relacionada amb el compte es registra localment i es reflecteix en un lloc independent
+- L'**auditoria** serveix per **registrar què passa dins del sistema**, per saber si hi ha hagut errors o accions malicioses.
+- Aquesta informació s'emmagatzema en **fitxers de registre (logs)** que han d'estar ben protegits.
+- Exemple: totes les accions d'un compte bancari es registren i es poden revisar si cal.
+
+> 📋 Sense auditoria, no podem saber **què ha passat** ni demostrar-ho.
 
 ---
 
 ## Definició dels requisits de seguretat
 
-- Podeu utilitzar molts **processos per decidir els requisits de seguretat**
-- Exemple: **preocupacions generals de política**
-  - Per **normativa**/lleis/estàndards (HIPAA per dades mèdiques a USA, SOX per dades financeres a USA, LOPD de protecció de dades, etc.)
-  - Per **valors organitzatius** (p. ex., valorar la privadesa)
-- Exemple: **Política derivada de la modelització d'amenaces**
-  - Quins **atacs** causen **més preocupació**?
-    - Quins són els possibles adversaris i quins són els seus objectius i mètodes?
-  - Quins **atacs** ja **s'han produït**?
-    - Dins de l'organització, o en altres llocs dels sistemes relacionats?
+- Els **requisits de seguretat** indiquen **què cal protegir** i **contra què**.
+- Es poden definir a partir de:
+
+### ✅ Normes o polítiques generals
+
+- Lleis o estàndards (ex: **LOPD** de protecció de dades, **HIPAA** per dades mèdiques a USA, **SOX** per dades financeres a USA)
+- Valors de l'organització (ex: protegir la privadesa)
+
+### 🔍 Modelització d'amenaces
+
+- Quins **atacs** ens preocupen més?
+- Quins **atacs ja han passat**, aquí o en sistemes similars?
+
+> 🎯 Un bon sistema comença per saber **quines amenaces vol evitar**.
 
 ---
 
