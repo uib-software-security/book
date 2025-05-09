@@ -344,22 +344,25 @@ Phases, documents and roles of the Scrum methodology
 
 ## Casos d'abús
 
-- Els **casos d'abús** il·lustren **els requisits de seguretat**
-- Els **casos d'ús** descriuen el que hauria de fer un sistema, i els **casos d'abús** descriuen el que **no hauria de fer**
-- Exemple de **cas d'ús**: el sistema permet als gestors del banc modificar el tipus d'interès d'un compte
-- Exemple de **cas d'abús**: un usuari pot falsificar com a gestor i, per tant, canviar el tipus d'interès d'un compte
+- Els **casos d'abús** mostren **què no hauria de poder passar** en un sistema.
+- Complementen els **casos d'ús**, que descriuen el comportament correcte.
+- Exemple
+  - ✅ **Cas d'ús**: un gestor pot canviar el tipus d'interès d'un compte.
+  - ❌ **Cas d'abús**: un usuari falsifica la identitat d'un gestor i fa el mateix canvi.
+
+> ⚠️ Pensar en casos d'abús ajuda a descobrir vulnerabilitats abans que ho faci un atacant.
 
 ---
 
 ## Definició de casos d'abús
 
-- Utilitzant patrons d'atac i escenaris probables, construïu casos en què l'**exercici del poder d'un adversari** pugui **violar un requisit de seguretat**.
-  - Basat en el model d'amenaça
-  - Què podria passar si s'eliminés una mesura de seguretat?
-- Exemple: un atacant coubicat roba el fitxer de contrasenyes i aprèn totes les contrasenyes d'usuari
-  - Possible si el fitxer de contrasenyes no està xifrat
-- Exemple: un atacant _snooping_ (espia) torna a reproduir un missatge capturat (_**replay attack**_), efectuant una retirada bancària
-  - Possible si els missatges no tenen _nonce_
+- Un **cas d'abús** descriu com un **atacant pot aprofitar una debilitat** per trencar la seguretat del sistema.
+- Es basa en el **model d'amenaça** i ajuda a identificar què pot passar si una protecció falla o no existeix.
+- Exemples
+  - 🔓 Un atacant co-ubicat roba el fitxer de contrasenyes si **no està xifrat**.
+  - 🔁 Un espia de xarxa fa un **replay attack** si els missatges **no tenen identificador únic (_nonce_)**.
+
+> 🧠 Pensar en casos d'abús t'obliga a imaginar **com es podria atacar el teu sistema** i avançar-te als riscos.
 
 ---
 
@@ -377,12 +380,13 @@ Phases, documents and roles of the Scrum methodology
 
 ## Defecte de disseny = _Flaw_
 
-- Recordeu que els defectes del software consisteixen tant en **errors de codi** (_**bugs**_) com en **errors de disseny** (_**flaws**_)
-  - _**Flaws**_: problemes en el disseny
-  - _**Bugs**_: problemes en la implementació
-- **Evitem els _flaws_ durant la fase de disseny!!**
-- Segons Gary McGraw, el **50% dels problemes de seguretat són defectes de disseny**
-  - Per tant, aquesta fase és molt important
+- Els errors de seguretat poden ser:
+  - **_Flaws_**: errors en el **disseny** del sistema
+  - **_Bugs_**: errors en la **implementació** del codi
+- Els **flaws** són especialment perillosos perquè poden afectar tot el sistema des de l’origen.
+- Segons Gary McGraw, el **50% dels problemes de seguretat venen del disseny**.
+
+> 🛠️ Millor prevenir els errors durant el **disseny**, abans d'escriure cap línia de codi.
 
 ![Software security](img/software-security.png)
 
