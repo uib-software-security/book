@@ -889,15 +889,21 @@ fn main() {
 
 ---
 
-## Lifetime (1)
+## Genèrics i traits
+
+<!-- markdownlint-disable MD033 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XKbOVFt3UNY?si=XIGZZ_Czelr2s6Tk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
+
+---
+
+## Lifetimes
 
 - Gestió _**lifetime**_: garanteix que les referències no sobreviuen a les dades a les quals apunten
   - Evita les referències penjants (_dangling pointers_)
   - Garanteix la seguretat de la memòria sense necessitat d'un col·lector d'escombraries (_garbage collector_)
 
----
-
-## Lifetime (i 2)
+---v
 
 <!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4-8M-5uQhKA?si=luAAEWAgn5zg3HSO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
