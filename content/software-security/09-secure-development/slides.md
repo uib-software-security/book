@@ -383,7 +383,7 @@ Phases, documents and roles of the Scrum methodology
 - Els errors de seguretat poden ser:
   - **_Flaws_**: errors en el **disseny** del sistema
   - **_Bugs_**: errors en la **implementació** del codi
-- Els **flaws** són especialment perillosos perquè poden afectar tot el sistema des de l’origen.
+- Els **flaws** són especialment perillosos perquè poden afectar tot el sistema des de l'origen.
 - Segons Gary McGraw, el **50% dels problemes de seguretat venen del disseny**.
 
 > 🛠️ Millor prevenir els errors durant el **disseny**, abans d'escriure cap línia de codi.
@@ -395,11 +395,13 @@ Phases, documents and roles of the Scrum methodology
 ## Disseny vs. Implementació?
 
 - Hi ha molts **nivells diferents de decisions de disseny de sistemes**
-  - _Nivell més alt_: actors principals (**processos**, com servidor web i servidor de bases de dades), **interaccions** i llenguatge(s) de programació a utilitzar
-  - _Nivell següent_: **descomposició** d'un actor en **mòduls/components**, identificar les funcionalitats bàsiques i com funcionen juntes.
-  - _Següent nivell_: com **implementar tipus de dades** i funcions, etc.
-- Els dos últims podrien ser implementació o disseny, o tots dos
-  - La distinció és una mica difusa
+  1. **Alt nivell**: actors principals (**processos**, com servidor web i servidor de bases de dades), **interaccions** i llenguatge(s) de programació a utilitzar
+  2. **Mitjà nivell**: **descomposició** d'un actor en **mòduls/components**, identificar les funcionalitats bàsiques i com funcionen juntes.
+  3. **Baix nivell**: com **implementar tipus de dades** i funcions, etc.
+
+- Els nivells 2 i 3 poden ser **disseny o implementació**, segons com es plantegin.
+
+> 🧩 El límit entre dissenyar i programar sovint no és clar, però **els dos afecten la seguretat**.
 
 ---
 
