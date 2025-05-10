@@ -751,7 +751,7 @@ Phases, documents and roles of the Scrum methodology
 
 ![Bypass d'autenticació](img/bypass-authentication.png)
 
----
+---v
 
 ### Exemples habituals
 
@@ -767,7 +767,7 @@ Phases, documents and roles of the Scrum methodology
    - Si un token d'autenticació caduca tard, un atacant té més temps per **robar-lo i reutilitzar-lo**.
    - Però si és massa curt, pot molestar els usuaris. Hi ha d'haver un equilibri.
 
----
+---v
 
 ### Conclusions
 
