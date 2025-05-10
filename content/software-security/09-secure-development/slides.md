@@ -740,8 +740,9 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Error: Bypass d'autenticació (1)
+## Error: Omissió o bypass de'autenticació
 
+- Un **bypass d'autenticació** passa quan el sistema no comprova correctament la identitat dels usuaris o serveis.
 - Clients obligats a acceptar certificats SSL no vàlids
   - Omet l'autenticació del client del servidor:
     - Realment estic parlant amb el meu banc o amb un lloc que pretén ser el meu banc?
@@ -752,60 +753,71 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Error: Bypass d'autenticació (2)
+### Exemples habituals
 
-- Les aplicacions mòbils utilitzen SSL entre bastidors; què passa quan una aplicació rep un certificat no vàlid?
-  - "Tot i que és comprensible que els desenvolupadors desactivin la validació del certificat SSL en la fase de desenvolupament, aquests desenvolupadors bàsicament es van oblidar d'eliminar el codi d'acceptació de tot quan van llançar les seves aplicacions".
-    - Fahl et al, "Rethinking SSL Development in an Appified World", CCS'13 (Competició NSA 2014 Best Cybersecurity Paper)
-- Recordeu: **la seguretat no és una característica**
-  - Necessitat de provar què no hauria de passar
+1. **Certificats SSL no vàlids**
+   - Alguns navegadors i aplicacions **permeten continuar tot i avisar de l'error**, i molts usuaris hi fan clic igualment.
+   - Això pot fer que l'usuari es connecti a un lloc fals, pensant que és legítim (com el seu banc).
+
+2. **Aplicacions mòbils amb validació desactivada**
+   - Sovint, durant el desenvolupament es desactiva la validació dels certificats SSL.
+   - El problema és quan **no es torna a activar abans de publicar l'app**, deixant-la vulnerable.
+
+3. **Tokens de sessió (_cookies_) massa llargs**
+   - Si un token d'autenticació caduca tard, un atacant té més temps per **robar-lo i reutilitzar-lo**.
+   - Però si és massa curt, pot molestar els usuaris. Hi ha d'haver un equilibri.
 
 ---
 
-## Error: Bypass d'autenticació (i 3)
+### Conclusions
 
-- **Tokens d'autenticació amb timeouts llargs**
-  - Motiva els intents de força bruta de robar _cookies_ de sessió
-    - Recordeu l'error d'auth_token de Twitter de la unitat de seguretat web
-  - Però no es pot fer massa curt o irritarà els usuaris
-- En general: eviteu la derivació de l'autenticació desenvolupant bons casos d'abús, violant la suposició de coneixement o possessió únics.
-  - Com podria un adversari aprendre una contrasenya? Falsar una biomètrica? Voleu robar un identificador de sessió?
+- No suposis que l'usuari o l'app sempre actuaran correctament.
+- **Prova escenaris on la validació pot fallar**.
+- **Dissenya casos d'abús** per veure com es pot evitar la suplantació d'identitat.
+
+> 🚫 L'autenticació no pot ser opcional: ha de ser **robusta, comprovada i ben configurada**.
 
 ---
 
 ## Error: criptografia dolenta (o incorrecta)
 
-- **(Recordau) No utilitzeu la vostra pròpia criptografia**
-  - Exemples d'ús-recursos comunitaris: tant el disseny com la implementació són difícils d'encertar
-- No assumir que et dóna una cosa que no:
-  - L'algorisme de xifratge pot protegir la **confidencialitat** però no la **integritat**.
-  - El hashing protegeix la **integritat** però no la **confidencialitat**.
-- **Saber utilitzar-lo correctament**
-  - Utilitzeu claus de mida suficient generades correctament
-  - Protegiu les claus del compromís
-    - No els codifiqueu ni els incrusteu en binaris desplegats
+- **No inventis la teva pròpia criptografia.** És molt fàcil fer errors greus tant en el disseny com en la implementació.
+  - Usa biblioteques de confiança i provades per la comunitat.
+- **Errors habituals**
+  - **Malentendre què fa cada tècnica:**
+    - El **xifratge** protegeix la **confidencialitat**, però no garanteix que el missatge no s'hagi modificat.
+    - El **hashing** comprova la **integritat**, però no manté les dades en secret.
+  - **Fer servir claus febles o mal protegides:**
+    - Fes servir **claus llargues i ben generades**.
+    - **No guardis les claus dins del codi font ni dels binaris**.
+
+> 🔐 La criptografia és poderosa, però només si s'aplica **correctament i amb eines segures**.
 
 ---
 
 ## Error: ignorar quines dades són sensibles
 
-- **Penseu bé en les fonts de dades**: quines requereixen protecció?
-  - Informació d'identificació personal, lectures de sensors, claus criptogràfiques, fitxes de sessió, dades de geolocalització, ...
-    - Falla: dades privades exposades a l'accés general
-- Com canvien les dades i la seva exposició a mesura que l'**aplicació evoluciona al llarg del temps**?
+- No totes les dades són igual d'importants, però **algunes cal protegir-les especialment**.
+- Exemples de **dades sensibles**:
+  - Informació personal, claus criptogràfiques, fitxes de sessió, dades de sensors, geolocalització...
+- **Errors habituals**
+  - **No identificar correctament les dades sensibles**, i exposar-les públicament sense voler.
+  - **Oblidar com canvia el risc** quan l'aplicació creix o afegeix funcionalitats.
 
----v
-
-![Dades sensibles](img/sensitive-data.png)
+> 🔎 Abans de protegir les dades, cal saber **quines ho necessiten de veritat**.
 
 ---
 
 ## Falla: ignora la superfície d'atac dels components externs
 
-- **Superfície d'atac**: Elements d'un sistema que un adversari pot atacar o utilitzar en un atac
-- **Els components de tercers només fan el que jo vull?**
-- Falla de _**shellshock**_: "Bourne again shell" (bash) —utilitzat pels llocs web (per a CGI) DHCP i altres funcions— és molt més potent del necessari per a aquestes tasques
-  - Per tant: la fallada en bash comporta una greu vulnerabilitat a la xarxa
+- La **superfície d'atac** és el conjunt de punts del sistema que poden ser explotats per un adversari.
+- Quan utilitzes **components de tercers**, has de demanar-te:
+  👉 _"Estic segur que només fan el que jo vull?"_
+- **Exemple real**. El cas **Shellshock** (2014):
+  - El programa _bash_ (una shell) s'utilitzava en entorns web i DHCP.
+  - Era **massa potent** per les tasques que feia, i una vulnerabilitat seva va permetre **atacs remots greus**.
+
+> 🧩 No tots els components externs són inofensius. **Redueix la seva superfície d'atac i no els sobreutilitzis**.
 
 ---v
 
