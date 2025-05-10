@@ -407,12 +407,12 @@ Phases, documents and roles of the Scrum methodology
 
 ## Disseny de programari segur
 
-- El procés de disseny de programari té com a objectiu produir una arquitectura de programari segons bons principis i regles
-- Aquest és un procés iteratiu.
-  - Primer feim el nostre disseny inicial.
-  - I després realitzem una anàlisi basada en el risc d'aquest disseny.
-  - Com a resultat, podem determinar que cal millorar el disseny
-  - Per tant, apliquem els nostres principis i regles i després millorem fins que estem satisfets.
+- El procés de disseny de programari té com a objectiu produir una arquitectura de programari segons **bons principis i regles**
+- Aquest és un **procés iteratiu**.
+  - Primer feim el nostre **disseny inicial**.
+  - I després realitzem una **anàlisi basada en el risc** d'aquest disseny.
+  - Com a resultat, podem determinar que cal **millorar el disseny**
+  - Per tant, apliquem els nostres **principis i regles** i després millorem fins que estem satisfets.
 
 ![Software design](img/software-design.png)
 
@@ -420,12 +420,12 @@ Phases, documents and roles of the Scrum methodology
 
 ## Principis i normes
 
-- Un **principi** és un objectiu de disseny d'alt nivell amb moltes manifestacions possibles
-- Una **regla** és una pràctica específica de desenvolupament que està en consonància amb els principis de disseny
-  - La **diferència entre aquests dos pot ser difusa**, de la mateixa manera que el disseny i la implementació ho són.
-    - Per exemple, sovint hi ha un principi subjacent a pràctiques específiques
-  - **Els principis sovint es superposen**
-- La **fase de disseny del programari** tendeix a **centrar-se en principis** per evitar defectes de disseny (_flaws_)
+- Un **principi** és una idea general que ajuda a fer **bons dissenys** (ex: "mantenir-ho simple").
+- Una **norma** és una **regla concreta** que posa aquest principi en pràctica (ex: "no utilitzar valors per defecte insegurs").
+- La diferència entre principi i norma **pot ser difusa**, i sovint **van de la mà**.
+- Durant el disseny del programari ens centrem en **principis**, perquè ajuden a **evitar errors de base (_flaws_)**.
+
+> 📐 Els principis guien el disseny; les normes guien l'aplicació pràctica.
 
 ---
 
@@ -524,26 +524,6 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Gestor de contrasenyes (_password manager_)
-
-![Password manager](img/password-manager.png)
-
-- Un **gestor de contrasenyes** (_**Password Manager**_, **PM**) emmagatzema una **base de dades de contrasenyes, indexades per lloc**
-  - Xifrat amb **una única contrasenya mestra** escollida (i recordada) per l'usuari, utilitzada com a clau
-  - **PM genera contrasenyes complicades per cada lloc web**
-    - Difícil d'endevinar, difícil de recordar, però això últim no importa!
-
----v
-
-- **Beneficis**
-  - Només una única contrasenya perquè l'usuari la recordi
-  - La contrasenya de l'usuari en qualsevol lloc és difícil d'endevinar
-  - El compromís de la contrasenya en un lloc no permet un compromís immediat en altres llocs
-- **Però**:
-  - Encara s'ha de **protegir** i **recordar** la **contrasenya mestra** segura
-
----
-
 ## Mesurador de força de contrasenya
 
 - **Ofereix _feedback_ als usuaris** sobre la **força** de la **contrasenya**
@@ -552,26 +532,6 @@ Phases, documents and roles of the Scrum methodology
 - Per exemple: [https://www.passwordmonster.com/](https://www.passwordmonster.com/)
 
 ![Password strength meter](img/password-strength-meter.png)
-
----
-
-## Phishing (1)
-
-- L'**usuari és enganyat** perquè pensi que un **lloc** o un **correu electrònic** és legítim, en lloc d'una estafa
-  - I després és enganyat perquè instal·li programari maliciós o realitzi altres accions perjudicials
-
-![Phishing](img/phishing.png)
-
----
-
-## Phishing (i 2)
-
-- Error: **lloc o correu electrònic no (realment) autenticat**
-  - Correu electrònic d'Internet i protocols web **no varen dissenyats originalment per a l'autenticació remota**
-  - La solució és **difícil de desplegar**
-    - Utilitzeu nocions d'identitat difícils de falsificar, com ara la criptografia de clau pública. Però quin sistema? Com actualitzar gradualment?
-
-![Phishing](img/phishing-2.png)
 
 ---
 
@@ -614,9 +574,9 @@ Phases, documents and roles of the Scrum methodology
   - **Categoria: Mitigació**
 - Exemple: Atenuar les delegacions
   - El programa de correu delega a l'editor per crear correus
-    - vi, emacs
+    - `vi`, `emacs`
   - Però molts editors permeten escapar a un intèrpret d'ordres per executar programes arbitraris: massa privilegis!
-  - Millor disseny: utilitzeu un editor restringit (pico)
+  - Millor disseny: utilitzeu un editor restringit (`pico`)
 
 ---
 
@@ -653,13 +613,14 @@ Phases, documents and roles of the Scrum methodology
 
 ## Promoure la privadesa
 
-- Un bon objectiu general del sistema és **restringir el flux de dades sensibles** tant com sigui possible
+- Un bon objectiu general del sistema és **restringir la circulació de dades sensibles** tant com sigui possible
   - En fer-ho, promou la privadesa **reduint la confiança/privilegi**
   - **Categoria: Mitigació**
-- Exemple: un sistema d'admissió d'estudiants rep cartes de recomanació (sensibles) com a fitxers PDF
-  - Un disseny típic permetria als revisors descarregar aquests fitxers per veure'ls als seus ordinadors locals
-  - Però després el compromís d'aquests ordinadors filtra informació privada
-  - Millor: els PDF només es poden veure al navegador; no s'ha baixat cap dada a la màquina client
+- Exemple. Un sistema d'admissions rep **cartes de recomanació** (sensibles) en PDF.
+  - ❌ Si es permet descarregar-les, es poden filtrar si l'ordinador es compromet.
+  - ✅ Millor: veure els PDFs només al navegador, **sense descarregar-los**.
+
+> 🔒 Com menys dades sensibles circulin, **menys oportunitats tindrà un atacant**.
 
 ---
 
@@ -667,8 +628,11 @@ Phases, documents and roles of the Scrum methodology
 
 - **Aïllar un component del sistema** en un compartiment, o _**sandbox**_, reduint-ne els privilegis fent impossibles determinades interaccions
   - **Categoria: Prevenció i Mitigació**
-- Exemple: Desconnecteu la base de dades d'expedients d'estudiants d'Internet
-  - Concedir l'accés només a terminals directes
+- Exemple: Una base de dades d'estudiants:
+  - ❌ Si està connectada a Internet, és vulnerable.
+  - ✅ Millor: només accessible des de terminals autoritzats dins del campus.
+
+> 🧱 Separar components redueix l'impacte d'un atac si una part es veu compromesa.
 
 ![Sandboxes](img/sandboxes.png)
 
@@ -685,35 +649,42 @@ Phases, documents and roles of the Scrum methodology
 - **Seguretat per diversitat**
   - Si es trenca una capa, n'hi ha una altra de caràcter materialment diferent que cal evitar
   - **Categories: Prevenció/Mitigació**
-- Exemple: feu totes les accions següents, no només una
-  - Utilitzeu un tallafoc per impedir l'accés a través de ports no web
-  - Xifra les dades que es transmeten
-  - Utilitzeu un llenguatge segur per evitar vulnerabilitats de baix nivell
+- Exemple: Per protegir un sistema, pots fer **diverses coses a la vegada**:
+- 🔥 Posar un **tallafoc** per bloquejar ports no desitjats.
+- 🔒 **Xifrar les dades** que viatgen per la xarxa.
+- 🧪 Usar un **llenguatge segur** (com Rust) per evitar vulnerabilitats com els _buffer overflows_.
+
+> 🛡️ Com més barreres diferents poses, **més difícil serà atacar el sistema**.
 
 ---
 
 ## Utilitzeu els recursos de la comunitat
 
-- Utilitzeu codi **endurit** (_**hardened**_), potser d'altres projectes
-  - Per exemple, biblioteques criptogràfiques
-  - Però assegureu-vos que s'adapti a les vostres necessitats
-- Estigueu al dia de les amenaces i investigacions recents
-  - NIST per a estàndards
-  - OWASP, CERT, Bugtraq per als informes de vulnerabilitats
-  - Notícies SANS per a les últimes amenaces principals
-  - Conferències i revistes acadèmiques i de la indústria sobre tendències, tecnologia i riscos a llarg termini
+- Aprofita **codi segur ja existent** (com biblioteques criptogràfiques), però assegura't que **s'adapta al teu cas**.
+- Mantén-te **informat sobre vulnerabilitats i bones pràctiques**.
+- Fonts recomanades:
+  - 🏛️ **NIST**: entitat oficial dels EUA que publica estàndards de seguretat.
+  - 🌐 **OWASP**: comunitat oberta sobre seguretat web (famós pels rànquings de vulnerabilitats).
+  - 🛡️ **CERT**: centre que investiga i publica vulnerabilitats i guies de resposta.
+  - 🔎 **SANS**: portal de notícies i formació sobre seguretat.
+  - 📚 **Conferències i revistes**: per seguir les tendències i tècniques més recents.
+
+> 👥 La seguretat no es fa sol: **reutilitza i aprèn de la comunitat**.
 
 ---
 
 ## Seguiment i traçabilitat
 
-- **Si ets atacat, com ho sabràs?**
-  - Un cop après, com **discerniràs la causa**?
-- El programari s'ha de dissenyar per **registrar (_log_) la informació operativa rellevant**
-  - Què registrar? Per exemple, esdeveniments gestionats, paquets processats, sol·licituds satisfetes,...
-  - **Categoria: Detecció i Recuperació**
-- **Agregació de registres (_log aggregation_)**: correlacionar les activitats de diverses aplicacions quan es diagnostica una incompliment
-  - Per exemple, l'agregador de registres splunk
+- Si el sistema pateix un atac, cal saber-ho i **entendre què ha passat**.
+- Per això, el programari ha d'**enregistrar informació rellevant** (_logs_).
+- **Categoria: Detecció i Recuperació**
+- **Què registrar?**
+  - Peticions rebudes, errors, accions d'usuari, etc.
+- **Per què serveix?**
+  - Per **detectar atacs** i **analitzar l'origen dels problemes**.
+  - Amb **agregadors de logs** (com _Splunk_) es poden combinar registres de diferents aplicacions per veure **l'impacte global** d'un incident.
+
+> 📊 Sense registres, és com si el sistema fos **una caixa negra** quan falla.
 
 ---
 
