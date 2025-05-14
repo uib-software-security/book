@@ -266,6 +266,7 @@
 ## Mètodes i tècniques de tests unitaris
 
 - **Frameworks de Testing**: Utilització de frameworks especialitzats, com **JUnit** per **Java**, **PyTest** per **Python**, o **NUnit** per **C#**. Aquests frameworks faciliten la creació, execució, i organització dels tests.
+  - A Rust, el framework de testing està **integrat** i no requereix biblioteques externes.
 - _**Asserts**_: S'utilitzen afirmacions per comprovar que el codi realitza les operacions correctes. Per exemple, verificar que el resultat d'una funció és el valor esperat.
 
 ---
