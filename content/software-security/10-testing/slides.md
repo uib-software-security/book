@@ -88,11 +88,22 @@
 
 ## Exemples d'eines d'anàlisi estàtica**
 
-- Java
+- **Rust**
+  - **Clippy**: Una col·lecció de lints per millorar el codi Rust i trobar errors comuns i inusuals.
+  - **Rust Analyzer**: Proporciona una sèrie d'analitzadors estàtics per millorar la codificació en Rust.
+  - **Cargo Check**: Executa una comprovació ràpida del codi per verificar errors sense compilar el programa completament. **cargo check**
+- **Python**
+  - **Pylint**: Analitza codi Python per trobar bugs i senyals de codi de mala qualitat.
+  - **PyFlakes**: Detecta errors en codi Python com mòduls o variables no utilitzats.
+  - **Mypy**: Verifica tipus de manera estàtica per assegurar que el codi s'adhereix als tipus esperats.
+
+---v
+
+- **Java**
   - **Checkstyle**: Es centra en la conformitat amb els estàndards de codificació.
   - **PMD**: Detecta possibles bugs, codi no òptim, complicat o dubtós.
   - **FindBugs**/**SpotBugs**: Identifica patrons de bugs coneguts en el codi Java.
-- C/C++
+- **C/C++**
   - **Cppcheck**: Eina d'anàlisi estàtica per a codi C/C++ que detecta diversos tipus d'errors.
   - **Clang Static Analyzer**: Ofereix anàlisi de codi integrat amb el compilador Clang per trobar bugs en codi C/C++. Clang
   - **Coverity**: Proporciona anàlisi avançada per identificar defectes de software en C, C++, i altres.
@@ -103,17 +114,6 @@
   - **ESLint**: Eina extensible que detecta problemes trobats en el codi JavaScript, permetent personalitzar regles.
   - **JSHint**: Una eina de validació de codi que ajuda a detectar errors i problemes potencials.
   - **Flow**: Verificador de tipus estàtic per JavaScript que també pot detectar errors en temps de compilació.
-
----v
-
-- **Python**
-  - **Pylint**: Analitza codi Python per trobar bugs i senyals de codi de mala qualitat.
-  - **PyFlakes**: Detecta errors en codi Python com mòduls o variables no utilitzats.
-  - **Mypy**: Verifica tipus de manera estàtica per assegurar que el codi s'adhereix als tipus esperats.
-- **Rust**
-  - **Clippy**: Una col·lecció de lints per millorar el codi Rust i trobar errors comuns i inusuals.
-  - **Rust Analyzer**: Proporciona una sèrie d'analitzadors estàtics per millorar la codificació en Rust.
-  - **Cargo Check**: Executa una comprovació ràpida del codi per verificar errors sense compilar el programa completament. **cargo check**
 
 ---
 
