@@ -436,7 +436,6 @@ mod tests {
 - `#[test]`: marca la funció com a test
 - `assert_eq!`: compara el resultat esperat amb el resultat obtingut
 
-
 ---
 
 ## Assertions més habituals
@@ -452,7 +451,7 @@ mod tests {
 - **Tests unitaris**: dins del mateix fitxer `.rs`, al final, en un mòdul `#[cfg(test)]`
 - **Tests d'integració**: a `tests/`, cada fitxer és un binari separat
 
-```
+```text
 project/
 |- src/
 |  |- lib.rs
