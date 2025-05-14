@@ -417,13 +417,17 @@ Rust incorpora un sistema de testing **integrat** i molt potent, sense necessita
 ## Estructura bàsica d'un test
 
 ```rust
+fn sum(a: i32, b: i32) -> i32 {
+    a + b
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_sum() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(sum(2, 2), 4);
     }
 }
 ```
@@ -455,6 +459,8 @@ project/
 |- tests/
 |  |- integration_test.rs
 ```
+
+---
 
 ## Write Unit Tests in Rust
 
