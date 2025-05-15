@@ -208,7 +208,7 @@
 ## Resolució de camins
 
 - Quan fem execució simbòlica, el programa **genera condicions** segons les decisions que pren (ex: `x > 5`).
-- Un **solver de restriccions** és una eina que **busca valors reals** (com `x = 6`) que compleixin aquestes condicions.
+- Un **solver de restriccions** és una eina que **cerca valors reals** (com `x = 6`) que compleixin aquestes condicions.
 
 ➡️ Així podem generar **entrades concretes** que fan que el programa segueixi un camí específic.
 
@@ -223,7 +223,7 @@ if x > 5 {
 ```
 
 - **Execució simbòlica**: `x` és un valor simbòlic.
-- **Solver**: busca un valor concret per `x` que compleixi la condició (ex: `x = 6`).
+- **Solver**: cerca un valor concret per `x` que compleixi la condició (ex: `x = 6`).
 - **Entrada generada**: `x = 6` per activar el camí interessant.
 
 ---
