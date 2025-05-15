@@ -190,46 +190,65 @@
 
 <!-- markdownlint-enable MD024 -->
 
-- L'**execució simbòlica** és una tècnica de test que analitza el codi executant-lo amb **valors simbòlics** en lloc de **valors reals**. Això permet explorar múltiples camins d'execució simultàniament.
-- **Objectiu**: Detectar errors lògics, condicions de fallada i vulnerabilitats de seguretat analitzant com respondria el codi davant una gran varietat de valors d'entrada, incloent casos poc habituals o difícils de reproduir amb proves tradicionals.
+- L'**execució simbòlica** és una tècnica de testing que executa el codi utilitzant **valors simbòlics** en lloc de dades concretes.
+- Permet explorar múltiples **camins d'execució alhora**, simulant una gran varietat de possibles entrades.
+
+> 🎯 Objectiu: detectar errors lògics, condicions de fallada i vulnerabilitats analitzant el comportament del programa amb tot tipus d'entrades, inclosos casos límit difícils de reproduir manualment.
 
 ---
 
-## Principis bàsics
+## Conceptes bàsics
 
-- **Valors Simbòlics**: En lloc d'utilitzar dades reals, l'execució simbòlica fa servir 'símbols' que representen valors arbitraris d'entrada.
-- **Arbre de Decisió**: Genera un arbre on cada node representa un punt de decisió en el codi, i les branques representen els diferents camins d'execució basats en aquestes decisions
-
----
-
-## Mètodes i tècniques de l'execució simbòlica
-
-- **Restriccions de Camí**: Durante l'execució, es van acumulant condicions o restriccions sobre els valors simbòlics que determinen quins camins són possibles.
-- _**Solver**_ **de Restriccions**: Utilitza solucionadors matemàtics per avaluar les restriccions i determinar els valors d'entrada que cobreixen diferents camins de codi.
+- **Valors simbòlics**: són variables que representen qualsevol possible valor d'entrada.
+- **Arbre d'execució**: cada decisió condicional en el codi crea una branca; el conjunt de totes les branques forma un arbre amb tots els camins possibles del programa.
+- **Restriccions de camí**: condicions que s'acumulen a mesura que el codi s'executa simbòlicament (ex: `x > 5`, `y == 0`).
 
 ---
 
-## Exemples de problemàtiques detectades
+## Resolució de camins
 
-- **Desbordament de Buffer**: Pot descobrir condicions que portarien a un desbordament de buffer, introduint valors simbòlics que maximitzen la mida dels dades processades.
-- **Condició de Carrera**: Podria identificar una condició de carrera potencial analitzant l'ordre simbòlic de les operacions sobre recursos compartits.
+- Quan fem execució simbòlica, el programa **genera condicions** segons les decisions que pren (ex: `x > 5`).
+- Un **solver de restriccions** és una eina que **busca valors reals** (com `x = 6`) que compleixin aquestes condicions.
+
+➡️ Així podem generar **entrades concretes** que fan que el programa segueixi un camí específic.
+
+---v
+
+### Exemple:
+
+```rust
+if x > 5 {
+    // camí interessant
+}
+```
+
+- **Execució simbòlica**: `x` és un valor simbòlic.
+- **Solver**: busca un valor concret per `x` que compleixi la condició (ex: `x = 6`).
+- **Entrada generada**: `x = 6` per activar el camí interessant.
 
 ---
 
-## Beneficis de l'execució simbòlica
+## Exemples de vulnerabilitats detectables
 
-- **Cobertura de Codi**: Millora significativa en la cobertura de codi, assegurant que tots els camins possibles s'explorin.
-- **Descobriment de Bugs Profunds**: Pot descobrir errors que són difícils de detectar amb tests basats en entrades concretes.
-- **Automatització dels Tests**: Redueix la necessitat d'intervenció humana en la generació de casos de test, millorant l'eficiència dels processos de test.
+- **Desbordament de buffer**: si una entrada simbòlica pot superar una mida màxima no controlada.
+- **Condicions de carrera**: en anàlisi simbòlica concurrent, es poden detectar conflictes en l'accés simultani a recursos compartits.
 
 ---
 
-## Anàlisi de flux / Execució simbòlica
+## Avantatges principals
 
-- Tot i que ambdues tècniques poden semblar similars en el sentit que **analitzen els camins a través del codi**,
-  - l'**execució simbòlica** es centra més en provar tots els **possibles estats** d'un programa a través de l'ús de **valors simbòlics**
-  - mentre que l'**anàlisi de flux** es concentra en el seguiment de com les **dades es mouen i modifiquen** dins del programa.
-- En la pràctica, l'execució simbòlica i l'anàlisi de flux sovint s'utilitzen **conjuntament** per proporcionar una revisió exhaustiva del codi, on l'anàlisi de flux pot ajudar a definir millor els camins que l'execució simbòlica hauria d'explorar.
+- ✅ **Alta cobertura**: explora molts més camins que el testing tradicional.
+- ✅ **Detecta bugs amagats** que només apareixen amb condicions molt específiques.
+- ✅ **Automatitza la generació de proves**, reduint l'esforç manual.
+
+---
+
+## Execució simbòlica vs. Anàlisi de flux
+
+- Ambdues analitzen el comportament del codi, però amb objectius diferents:
+  - **Execució simbòlica**: simula execucions amb valors arbitraris per provar totes les condicions possibles.
+  - **Anàlisi de flux**: segueix com les dades es mouen i canvien dins del programa.
+- Sovint es combinen: l'anàlisi de flux pot ajudar a enfocar millor l'execució simbòlica.
 
 ---
 

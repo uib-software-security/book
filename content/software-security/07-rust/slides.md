@@ -42,7 +42,7 @@
 
 ## L'alternativa entre dos mons
 
-- **C i C++** ofereixen un control total sobre la memòria, però aquest control comporta un risc elevat d’errors de seguretat.
+- **C i C++** ofereixen un control total sobre la memòria, però aquest control comporta un risc elevat d'errors de seguretat.
 - **Llenguatges amb _garbage collector_** (com Java, Go o Python) gestionen automàticament la memòria, però sovint amb penalitzacions de rendiment i menys control sobre els recursos.
 - **Rust** és l'única alternativa que ofereix:
   - **Control total com C/C++**
