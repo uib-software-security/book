@@ -50,20 +50,6 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Software vs. Hardware
-
-- **El disseny del sistema conté programari i maquinari**
-  - Principalment, ens centrarem en el software
-- **El programari és maleable** i es pot canviar fàcilment
-  - Avantatges per a la funcionalitat bàsica
-  - **Perjudicial per a la seguretat** (i el rendiment)
-- **El maquinari és ràpid**, però difícil de canviar
-  - Desavantatge per a l'evolució
-  - **Avantatge per a la seguretat**
-    - No es pot explotar fàcilment, ni es pot canviar per un atac
-
----
-
 ## Exemple de funcionament: banca en línia
 
 - Volem escriure un programari que permeti als titulars de comptes d'un banc tenir accés en línia als seus comptes
@@ -86,12 +72,15 @@ Phases, documents and roles of the Scrum methodology
 
 ## Modelització d'amenaces
 
-- La **modelització d'amenaces** fa **explícits els poders assumits per l'adversari**
-  - Conseqüència: la modelització d'amenaces ha de coincidir amb la realitat, en cas contrari l'anàlisi de risc del sistema serà errònia
-- El  modelització d'amenaces és **de vital importància**
-  - Si no sou explícit sobre què pot fer l'atacant, com podeu avaluar si el vostre disseny repel·lirà aquest atacant?
-- Això forma part de l'**anàlisi del risc arquitectònic**
-  - És el procés d'avaluació del risc d'una fallada de seguretat en funció de la probabilitat i el cost de diversos atacs. I fent el possible per minimitzar aquest risc.
+- La **modelització d'amenaces** consisteix a identificar i fer **explícites les capacitats i objectius potencials d'un adversari**.
+  - Si aquestes suposicions no reflecteixen la realitat, l'anàlisi de riscos serà **enganyosa** i el sistema pot quedar exposat.
+- Aquesta activitat és **fonamental per a la seguretat del software**, ja que permet avaluar si les mesures de protecció seran efectives contra els escenaris d'atac possibles.
+- Forma part de l'**anàlisi del risc arquitectònic**, que avalua:
+  - La **probabilitat** que es produeixin determinades amenaces,
+  - L'**impacte** que tindrien en el sistema,
+  - I les **mesures** per minimitzar aquest risc.
+
+> 🔎 Sense una modelització clara de l'adversari, no podem saber si el nostre disseny el podrà resistir.
 
 ---
 
@@ -145,18 +134,41 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Disseny orientat a amenaces**
+## Disseny orientat a amenaces
 
-- Diferents models d'amenaça provocaran respostes diferents
-- Els **atacants només de xarxa** impliquen que el trànsit de **missatges** és **segur**
-  - No cal xifrar les comunicacions
-  - Això és el que suposava el programari d'inici de sessió remot de telnet
-- **Atacants _snooping_** impliquen que el trànsit de **missatges** és **visible**
-  - Per tant, utilitzeu wifi encriptat (WPA2, capa d'enllaç), capa de xarxa xifrada (IPsec) o capa d'aplicació xifrada (SSL).
-    - Quin és el més adequat per al vostre sistema?
-- L'**atacant co-ubicat** pot **accedir a fitxers locals, i a la memòria**
-  - No es poden emmagatzemar secrets sense xifrar, com ara contrasenyes
-  - Proporcionar als usuaris un dispositiu independent que participi en el procés d'autenticació, però que no estigui connectat a l'ordinador (p. ex., login als bancs)
+- Cada **model d'amenaça** defineix un perfil diferent d'adversari, i això condiciona directament les decisions de disseny.
+- Exemple de casos típics:
+
+---v
+
+### 1. Atacants només de xarxa
+
+- Es pressuposa que l'atacant només pot **interactuar amb el sistema a través de la xarxa**, però **no pot llegir el trànsit**.
+- En aquest escenari, **no és necessari xifrar les comunicacions**.
+  - Aquesta era la suposició en sistemes antics com **telnet**.
+
+---v
+
+### 2. Atacants espies (_snooping attackers_)
+
+- Es pressuposa que l'atacant pot **escoltar el trànsit de xarxa** (ex: en una Wi-Fi oberta).
+- Cal **xifrar les comunicacions** per garantir la confidencialitat:
+  - A nivell de **capa d'enllaç** (ex: WPA2),
+  - A nivell de **capa de xarxa** (ex: IPsec),
+  - O a nivell de **capa d'aplicació** (ex: TLS/SSL).
+- El dissenyador ha de decidir **quina capa és la més adequada** segons els requisits del sistema.
+
+---v
+
+### 3. Atacants co-ubicats (_co-located attackers_)
+
+- L'adversari té **accés al mateix dispositiu físic** que l'usuari (ex: malware instal·lat).
+- Pot accedir a:
+  - **Fitxers locals** (ex: cookies),
+  - **Memòria compartida**,
+  - O fins i tot capturar **pantalles i pulsacions de teclat**.
+- En aquest cas, **no s'han d'emmagatzemar secrets en text pla**.
+  - És recomanable l'ús de **dispositius externs i independents** per l'autenticació (ex: 2FA amb hardware token o SMS).
 
 ---
 
@@ -244,98 +256,113 @@ Phases, documents and roles of the Scrum methodology
 
 ## Integritat
 
-- Definició: **informació sensible no danyada** per (computacions que actuen en nom de) parts no autoritzades
-- Exemple: només el propietari del compte pot autoritzar retirades del seu compte
-- Les violacions de la integritat també poden ser **directes** o **indirectes**
-  - Exemple: poder retirar-se específicament del compte versus confondre el sistema perquè ho faci (amb un _cross-site request fogery_)
+- La **integritat** vol dir que la **informació no es pot modificar** sense autorització.
+- Exemple: **només el propietari d'un compte** pot fer retirades.
+- Tipus de violacions:
+  - **Directa**: l'atacant modifica les dades ell mateix.
+  - **Indirecta**: l'atacant **enganya el sistema** perquè ho faci per ell (ex: _Cross-Site Request Forgery_)
+  - El **Cross-Site Request Forgery (CSRF)** és un atac en què un usuari autenticat és enganyat per enviar una petició no desitjada a una aplicació web en què està connectat, sense adonar-se'n
 
 ---
 
 ## Disponibilitat
 
-- Definició: un sistema **té capacitat de resposta davant les peticions**
-- Exemple: un usuari sempre pot accedir al seu compte per a consultes o retirades de saldo
-- Els **atacs de denegació de servei** (_**Denial of Service, DoS**_) intenten **comprometre la disponibilitat**
-  - ocupant un sistema amb feina inútil
-  - o tallant l'accés a la xarxa
+- La **disponibilitat** vol dir que el sistema està **actiu i accessible quan es necessita**.
+- Exemple: poder entrar al banc online i consultar el saldo en qualsevol moment.
+- Els **atacs de denegació de servei (DoS)** busquen **fer caure el sistema**:
+  - Saturant-lo amb peticions falses
+  - Tallant l'accés a la xarxa
 
 ---
 
 ## Mecanismes de suport
 
-- Mecanismes proporcionats per un sistema per fer complir els seus requisits:
-  - **Au**tenticació
-  - **Au**torització
-  - **Au**ditoria
-- Els mecanismes de suport són **alhora requisits i una mena de disseny**
-  - El tipus de polítiques que s'autoritzen determina el mecanisme d'autorització
-  - El tipus d'usuaris que té un sistema determina com s'han d'autenticar
+- Són eines que ajuden a **fer complir els requisits de seguretat** d'un sistema:
+  - **Autenticació**: saber qui ets
+  - **Autorització**: saber què pots fer
+  - **Auditoria**: deixar constància del que ha passat
+- Aquests mecanismes depenen del **tipus d'usuaris** i de les **normes de seguretat** que es volen aplicar.
+
+> 🔐 Sense aquests mecanismes, les polítiques de seguretat no es poden fer efectives.
 
 ---
 
 ## Autenticació
 
-- Quin és el **subjecte** de les **polítiques de seguretat**?
-  - Necessitat de definir una **noció d'identitat** i una **manera de connectar una acció amb una identitat**
-    - també conegut com a **director** (persona, servei o programa)
-- **Com pot el sistema dir que un usuari és qui diu que és?**
-  - Què (només) **sap** (per exemple, contrasenya)
-  - Què **és** (p. ex., biomètric)
-  - Què **té** (p. ex., telèfon intel·ligent, targeta)
-  - Els mecanismes d'autenticació que utilitzen més d'un d'aquests factors s'anomenen **autenticació multifactor**
-    - Per exemple, el banc pot utilitzar contrasenyes i el text d'un codi especial al telèfon intel·ligent d'un usuari
+- L'**autenticació** serveix per saber **qui és realment un usuari** abans de deixar-lo fer res.
+- Es pot basar en:
+  - **Què sap** (ex: contrasenya)
+  - **Què és** (ex: empremta digital)
+  - **Què té** (ex: mòbil o targeta)
+- Si es combinen diversos d'aquests mètodes, en diem **autenticació multifactor**.
+  - Exemple: entrar al banc amb contrasenya i codi SMS.
+
+> 🧾 Sense autenticació, no es pot aplicar cap política de seguretat.
 
 ---
 
 ## Autorització
 
-- Defineix **quan un director pot realitzar una acció**
-- Exemple: Bob està autoritzat a accedir al seu propi compte, però no al compte de l'Alice
-- Hi ha una gran varietat de **polítiques** que defineixen quines accions es poden autoritzar
-  - Per exemple, polítiques de control d'accés, que podrien estar basades en **rols**, basades en **usuaris**, etc.
+- L'**autorització** decideix **què pot fer cada usuari** dins del sistema.
+- Exemple: Bob pot accedir al seu compte, però **no al de l'Alice**.
+- Les regles d'autorització es poden basar en:
+  - **Usuaris concrets**
+  - **Rols** (ex: administrador, usuari, convidat)
+
+> ✅ Un cop sabem qui ets (autenticació), cal decidir **què tens permís per fer**.
 
 ---
 
 ## Auditoria
 
-- Conservar la informació suficient per poder **determinar les circumstàncies d'una infracció o una mala conducta** (o establir que no s'ha produït cap)
-  - Aquesta informació, que sovint s'emmagatzema en **fitxers de registre (_logs_)**, s'ha de protegir de manipulacions i d'accés que pugui infringir altres polítiques.
-- Exemple: cada acció relacionada amb el compte es registra localment i es reflecteix en un lloc independent
+- L'**auditoria** serveix per **registrar què passa dins del sistema**, per saber si hi ha hagut errors o accions malicioses.
+- Aquesta informació s'emmagatzema en **fitxers de registre (logs)** que han d'estar ben protegits.
+- Exemple: totes les accions d'un compte bancari es registren i es poden revisar si cal.
+
+> 📋 Sense auditoria, no podem saber **què ha passat** ni demostrar-ho.
 
 ---
 
 ## Definició dels requisits de seguretat
 
-- Podeu utilitzar molts **processos per decidir els requisits de seguretat**
-- Exemple: **preocupacions generals de política**
-  - Per **normativa**/lleis/estàndards (HIPAA per dades mèdiques a USA, SOX per dades financeres a USA, LOPD de protecció de dades, etc.)
-  - Per **valors organitzatius** (p. ex., valorar la privadesa)
-- Exemple: **Política derivada de la modelització d'amenaces**
-  - Quins **atacs** causen **més preocupació**?
-    - Quins són els possibles adversaris i quins són els seus objectius i mètodes?
-  - Quins **atacs** ja **s'han produït**?
-    - Dins de l'organització, o en altres llocs dels sistemes relacionats?
+- Els **requisits de seguretat** indiquen **què cal protegir** i **contra què**.
+- Es poden definir a partir de:
+
+### ✅ Normes o polítiques generals
+
+- Lleis o estàndards (ex: **LOPD** de protecció de dades, **HIPAA** per dades mèdiques a USA, **SOX** per dades financeres a USA)
+- Valors de l'organització (ex: protegir la privadesa)
+
+### 🔍 Modelització d'amenaces
+
+- Quins **atacs** ens preocupen més?
+- Quins **atacs ja han passat**, aquí o en sistemes similars?
+
+> 🎯 Un bon sistema comença per saber **quines amenaces vol evitar**.
 
 ---
 
 ## Casos d'abús
 
-- Els **casos d'abús** il·lustren **els requisits de seguretat**
-- Els **casos d'ús** descriuen el que hauria de fer un sistema, i els **casos d'abús** descriuen el que **no hauria de fer**
-- Exemple de **cas d'ús**: el sistema permet als gestors del banc modificar el tipus d'interès d'un compte
-- Exemple de **cas d'abús**: un usuari pot falsificar com a gestor i, per tant, canviar el tipus d'interès d'un compte
+- Els **casos d'abús** mostren **què no hauria de poder passar** en un sistema.
+- Complementen els **casos d'ús**, que descriuen el comportament correcte.
+- Exemple
+  - ✅ **Cas d'ús**: un gestor pot canviar el tipus d'interès d'un compte.
+  - ❌ **Cas d'abús**: un usuari falsifica la identitat d'un gestor i fa el mateix canvi.
+
+> ⚠️ Pensar en casos d'abús ajuda a descobrir vulnerabilitats abans que ho faci un atacant.
 
 ---
 
 ## Definició de casos d'abús
 
-- Utilitzant patrons d'atac i escenaris probables, construïu casos en què l'**exercici del poder d'un adversari** pugui **violar un requisit de seguretat**.
-  - Basat en el model d'amenaça
-  - Què podria passar si s'eliminés una mesura de seguretat?
-- Exemple: un atacant coubicat roba el fitxer de contrasenyes i aprèn totes les contrasenyes d'usuari
-  - Possible si el fitxer de contrasenyes no està xifrat
-- Exemple: un atacant _snooping_ (espia) torna a reproduir un missatge capturat (_**replay attack**_), efectuant una retirada bancària
-  - Possible si els missatges no tenen _nonce_
+- Un **cas d'abús** descriu com un **atacant pot aprofitar una debilitat** per trencar la seguretat del sistema.
+- Es basa en el **model d'amenaça** i ajuda a identificar què pot passar si una protecció falla o no existeix.
+- Exemples
+  - 🔓 Un atacant co-ubicat roba el fitxer de contrasenyes si **no està xifrat**.
+  - 🔁 Un espia de xarxa fa un **replay attack** si els missatges **no tenen identificador únic (_nonce_)**.
+
+> 🧠 Pensar en casos d'abús t'obliga a imaginar **com es podria atacar el teu sistema** i avançar-te als riscos.
 
 ---
 
@@ -353,12 +380,13 @@ Phases, documents and roles of the Scrum methodology
 
 ## Defecte de disseny = _Flaw_
 
-- Recordeu que els defectes del software consisteixen tant en **errors de codi** (_**bugs**_) com en **errors de disseny** (_**flaws**_)
-  - _**Flaws**_: problemes en el disseny
-  - _**Bugs**_: problemes en la implementació
-- **Evitem els _flaws_ durant la fase de disseny!!**
-- Segons Gary McGraw, el **50% dels problemes de seguretat són defectes de disseny**
-  - Per tant, aquesta fase és molt important
+- Els errors de seguretat poden ser:
+  - **_Flaws_**: errors en el **disseny** del sistema
+  - **_Bugs_**: errors en la **implementació** del codi
+- Els **flaws** són especialment perillosos perquè poden afectar tot el sistema des de l'origen.
+- Segons Gary McGraw, el **50% dels problemes de seguretat venen del disseny**.
+
+> 🛠️ Millor prevenir els errors durant el **disseny**, abans d'escriure cap línia de codi.
 
 ![Software security](img/software-security.png)
 
@@ -367,22 +395,24 @@ Phases, documents and roles of the Scrum methodology
 ## Disseny vs. Implementació?
 
 - Hi ha molts **nivells diferents de decisions de disseny de sistemes**
-  - _Nivell més alt_: actors principals (**processos**, com servidor web i servidor de bases de dades), **interaccions** i llenguatge(s) de programació a utilitzar
-  - _Nivell següent_: **descomposició** d'un actor en **mòduls/components**, identificar les funcionalitats bàsiques i com funcionen juntes.
-  - _Següent nivell_: com **implementar tipus de dades** i funcions, etc.
-- Els dos últims podrien ser implementació o disseny, o tots dos
-  - La distinció és una mica difusa
+  1. **Alt nivell**: actors principals (**processos**, com servidor web i servidor de bases de dades), **interaccions** i llenguatge(s) de programació a utilitzar
+  2. **Mitjà nivell**: **descomposició** d'un actor en **mòduls/components**, identificar les funcionalitats bàsiques i com funcionen juntes.
+  3. **Baix nivell**: com **implementar tipus de dades** i funcions, etc.
+
+- Els nivells 2 i 3 poden ser **disseny o implementació**, segons com es plantegin.
+
+> 🧩 El límit entre dissenyar i programar sovint no és clar, però **els dos afecten la seguretat**.
 
 ---
 
 ## Disseny de programari segur
 
-- El procés de disseny de programari té com a objectiu produir una arquitectura de programari segons bons principis i regles
-- Aquest és un procés iteratiu.
-  - Primer feim el nostre disseny inicial.
-  - I després realitzem una anàlisi basada en el risc d'aquest disseny.
-  - Com a resultat, podem determinar que cal millorar el disseny
-  - Per tant, apliquem els nostres principis i regles i després millorem fins que estem satisfets.
+- El procés de disseny de programari té com a objectiu produir una arquitectura de programari segons **bons principis i regles**
+- Aquest és un **procés iteratiu**.
+  - Primer feim el nostre **disseny inicial**.
+  - I després realitzem una **anàlisi basada en el risc** d'aquest disseny.
+  - Com a resultat, podem determinar que cal **millorar el disseny**
+  - Per tant, apliquem els nostres **principis i regles** i després millorem fins que estem satisfets.
 
 ![Software design](img/software-design.png)
 
@@ -390,12 +420,12 @@ Phases, documents and roles of the Scrum methodology
 
 ## Principis i normes
 
-- Un **principi** és un objectiu de disseny d'alt nivell amb moltes manifestacions possibles
-- Una **regla** és una pràctica específica de desenvolupament que està en consonància amb els principis de disseny
-  - La **diferència entre aquests dos pot ser difusa**, de la mateixa manera que el disseny i la implementació ho són.
-    - Per exemple, sovint hi ha un principi subjacent a pràctiques específiques
-  - **Els principis sovint es superposen**
-- La **fase de disseny del programari** tendeix a **centrar-se en principis** per evitar defectes de disseny (_flaws_)
+- Un **principi** és una idea general que ajuda a fer **bons dissenys** (ex: "mantenir-ho simple").
+- Una **norma** és una **regla concreta** que posa aquest principi en pràctica (ex: "no utilitzar valors per defecte insegurs").
+- La diferència entre principi i norma **pot ser difusa**, i sovint **van de la mà**.
+- Durant el disseny del programari ens centrem en **principis**, perquè ajuden a **evitar errors de base (_flaws_)**.
+
+> 📐 Els principis guien el disseny; les normes guien l'aplicació pràctica.
 
 ---
 
@@ -494,26 +524,6 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Gestor de contrasenyes (_password manager_)
-
-![Password manager](img/password-manager.png)
-
-- Un **gestor de contrasenyes** (_**Password Manager**_, **PM**) emmagatzema una **base de dades de contrasenyes, indexades per lloc**
-  - Xifrat amb **una única contrasenya mestra** escollida (i recordada) per l'usuari, utilitzada com a clau
-  - **PM genera contrasenyes complicades per cada lloc web**
-    - Difícil d'endevinar, difícil de recordar, però això últim no importa!
-
----v
-
-- **Beneficis**
-  - Només una única contrasenya perquè l'usuari la recordi
-  - La contrasenya de l'usuari en qualsevol lloc és difícil d'endevinar
-  - El compromís de la contrasenya en un lloc no permet un compromís immediat en altres llocs
-- **Però**:
-  - Encara s'ha de **protegir** i **recordar** la **contrasenya mestra** segura
-
----
-
 ## Mesurador de força de contrasenya
 
 - **Ofereix _feedback_ als usuaris** sobre la **força** de la **contrasenya**
@@ -522,26 +532,6 @@ Phases, documents and roles of the Scrum methodology
 - Per exemple: [https://www.passwordmonster.com/](https://www.passwordmonster.com/)
 
 ![Password strength meter](img/password-strength-meter.png)
-
----
-
-## Phishing (1)
-
-- L'**usuari és enganyat** perquè pensi que un **lloc** o un **correu electrònic** és legítim, en lloc d'una estafa
-  - I després és enganyat perquè instal·li programari maliciós o realitzi altres accions perjudicials
-
-![Phishing](img/phishing.png)
-
----
-
-## Phishing (i 2)
-
-- Error: **lloc o correu electrònic no (realment) autenticat**
-  - Correu electrònic d'Internet i protocols web **no varen dissenyats originalment per a l'autenticació remota**
-  - La solució és **difícil de desplegar**
-    - Utilitzeu nocions d'identitat difícils de falsificar, com ara la criptografia de clau pública. Però quin sistema? Com actualitzar gradualment?
-
-![Phishing](img/phishing-2.png)
 
 ---
 
@@ -584,9 +574,9 @@ Phases, documents and roles of the Scrum methodology
   - **Categoria: Mitigació**
 - Exemple: Atenuar les delegacions
   - El programa de correu delega a l'editor per crear correus
-    - vi, emacs
+    - `vi`, `emacs`
   - Però molts editors permeten escapar a un intèrpret d'ordres per executar programes arbitraris: massa privilegis!
-  - Millor disseny: utilitzeu un editor restringit (pico)
+  - Millor disseny: utilitzeu un editor restringit (`pico`)
 
 ---
 
@@ -623,13 +613,14 @@ Phases, documents and roles of the Scrum methodology
 
 ## Promoure la privadesa
 
-- Un bon objectiu general del sistema és **restringir el flux de dades sensibles** tant com sigui possible
+- Un bon objectiu general del sistema és **restringir la circulació de dades sensibles** tant com sigui possible
   - En fer-ho, promou la privadesa **reduint la confiança/privilegi**
   - **Categoria: Mitigació**
-- Exemple: un sistema d'admissió d'estudiants rep cartes de recomanació (sensibles) com a fitxers PDF
-  - Un disseny típic permetria als revisors descarregar aquests fitxers per veure'ls als seus ordinadors locals
-  - Però després el compromís d'aquests ordinadors filtra informació privada
-  - Millor: els PDF només es poden veure al navegador; no s'ha baixat cap dada a la màquina client
+- Exemple. Un sistema d'admissions rep **cartes de recomanació** (sensibles) en PDF.
+  - ❌ Si es permet descarregar-les, es poden filtrar si l'ordinador es compromet.
+  - ✅ Millor: veure els PDFs només al navegador, **sense descarregar-los**.
+
+> 🔒 Com menys dades sensibles circulin, **menys oportunitats tindrà un atacant**.
 
 ---
 
@@ -637,8 +628,11 @@ Phases, documents and roles of the Scrum methodology
 
 - **Aïllar un component del sistema** en un compartiment, o _**sandbox**_, reduint-ne els privilegis fent impossibles determinades interaccions
   - **Categoria: Prevenció i Mitigació**
-- Exemple: Desconnecteu la base de dades d'expedients d'estudiants d'Internet
-  - Concedir l'accés només a terminals directes
+- Exemple: Una base de dades d'estudiants:
+  - ❌ Si està connectada a Internet, és vulnerable.
+  - ✅ Millor: només accessible des de terminals autoritzats dins del campus.
+
+> 🧱 Separar components redueix l'impacte d'un atac si una part es veu compromesa.
 
 ![Sandboxes](img/sandboxes.png)
 
@@ -655,35 +649,42 @@ Phases, documents and roles of the Scrum methodology
 - **Seguretat per diversitat**
   - Si es trenca una capa, n'hi ha una altra de caràcter materialment diferent que cal evitar
   - **Categories: Prevenció/Mitigació**
-- Exemple: feu totes les accions següents, no només una
-  - Utilitzeu un tallafoc per impedir l'accés a través de ports no web
-  - Xifra les dades que es transmeten
-  - Utilitzeu un llenguatge segur per evitar vulnerabilitats de baix nivell
+- Exemple: Per protegir un sistema, pots fer **diverses coses a la vegada**:
+- 🔥 Posar un **tallafoc** per bloquejar ports no desitjats.
+- 🔒 **Xifrar les dades** que viatgen per la xarxa.
+- 🧪 Usar un **llenguatge segur** (com Rust) per evitar vulnerabilitats com els _buffer overflows_.
+
+> 🛡️ Com més barreres diferents poses, **més difícil serà atacar el sistema**.
 
 ---
 
 ## Utilitzeu els recursos de la comunitat
 
-- Utilitzeu codi **endurit** (_**hardened**_), potser d'altres projectes
-  - Per exemple, biblioteques criptogràfiques
-  - Però assegureu-vos que s'adapti a les vostres necessitats
-- Estigueu al dia de les amenaces i investigacions recents
-  - NIST per a estàndards
-  - OWASP, CERT, Bugtraq per als informes de vulnerabilitats
-  - Notícies SANS per a les últimes amenaces principals
-  - Conferències i revistes acadèmiques i de la indústria sobre tendències, tecnologia i riscos a llarg termini
+- Aprofita **codi segur ja existent** (com biblioteques criptogràfiques), però assegura't que **s'adapta al teu cas**.
+- Mantén-te **informat sobre vulnerabilitats i bones pràctiques**.
+- Fonts recomanades:
+  - 🏛️ **NIST**: entitat oficial dels EUA que publica estàndards de seguretat.
+  - 🌐 **OWASP**: comunitat oberta sobre seguretat web (famós pels rànquings de vulnerabilitats).
+  - 🛡️ **CERT**: centre que investiga i publica vulnerabilitats i guies de resposta.
+  - 🔎 **SANS**: portal de notícies i formació sobre seguretat.
+  - 📚 **Conferències i revistes**: per seguir les tendències i tècniques més recents.
+
+> 👥 La seguretat no es fa sol: **reutilitza i aprèn de la comunitat**.
 
 ---
 
 ## Seguiment i traçabilitat
 
-- **Si ets atacat, com ho sabràs?**
-  - Un cop après, com **discerniràs la causa**?
-- El programari s'ha de dissenyar per **registrar (_log_) la informació operativa rellevant**
-  - Què registrar? Per exemple, esdeveniments gestionats, paquets processats, sol·licituds satisfetes,...
-  - **Categoria: Detecció i Recuperació**
-- **Agregació de registres (_log aggregation_)**: correlacionar les activitats de diverses aplicacions quan es diagnostica una incompliment
-  - Per exemple, l'agregador de registres splunk
+- Si el sistema pateix un atac, cal saber-ho i **entendre què ha passat**.
+- Per això, el programari ha d'**enregistrar informació rellevant** (_logs_).
+- **Categoria: Detecció i Recuperació**
+- **Què registrar?**
+  - Peticions rebudes, errors, accions d'usuari, etc.
+- **Per què serveix?**
+  - Per **detectar atacs** i **analitzar l'origen dels problemes**.
+  - Amb **agregadors de logs** (com _Splunk_) es poden combinar registres de diferents aplicacions per veure **l'impacte global** d'un incident.
+
+> 📊 Sense registres, és com si el sistema fos **una caixa negra** quan falla.
 
 ---
 
@@ -739,8 +740,9 @@ Phases, documents and roles of the Scrum methodology
 
 ---
 
-## Error: Bypass d'autenticació (1)
+## Error: Omissió o bypass de'autenticació
 
+- Un **bypass d'autenticació** passa quan el sistema no comprova correctament la identitat dels usuaris o serveis.
 - Clients obligats a acceptar certificats SSL no vàlids
   - Omet l'autenticació del client del servidor:
     - Realment estic parlant amb el meu banc o amb un lloc que pretén ser el meu banc?
@@ -749,62 +751,73 @@ Phases, documents and roles of the Scrum methodology
 
 ![Bypass d'autenticació](img/bypass-authentication.png)
 
----
+---v
 
-## Error: Bypass d'autenticació (2)
+### Exemples habituals
 
-- Les aplicacions mòbils utilitzen SSL entre bastidors; què passa quan una aplicació rep un certificat no vàlid?
-  - "Tot i que és comprensible que els desenvolupadors desactivin la validació del certificat SSL en la fase de desenvolupament, aquests desenvolupadors bàsicament es van oblidar d'eliminar el codi d'acceptació de tot quan van llançar les seves aplicacions".
-    - Fahl et al, "Rethinking SSL Development in an Appified World", CCS'13 (Competició NSA 2014 Best Cybersecurity Paper)
-- Recordeu: **la seguretat no és una característica**
-  - Necessitat de provar què no hauria de passar
+1. **Certificats SSL no vàlids**
+   - Alguns navegadors i aplicacions **permeten continuar tot i avisar de l'error**, i molts usuaris hi fan clic igualment.
+   - Això pot fer que l'usuari es connecti a un lloc fals, pensant que és legítim (com el seu banc).
 
----
+2. **Aplicacions mòbils amb validació desactivada**
+   - Sovint, durant el desenvolupament es desactiva la validació dels certificats SSL.
+   - El problema és quan **no es torna a activar abans de publicar l'app**, deixant-la vulnerable.
 
-## Error: Bypass d'autenticació (i 3)
+3. **Tokens de sessió (_cookies_) massa llargs**
+   - Si un token d'autenticació caduca tard, un atacant té més temps per **robar-lo i reutilitzar-lo**.
+   - Però si és massa curt, pot molestar els usuaris. Hi ha d'haver un equilibri.
 
-- **Tokens d'autenticació amb timeouts llargs**
-  - Motiva els intents de força bruta de robar _cookies_ de sessió
-    - Recordeu l'error d'auth_token de Twitter de la unitat de seguretat web
-  - Però no es pot fer massa curt o irritarà els usuaris
-- En general: eviteu la derivació de l'autenticació desenvolupant bons casos d'abús, violant la suposició de coneixement o possessió únics.
-  - Com podria un adversari aprendre una contrasenya? Falsar una biomètrica? Voleu robar un identificador de sessió?
+---v
+
+### Conclusions
+
+- No suposis que l'usuari o l'app sempre actuaran correctament.
+- **Prova escenaris on la validació pot fallar**.
+- **Dissenya casos d'abús** per veure com es pot evitar la suplantació d'identitat.
+
+> 🚫 L'autenticació no pot ser opcional: ha de ser **robusta, comprovada i ben configurada**.
 
 ---
 
 ## Error: criptografia dolenta (o incorrecta)
 
-- **(Recordau) No utilitzeu la vostra pròpia criptografia**
-  - Exemples d'ús-recursos comunitaris: tant el disseny com la implementació són difícils d'encertar
-- No assumir que et dóna una cosa que no:
-  - L'algorisme de xifratge pot protegir la **confidencialitat** però no la **integritat**.
-  - El hashing protegeix la **integritat** però no la **confidencialitat**.
-- **Saber utilitzar-lo correctament**
-  - Utilitzeu claus de mida suficient generades correctament
-  - Protegiu les claus del compromís
-    - No els codifiqueu ni els incrusteu en binaris desplegats
+- **No inventis la teva pròpia criptografia.** És molt fàcil fer errors greus tant en el disseny com en la implementació.
+  - Usa biblioteques de confiança i provades per la comunitat.
+- **Errors habituals**
+  - **Malentendre què fa cada tècnica:**
+    - El **xifratge** protegeix la **confidencialitat**, però no garanteix que el missatge no s'hagi modificat.
+    - El **hashing** comprova la **integritat**, però no manté les dades en secret.
+  - **Fer servir claus febles o mal protegides:**
+    - Fes servir **claus llargues i ben generades**.
+    - **No guardis les claus dins del codi font ni dels binaris**.
+
+> 🔐 La criptografia és poderosa, però només si s'aplica **correctament i amb eines segures**.
 
 ---
 
 ## Error: ignorar quines dades són sensibles
 
-- **Penseu bé en les fonts de dades**: quines requereixen protecció?
-  - Informació d'identificació personal, lectures de sensors, claus criptogràfiques, fitxes de sessió, dades de geolocalització, ...
-    - Falla: dades privades exposades a l'accés general
-- Com canvien les dades i la seva exposició a mesura que l'**aplicació evoluciona al llarg del temps**?
+- No totes les dades són igual d'importants, però **algunes cal protegir-les especialment**.
+- Exemples de **dades sensibles**:
+  - Informació personal, claus criptogràfiques, fitxes de sessió, dades de sensors, geolocalització...
+- **Errors habituals**
+  - **No identificar correctament les dades sensibles**, i exposar-les públicament sense voler.
+  - **Oblidar com canvia el risc** quan l'aplicació creix o afegeix funcionalitats.
 
----v
-
-![Dades sensibles](img/sensitive-data.png)
+> 🔎 Abans de protegir les dades, cal saber **quines ho necessiten de veritat**.
 
 ---
 
 ## Falla: ignora la superfície d'atac dels components externs
 
-- **Superfície d'atac**: Elements d'un sistema que un adversari pot atacar o utilitzar en un atac
-- **Els components de tercers només fan el que jo vull?**
-- Falla de _**shellshock**_: "Bourne again shell" (bash) —utilitzat pels llocs web (per a CGI) DHCP i altres funcions— és molt més potent del necessari per a aquestes tasques
-  - Per tant: la fallada en bash comporta una greu vulnerabilitat a la xarxa
+- La **superfície d'atac** és el conjunt de punts del sistema que poden ser explotats per un adversari.
+- Quan utilitzes **components de tercers**, has de demanar-te:
+  👉 _"Estic segur que només fan el que jo vull?"_
+- **Exemple real**. El cas **Shellshock** (2014):
+  - El programa _bash_ (una shell) s'utilitzava en entorns web i DHCP.
+  - Era **massa potent** per les tasques que feia, i una vulnerabilitat seva va permetre **atacs remots greus**.
+
+> 🧩 No tots els components externs són inofensius. **Redueix la seva superfície d'atac i no els sobreutilitzis**.
 
 ---v
 

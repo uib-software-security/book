@@ -21,6 +21,40 @@
 
 ---
 
+## Vulnerabilitats de seguretat en C/C++
+
+- Una [anàlisi de Microsoft](http://mng.bz/yZKy) va revelar que el **70% de les vulnerabilitats de seguretat** als seus productes estaven relacionades amb errors de seguretat de memòria en codi C i C++
+
+![Vulnerabilitats de seguretat en C/C++](./img/c-vulnerabilities.png)
+
+---v
+
+- Exemples típics d'aquests errors:
+  - Lectura o escriptura **fora dels límits d'un array**
+  - **Desreferenciació de punters invàlids**, com punters nuls
+  - Ús de **memòria ja alliberada**
+  - Intentar **alliberar memòria dues vegades** (double-free)
+  - **No gestionar correctament els errors**
+
+> 🔐 Aquests problemes es poden evitar amb llenguatges que garanteixen la seguretat de la memòria, com **Rust**
+
+---
+
+## L'alternativa entre dos mons
+
+- **C i C++** ofereixen un control total sobre la memòria, però aquest control comporta un risc elevat d'errors de seguretat.
+- **Llenguatges amb _garbage collector_** (com Java, Go o Python) gestionen automàticament la memòria, però sovint amb penalitzacions de rendiment i menys control sobre els recursos.
+- **Rust** és l'única alternativa que ofereix:
+  - **Control total com C/C++**
+  - **Seguretat i gestió automàtica de recursos sense garbage collector**
+  - **Compilador intel·ligent que garanteix la seguretat de la memòria en temps de compilació**
+
+---v
+
+![Control vs seguretat](./img/control-vs-security.png)
+
+---
+
 ## Llenguatge més estimat des del 2016 (Stack Overflow)
 
 ![Most loved programming language since 2016](./img/loved-lang.png)
@@ -41,12 +75,12 @@
   - [https://www.rust-lang.org/](https://www.rust-lang.org/)
 - Llibre "_The Rust Programming Language_"
   - [https://doc.rust-lang.org/stable/book/](https://doc.rust-lang.org/stable/book/)
+- Effective Rust
+  - [https://effective-rust.com/title-page.html](https://effective-rust.com/title-page.html)
 - Rust by example:
   - [https://doc.rust-lang.org/rust-by-example/](https://doc.rust-lang.org/rust-by-example/)
 - Rustlings:
   - [https://github.com/rust-lang/rustlings](https://github.com/rust-lang/rustlings)
-- Rust by practice:
-  - [https://practice.course.rs/why-exercise.html](https://practice.course.rs/why-exercise.html)
 
 ![The Rust Programming Language](./img/rust-book.png)
 
@@ -855,18 +889,24 @@ fn main() {
 
 ---
 
-## Lifetime (1)
+## Genèrics i traits
+
+<!-- markdownlint-disable MD033 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XKbOVFt3UNY?si=XIGZZ_Czelr2s6Tk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
+
+---
+
+## Lifetimes
 
 - Gestió _**lifetime**_: garanteix que les referències no sobreviuen a les dades a les quals apunten
   - Evita les referències penjants (_dangling pointers_)
   - Garanteix la seguretat de la memòria sense necessitat d'un col·lector d'escombraries (_garbage collector_)
 
----
-
-## Lifetime (i 2)
+---v
 
 <!-- markdownlint-disable MD033 -->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4-8M-5uQhKA?si=luAAEWAgn5zg3HSO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/juIINGuZyBc?si=FDyyzClHprn_gJRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <!-- markdownlint-enable MD033 -->
 
 ---
@@ -893,6 +933,14 @@ fn main() {
 
 <!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/V_QAJAhbH9A?si=RHWnlpvDLWv5zmx6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
+
+---
+
+## Rust: A Language for the Next 40 Years
+
+<!-- markdownlint-disable MD033 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/A3AdN7U24iU?si=mlCKdCNtss36fnXx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <!-- markdownlint-enable MD033 -->
 
 ---

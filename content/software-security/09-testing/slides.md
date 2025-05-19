@@ -20,16 +20,14 @@
 
 ---
 
-## Anàlisi estàtica (1)
+## Anàlisi estàtica
 
 - **Anàlisi estàtica de software**: és un tipus d'anàlisi que es realitza sense executar el programa
   - En la majoria dels casos, l'anàlisi es realitza a alguna versió del codi font i en altres casos es realitza al codi objecte
 - El terme s'aplica generalment a les anàlisis realitzades per una **eina automàtica**
 - L'**anàlisi realitzada per un humà** és anomenat comprensió de programes (o enteniment de programes), o també **revisió de codi**.
 
----
-
-## Anàlisi estàtica (i 2)
+---v
 
 - Analitzar el codi del programa sense executar-lo
   - En cert sentit, estem demanant a un ordinador que faci el que podria fer un humà durant una revisió de codi
@@ -44,7 +42,7 @@
 
 ---
 
-## Impacte
+## Impacte de l'anàlisi estàtica
 
 - Comprova a fons propietats limitades però útils
   - **Elimina categories d'errors**
@@ -90,11 +88,22 @@
 
 ## Exemples d'eines d'anàlisi estàtica**
 
-- Java
+- **Rust**
+  - **Clippy**: Una col·lecció de lints per millorar el codi Rust i trobar errors comuns i inusuals.
+  - **Rust Analyzer**: Proporciona una sèrie d'analitzadors estàtics per millorar la codificació en Rust.
+  - **Cargo Check**: Executa una comprovació ràpida del codi per verificar errors sense compilar el programa completament. **cargo check**
+- **Python**
+  - **Pylint**: Analitza codi Python per trobar bugs i senyals de codi de mala qualitat.
+  - **PyFlakes**: Detecta errors en codi Python com mòduls o variables no utilitzats.
+  - **Mypy**: Verifica tipus de manera estàtica per assegurar que el codi s'adhereix als tipus esperats.
+
+---v
+
+- **Java**
   - **Checkstyle**: Es centra en la conformitat amb els estàndards de codificació.
   - **PMD**: Detecta possibles bugs, codi no òptim, complicat o dubtós.
   - **FindBugs**/**SpotBugs**: Identifica patrons de bugs coneguts en el codi Java.
-- C/C++
+- **C/C++**
   - **Cppcheck**: Eina d'anàlisi estàtica per a codi C/C++ que detecta diversos tipus d'errors.
   - **Clang Static Analyzer**: Ofereix anàlisi de codi integrat amb el compilador Clang per trobar bugs en codi C/C++. Clang
   - **Coverity**: Proporciona anàlisi avançada per identificar defectes de software en C, C++, i altres.
@@ -105,19 +114,6 @@
   - **ESLint**: Eina extensible que detecta problemes trobats en el codi JavaScript, permetent personalitzar regles.
   - **JSHint**: Una eina de validació de codi que ajuda a detectar errors i problemes potencials.
   - **Flow**: Verificador de tipus estàtic per JavaScript que també pot detectar errors en temps de compilació.
-
----
-
-## Exemples d'eines d'anàlisi estàtica
-
-- **Python**
-  - **Pylint**: Analitza codi Python per trobar bugs i senyals de codi de mala qualitat.
-  - **PyFlakes**: Detecta errors en codi Python com mòduls o variables no utilitzats.
-  - **Mypy**: Verifica tipus de manera estàtica per assegurar que el codi s'adhereix als tipus esperats.
-- **Rust**
-  - **Clippy**: Una col·lecció de lints per millorar el codi Rust i trobar errors comuns i inusuals.
-  - **Rust Analyzer**: Proporciona una sèrie d'analitzadors estàtics per millorar la codificació en Rust.
-  - **Cargo Check**: Executa una comprovació ràpida del codi per verificar errors sense compilar el programa completament. **cargo check**
 
 ---
 
@@ -154,23 +150,23 @@
 <!-- markdownlint-enable MD024 -->
 
 - L'**anàlisi de flux** és un mètode d'**anàlisi estàtica** que estudia el camí que segueixen les dades a través del codi per identificar possibles problemes de lògica o seguretat.
-  - L'**objectiu** és detectar condicions errònies, fluxos de dades incorrectes, i altres vulnerabilitats que podrien no ser evidents només amb una revisió de codi estàtica o durant l'execució normal.
+  - L'**objectiu principal** és detectar condicions errònies, fluxos de dades incorrectes, i altres vulnerabilitats que podrien passar desapercebudes en una revisió superficial o durant l'execució habitual del programa
 
 ---
 
 ## Tipus d'anàlisi de flux
 
-- **Anàlisi de Flux de Dades**: Se centra en els camins que les dades prenen a través del programa
-  - Aquesta anàlisi ajuda a identificar usos de dades no inicialitzades, fugues de memòria, i accessos a memòria no vàlids.
-- **Anàlisi de Flux de Control**: Examina els camins de control dins d'un programa, com les branques en les declaracions condicionals i els bucles
-  - Això es fa per assegurar que totes les branques i bucles funcionen com s'espera i per detectar codi inassolible o bucles infinits.
+- **Anàlisi de Flux de Dades**: Estudia els camins que recorren les dades dins del programa.
+  - Permet detectar l'ús de dades no inicialitzades, fugues de memòria i accessos a memòria no vàlids.
+- **Anàlisi de flux de control**: Analitza les rutes de control del programa, com ara condicions, branques i bucles.
+  - Serveix per assegurar que el flux del programa és correcte, identificar codi inassolible i prevenir bucles infinits.
 
 ---
 
 ## Mètodes i tècniques
 
-- **Graf de Flux de Control (CFG)**: Utilitza representacions gràfiques on els nodes representen unitats bàsiques d'instruccions i les arestes representen el flux de control entre aquestes.
-- **Anàlisi tainting**: Segueix la propagació de dades des de fonts no fiables (com entrada d'usuari) per veure si aquestes dades poden afectar àrees crítiques del programa sense ser adequadament validades o sanejades.
+- **Graf de flux de control (CFG)**: Representació gràfica on els nodes simbolitzen blocs bàsics d'instruccions, i les arestes indiquen el flux de control entre aquests blocs.
+- **Anàlisi _tainting_**: Tècnica que rastreja la propagació de dades provinents de fonts no fiables (com l'entrada de l'usuari), per determinar si poden arribar a parts crítiques del programa sense haver estat degudament validades o sanejades.
 
 ![Control Flow Graph](img/control-flow-graph.png)
 
@@ -194,46 +190,65 @@
 
 <!-- markdownlint-enable MD024 -->
 
-- És un mètode de test que analitza el codi executant-lo amb **valors simbòlics** en lloc de **valors reals**, permetent explorar molts camins de execució diferents simultàniament
-- **Objectiu**: Identificar errors, condicions d'error i vulnerabilitats de seguretat en el codi analitzant com aquest reaccionaria a una àmplia gamma de condicions d'entrada, incloent aquelles poc probables en una execució normal.
+- L'**execució simbòlica** és una tècnica de testing que executa el codi utilitzant **valors simbòlics** en lloc de dades concretes.
+- Permet explorar múltiples **camins d'execució alhora**, simulant una gran varietat de possibles entrades.
+
+> 🎯 Objectiu: detectar errors lògics, condicions de fallada i vulnerabilitats analitzant el comportament del programa amb tot tipus d'entrades, inclosos casos límit difícils de reproduir manualment.
 
 ---
 
-## Principis bàsics
+## Conceptes bàsics
 
-- **Valors Simbòlics**: En lloc d'utilitzar dades reals, l'execució simbòlica fa servir 'símbols' que representen valors arbitraris d'entrada.
-- **Arbre de Decisió**: Genera un arbre on cada node representa un punt de decisió en el codi, i les branques representen els diferents camins d'execució basats en aquestes decisions
-
----
-
-## Mètodes i tècniques de l'execució simbòlica
-
-- **Restriccions de Camí**: Durante l'execució, es van acumulant condicions o restriccions sobre els valors simbòlics que determinen quins camins són possibles.
-- _**Solver**_ **de Restriccions**: Utilitza solucionadors matemàtics per avaluar les restriccions i determinar els valors d'entrada que cobreixen diferents camins de codi.
+- **Valors simbòlics**: són variables que representen qualsevol possible valor d'entrada.
+- **Arbre d'execució**: cada decisió condicional en el codi crea una branca; el conjunt de totes les branques forma un arbre amb tots els camins possibles del programa.
+- **Restriccions de camí**: condicions que s'acumulen a mesura que el codi s'executa simbòlicament (ex: `x > 5`, `y == 0`).
 
 ---
 
-## Exemples de problemàtiques detectades
+## Resolució de camins
 
-- **Desbordament de Buffer**: Pot descobrir condicions que portarien a un desbordament de buffer, introduint valors simbòlics que maximitzen la mida dels dades processades.
-- **Condició de Carrera**: Podria identificar una condició de carrera potencial analitzant l'ordre simbòlic de les operacions sobre recursos compartits.
+- Quan fem execució simbòlica, el programa **genera condicions** segons les decisions que pren (ex: `x > 5`).
+- Un **solver de restriccions** és una eina que **cerca valors reals** (com `x = 6`) que compleixin aquestes condicions.
+
+➡️ Així podem generar **entrades concretes** que fan que el programa segueixi un camí específic.
+
+---v
+
+### Exemple:
+
+```rust
+if x > 5 {
+    // camí interessant
+}
+```
+
+- **Execució simbòlica**: `x` és un valor simbòlic.
+- **Solver**: cerca un valor concret per `x` que compleixi la condició (ex: `x = 6`).
+- **Entrada generada**: `x = 6` per activar el camí interessant.
 
 ---
 
-## Beneficis de l'execució simbòlica
+## Exemples de vulnerabilitats detectables
 
-- **Cobertura de Codi**: Millora significativa en la cobertura de codi, assegurant que tots els camins possibles s'explorin.
-- **Descobriment de Bugs Profunds**: Pot descobrir errors que són difícils de detectar amb tests basats en entrades concretes.
-- **Automatització dels Tests**: Redueix la necessitat d'intervenció humana en la generació de casos de test, millorant l'eficiència dels processos de test.
+- **Desbordament de buffer**: si una entrada simbòlica pot superar una mida màxima no controlada.
+- **Condicions de carrera**: en anàlisi simbòlica concurrent, es poden detectar conflictes en l'accés simultani a recursos compartits.
 
 ---
 
-## Anàlisi de flux / Execució simbòlica
+## Avantatges principals
 
-- Tot i que ambdues tècniques poden semblar similars en el sentit que **analitzen els camins a través del codi**,
-  - l'**execució simbòlica** es centra més en provar tots els **possibles estats** d'un programa a través de l'ús de **valors simbòlics**
-  - mentre que l'**anàlisi de flux** es concentra en el seguiment de com les **dades es mouen i modifiquen** dins del programa.
-- En la pràctica, l'execució simbòlica i l'anàlisi de flux sovint s'utilitzen **conjuntament** per proporcionar una revisió exhaustiva del codi, on l'anàlisi de flux pot ajudar a definir millor els camins que l'execució simbòlica hauria d'explorar.
+- ✅ **Alta cobertura**: explora molts més camins que el testing tradicional.
+- ✅ **Detecta bugs amagats** que només apareixen amb condicions molt específiques.
+- ✅ **Automatitza la generació de proves**, reduint l'esforç manual.
+
+---
+
+## Execució simbòlica vs. Anàlisi de flux
+
+- Ambdues analitzen el comportament del codi, però amb objectius diferents:
+  - **Execució simbòlica**: simula execucions amb valors arbitraris per provar totes les condicions possibles.
+  - **Anàlisi de flux**: segueix com les dades es mouen i canvien dins del programa.
+- Sovint es combinen: l'anàlisi de flux pot ajudar a enfocar millor l'execució simbòlica.
 
 ---
 
@@ -270,6 +285,7 @@
 ## Mètodes i tècniques de tests unitaris
 
 - **Frameworks de Testing**: Utilització de frameworks especialitzats, com **JUnit** per **Java**, **PyTest** per **Python**, o **NUnit** per **C#**. Aquests frameworks faciliten la creació, execució, i organització dels tests.
+  - A **Rust**, el framework de testing està **integrat** i no requereix biblioteques externes.
 - _**Asserts**_: S'utilitzen afirmacions per comprovar que el codi realitza les operacions correctes. Per exemple, verificar que el resultat d'una funció és el valor esperat.
 
 ---
@@ -293,14 +309,6 @@
 
 - **Cobertura de Codi**: Intentar cobrir totes les ramificacions i camins possibles dins del codi per assegurar una completa validació.
 - **Mantenir els Tests Actualitzats**: Actualitzar els tests unitaris quan el codi canvia per assegurar que continuen sent rellevants i útils.
-
----
-
-## Write Unit Tests in Rust
-
-<!-- markdownlint-disable MD033 -->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0G_5uUe_NXk?si=IqnoBNKgtUo-odrx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<!-- markdownlint-enable MD033 -->
 
 ---
 
@@ -413,6 +421,70 @@
 ---
 
 ![Tipus de tests](img/types-of-tests-2.png)
+
+---
+
+## Testing en Rust
+
+Rust incorpora un sistema de testing **integrat** i molt potent, sense necessitat de biblioteques externes:
+
+- Els tests s'escriuen al mateix fitxer `.rs` o a fitxers separats
+- Es compilen i executen amb `cargo test`
+
+---
+
+## Estructura bàsica d'un test
+
+```rust
+fn sum(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_sum() {
+        assert_eq!(sum(2, 2), 4);
+    }
+}
+```
+
+- `#[cfg(test)]`: compila el codi només en mode test
+- `#[test]`: marca la funció com a test
+- `assert_eq!`: compara el resultat esperat amb el resultat obtingut
+
+---
+
+## Assertions més habituals
+
+- `assert!(condicio)` → falla si la condició és falsa
+- `assert_eq!(a, b)` → falla si `a != b`
+- `assert_ne!(a, b)` → falla si `a == b`
+
+---
+
+## Organització dels tests
+
+- **Tests unitaris**: dins del mateix fitxer `.rs`, al final, en un mòdul `#[cfg(test)]`
+- **Tests d'integració**: a `tests/`, cada fitxer és un binari separat
+
+```text
+project/
+|- src/
+|  |- lib.rs
+|- tests/
+|  |- integration_test.rs
+```
+
+---
+
+## Write Unit Tests in Rust
+
+<!-- markdownlint-disable MD033 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0G_5uUe_NXk?si=IqnoBNKgtUo-odrx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
