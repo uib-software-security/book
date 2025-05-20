@@ -18,9 +18,9 @@
 ## Temes
 
 1. Introducció a la seguretat del software
-2. Metodologia Scrum
-3. Git i GitHub. Sistemes de control de versions
-4. Llenguatge de marques Markdown
+2. Git i GitHub. Sistemes de control de versions
+3. Llenguatge de marques Markdown
+4. Metodologia Scrum
 5. Llenguatge C i vulnerabilitats de baix nivell
 6. Defensa contra exploits de baix nivell
 7. Programació en Rust
