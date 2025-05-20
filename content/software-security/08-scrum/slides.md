@@ -126,6 +126,36 @@ Fases, documents i rols de la metodologia Scrum
 
 ---
 
+## El Backlog i les User Stories
+
+- El **Product Backlog** és una **llista ordenada** de **tot el que pot ser necessari** per al producte. És l'única font de requisits per a qualsevol canvi que es vulgui fer al producte.
+  - El manté i li assigna prioritats el **Product Owner**
+  - Pot contenir funcionalitats, millores, errors a corregir, tasques tècniques, etc.
+- Els elements del backlog solen escriure's com a **User Stories** (històries d'usuari), una manera concisa de descriure una funcionalitat des del punt de vista de l'usuari.
+
+---v
+
+### Format típic d'una User Story
+
+> "**Com a** [tipus d'usuari], **vull** [una acció], **per tal de** [un benefici]"
+
+📌 Exemple:
+
+> "Com a **usuari registrat**, vull **poder restablir la meva contrasenya**, per tal de **recuperar l'accés si l'oblid**."
+
+---v
+
+### Bones pràctiques per escriure User Stories (INVEST)
+
+- **(I)ndependent**: que no depengui d'altres stories
+- **(N)egociable**: pot canviar-se abans de ser desenvolupada
+- **(V)aluable**: aporta valor a l'usuari
+- **(E)stimable**: es pot estimar l'esforç que comporta
+- **(S)mall**: prou petita per ser desenvolupada dins un Sprint
+- **(T)estable**: es pot comprovar si s'ha completat correctament
+
+---
+
 ## Avantatges de Scrum
 
 - Flexibilitat per al canvi
