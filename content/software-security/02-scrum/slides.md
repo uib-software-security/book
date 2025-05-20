@@ -209,7 +209,7 @@ Fases, documents i rols de la metodologia Scrum
 
 ---v
 
-### ✅ Bones pràctiques
+### ✅ Bones pràctiques
 
 - Escriure cada issue com una **User Story**:
   - _Com a [usuari], vull [acció], per tal de [benefici]_
