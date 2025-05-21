@@ -200,6 +200,7 @@ Fases, documents i rols de la metodologia Scrum
 - **Size**: es poden assignar mides a cada _issue_ (p. ex. `XS`, `S`, `M`, `L`, `XL`).
 - **Estimate**: es poden assignar estimacions a cada _issue_ (p. ex. `1`, `2`, `3`, `5`, `8`).
 - **Milestones**: es poden usar per representar sprints o entregues concretes.
+  - [Com crear un milestone](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/creating-and-editing-milestones-for-issues-and-pull-requests)
 
 ---v
 
