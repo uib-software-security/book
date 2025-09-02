@@ -1100,3 +1100,25 @@ int main() {
 <!-- markdownlint-disable MD033 -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DhVRI33s-D0?si=yl4nffjpWgeyPFMv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <!-- markdownlint-enable MD033 -->
+
+---
+
+## Depurant el codi amb _GDB_
+
+> _GDB_ debugger
+
+---
+
+## Debugging - GDB Tutorial
+
+<!-- markdownlint-disable MD033 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bWH-nL7v5F4?si=FRXOHe-coyZzYVaO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
+
+---
+
+## GDB is REALLY easy! Find Bugs in Your Code with Only A Few Commands
+
+<!-- markdownlint-disable MD033 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Dq8l1_-QgAc?si=FmQUO7WpITW2mUvK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
