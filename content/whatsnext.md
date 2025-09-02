@@ -1,4 +1,4 @@
-# 📚 What's next? (__Per on continuar?__)
+# 📚 What's next? (**Per on continuar?**)
 
 ## 📘 Tutorials i articles destacats
 
