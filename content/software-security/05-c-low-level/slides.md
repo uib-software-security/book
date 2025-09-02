@@ -834,7 +834,7 @@ int main() {
 ## _Heap overflow_
 
 - Un _**stack smashing**_ desborda un buffer assignat al _stack_
-  - També podeu desbordar un buffer assignat per _**malloc**_, que resideix al _**heap**_  (memòria dinàmica)
+  - També podeu desbordar un buffer assignat per _**malloc**_, que resideix al _**heap**_ (memòria dinàmica)
 
 ![Heap overflow](./img/heap_overflow.png)
 
@@ -959,7 +959,7 @@ int main() {
 
     return 0;
 }
-````
+```
 
 ---v
 
