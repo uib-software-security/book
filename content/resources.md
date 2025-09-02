@@ -10,8 +10,8 @@
 
 ## 📖 Cheatsheets i referències
 
-- [🖋️ Cheat Sheet del llenguatge C](https://cheatography.com/briana/cheat-sheets/lenguaje-c/)
-- [🦀 Cheat Sheet del llenguatge Rust](https://quickref.me/rust.html)
+- [Rust Language Cheat Sheet](https://cheats.rs/)
+- [Rust cheatsheet](https://quickref.me/rust.html)
 
 ## 💼 Recursos professionals
 

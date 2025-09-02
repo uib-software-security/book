@@ -17,13 +17,13 @@
 - **Windows**: descarregar des de [https://git-scm.com/download/win](https://git-scm.com/download/win)
 - **Linux**: executar la comanda
 
-```bash
+```sh
 sudo apt install git
 ```
 
 - **macOS**: instal·lar Xcode des de l'App Store i executar
 
-```bash
+```sh
 xcode-select --install
 ```
 
@@ -33,14 +33,14 @@ xcode-select --install
 
 - **Nom i correu electrònic**: cal configurar el nom i correu electrònic per a identificar els commits.
 
-```bash
+```sh
 git config --global user.name "<user-name>"
 git config --global user.email "<user-email>"
 ```
 
 - **Visualització de la configuració**:
 
-```bash
+```sh
 git config --list
 ```
 
@@ -70,7 +70,7 @@ git config --list
 - Inicialitzar un repositori nou:
   - Crea un nou repositori local (`/.git`).
 
-```bash
+```sh
 git init
 ```
 
@@ -78,14 +78,14 @@ git init
   - Agafa una instantània dels fitxers per a versionar, afegint-los a l'**Index** (_staging area_).
   - L'opció `-u` també afegeix els fitxers per eliminar.
 
-```bash
+```sh
 git add [-u] [filename | . | pattern]
 ```
 
 - Validar els canvis al repositori
   - Guarda els canvis de l'**Index** al **Repositori** (**HEAD**).
 
-```bash
+```sh
 git commit -m "Missatge del commit"
 ```
 
@@ -95,26 +95,26 @@ git commit -m "Missatge del commit"
 
 - Llistar tots els fitxers nous o modificats (comparats amb el **HEAD**)
 
-```bash
+```sh
 git status
 ```
 
 - Per veure els canvis entre l'àrea de treball i el **Index** (_staging area_)
 
-```bash
+```sh
 git diff <filename>
 ```
 
 - Mostrar els canvis (commits) realitzats al **HEAD** (Repositori)
   - `-p` mostra els detalls de cada commit.
 
-```bash
+```sh
 git log [-p]
 ```
 
 - Mostrar informació d'un commit
 
-```bash
+```sh
 git show <id_commit>
 ```
 
@@ -166,19 +166,19 @@ git show <id_commit>
 
 - Crea una còpia d'un repositori remot
 
-```bash
+```sh
 git clone <url>
 ```
 
 - Mostra el(s) repositori(s) remot(s)
 
-```bash
+```sh
 git remote show [origin]
 ```
 
 - Afegeix un repositori remot
 
-```bash
+```sh
 git remote add origin <url>
 ```
 
@@ -188,19 +188,19 @@ git remote add origin <url>
 
 - Puja tots els fitxers validades de la branca local al repositori remot
 
-```bash
+```sh
 git push [origin] [master]
 ```
 
 - Descarrega i incorpora els canvis del repositori remot (`git fetch` + `git merge`)
 
-```bash
+```sh
 git pull [origin] [master]
 ```
 
 - Descarrega els canvis del repositori remot
 
-```bash
+```sh
 git fetch
 ```
 
@@ -231,19 +231,19 @@ git fetch
 
 - Crear una nova branca
 
-```bash
+```sh
 git branch <branch_name>
 ```
 
 - Mostrar les branques existents
 
-```bash
+```sh
 git branch -l
 ```
 
 - Esborrar la branca especificada
 
-```bash
+```sh
 git branch -d <branch_name>
 ```
 
@@ -254,20 +254,20 @@ git branch -d <branch_name>
 - Canviar a la branca especificada, modificant on apunta el HEAD
   - `-b` crea la branca si no existeix
 
-```bash
+```sh
 git checkout [-b] <branch_name>
 ```
 
 - Crear un nou commit que integri la branca especificada a la branca activa
   - Aquest commit tindrà dos "commits pare". Si no s'especifica una branca, integrarà la branca remota (_origin/master_)
 
-```bash
+```sh
 git merge <branch_name> -m "message"
 ```
 
 - Reescriure l'historial de commits, integrant la branca especificada en el punt on es va bifurcar
 
-```bash
+```sh
 git rebase <branch_name>
 ```
 
@@ -302,10 +302,10 @@ git rebase <branch_name>
 
 ---
 
-## Using Projects for feature planning
+## GitHub Project Management
 
 <!-- markdownlint-disable MD033 -->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yFQ-p6wMS_Y?si=SeHLx1WPU0aaDS7S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oPQgFxHcjAw?si=Vnc_AEurpX6E4dje" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <!-- markdownlint-enable MD033 -->
 
 ---
