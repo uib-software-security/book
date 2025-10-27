@@ -6,7 +6,7 @@
 >
 > **Grau d'Enginyeria Telemàtica​**
 >
-> **Professor**: Miquel Àngel Cabot ([miquel.cabot@uib.cat](mailto:miquel.cabot@uib.cat))
+> **Professor**: Miquel A. Cabot ([miquel.cabot@uib.cat](mailto:miquel.cabot@uib.cat))
 
 Apunts de l'assignatura **Seguretat del Software** en format [mdBook](https://rust-lang.github.io/mdBook/), amb presentacions generades mitjançant [reveal-js](https://revealjs.com/).
 
