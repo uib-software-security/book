@@ -11,7 +11,7 @@
 - **Crèdits**: 6.0
 - **Curs**: 4t
 - **Semestre**: Segon semestre
-- **Professorat**: Miquel Àngel Cabot Nadal
+- **Professorat**: Miquel A. Cabot
 
 ---
 
