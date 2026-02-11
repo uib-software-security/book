@@ -2,6 +2,96 @@
 
 ---
 
+## Què és el software de control de versions?
+
+- Un **sistema de control de versions** (VCS - Version Control System) és una eina que permet gestionar els canvis en fitxers al llarg del temps.
+- Registra l'historial complet de modificacions, permetent:
+  - Veure qui va fer cada canvi i quan
+  - Recuperar versions anteriors del codi
+  - Comparar diferents versions
+  - Treballar en paral·lel sense sobreescriure canvis d'altres desenvolupadors
+
+---
+
+### Per què és necessari?
+
+- **Col·laboració**: múltiples persones poden treballar en el mateix projecte sense conflictes
+- **Historial**: es manté un registre complet de tots els canvis realitzats
+- **Recuperació**: es pot tornar a qualsevol versió anterior del projecte
+- **Rastrejabilitat**: es pot identificar qui va introduir un canvi i per què
+- **Experimentació**: es poden crear branques per provar noves funcionalitats sense afectar el codi principal
+
+---
+
+### Beneficis principals
+
+- ✅ **Seguretat**: el codi està sempre respaldat
+- ✅ **Organització**: gestió ordenada de versions i canvis
+- ✅ **Productivitat**: facilitat per treballar en equip
+- ✅ **Qualitat**: millor seguiment i revisió del codi
+
+---
+
+## Història del control de versions
+
+### Primera generació: Sistemes locals (1970s-1980s)
+
+- **SCCS (Source Code Control System)** - 1972
+
+  - Creat per Marc Rochkind als laboratoris Bell
+  - Primer sistema de control de versions utilitzat àmpliament
+  - Treballava amb fitxers individuals, no amb projectes complets
+  - Exemple: utilitzat per mantenir el codi del sistema operatiu Unix
+- **RCS (Revision Control System)** - 1982
+
+  - Creat per Walter F. Tichy a la Universitat de Purdue
+  - Millorava SCCS amb millor eficiència i facilitat d'ús
+  - Permetia treballar amb múltiples fitxers
+  - Exemple: utilitzat per mantenir el codi de GCC (GNU Compiler Collection)
+
+---
+
+### Segona generació: Sistemes centralitzats (1990s-2000s)
+
+- **CVS (Concurrent Versions System)** - 1990
+
+  - Creat per Dick Grune
+  - Primer sistema que permetia treballar en xarxa
+  - Múltiples desenvolupadors podien treballar simultàniament
+  - Exemple: utilitzat per projectes com Apache HTTP Server, Mozilla Firefox
+- **Subversion (SVN)** - 2000
+
+  - Creat per CollabNet com a successor de CVS
+  - Millorava CVS amb millor gestió de fitxers binaris i renoms
+  - Sistema centralitzat amb un únic repositori
+  - Exemple: utilitzat per projectes com Apache Software Foundation, SourceForge
+
+---
+
+### Tercera generació: Sistemes distribuïts (2000s-present)
+
+- **Git** - 2005
+
+  - Creat per Linus Torvalds per al desenvolupament del kernel de Linux
+  - Sistema distribuït, ràpid i eficient
+  - Cada còpia del repositori conté l'historial complet
+  - Exemple: utilitzat per milions de projectes, incloent Linux, Android, Kubernetes
+- **Mercurial** - 2005
+
+  - Creat per Matt Mackall com a alternativa a Git
+  - Interfície més simple que Git
+  - Exemple: utilitzat per projectes com Mozilla Firefox (fins al 2016), Python
+
+---
+
+### Evolució i adopció
+
+- **2008**: GitHub es llança, popularitzant Git i el desenvolupament col·laboratiu
+- **2010s**: Git esdevé l'estàndard de facto per al control de versions
+- **Actualitat**: Git domina el mercat amb més del 90% d'adopció segons diverses enquestes
+
+---
+
 ## Git: sistema de control de versions
 
 - **Git** és un sistema de control de versions (**Version Control System, VCS**) dissenyat per fer el seguiment dels canvis en fitxers i coordinar el treball entre múltiples persones.
@@ -117,6 +207,87 @@ git log [-p]
 ```sh
 git show <id_commit>
 ```
+
+---
+
+## Exercici pràctic: Crear un repositori Git local
+
+### Objectiu
+
+Crear un repositori Git local, afegir fitxers, passar-los a staging i fer un commit.
+
+---
+
+### Passos a seguir
+
+**Pas 1, Crear un directori i inicialitzar el repositori**
+
+```sh
+mkdir meu-projecte
+cd meu-projecte
+git init
+```
+
+**Pas 2, Crear alguns fitxers de prova**
+
+```sh
+echo "# Meu Projecte" > README.md
+echo "print('Hola món!')" > hola.py
+```
+
+---
+
+**Pas 3, Verificar l'estat del repositori**
+
+```sh
+git status
+```
+
+- Hauries de veure els fitxers com a "untracked"
+
+**Pas 4, Afegir els fitxers a staging (índex)**
+
+```sh
+git add README.md
+git add hola.py
+# O afegir tots els fitxers:
+git add .
+```
+
+---
+
+**Pas 5, Verificar l'estat després d'afegir**
+
+```sh
+git status
+```
+
+- Ara haurien d'aparèixer com a "staged" (llestos per commit)
+
+**Pas 6, Fer el commit**
+
+```sh
+git commit -m "Afegir fitxers inicials del projecte"
+```
+
+---
+
+**Pas 7, Verificar l'historial**
+
+```sh
+git log
+```
+
+- Hauries de veure el commit que acabes de crear
+
+---
+
+### Verificació
+
+- ✅ El repositori està inicialitzat (existeix el directori `.git`)
+- ✅ Els fitxers estan afegits al repositori
+- ✅ El commit s'ha creat correctament
+- ✅ L'historial mostra el teu commit
 
 ---
 
@@ -302,13 +473,475 @@ git rebase <branch_name>
 
 ---
 
+## Exercici pràctic: Pujar codi a GitHub i treballar amb branques
+
+### Objectiu
+
+Pujar el repositori local a GitHub, crear una branca, fer canvis, pujar-la i crear un pull request.
+
+### Prerequisits
+
+- Haver completat l'exercici anterior (repositori local creat)
+- Tenir un compte a GitHub
+- Tener el repositori configurat amb nom i correu electrònic
+
+---
+
+### Part 1: Pujar el codi a GitHub
+
+**Pas 1, Crear un repositori a GitHub**
+
+- Ves a [https://github.com](https://github.com)
+- Clica a "**New repository**" (botó "+" a la part superior dreta)
+- Nom del repositori: `meu-projecte` (o el nom que vulguis)
+- **NO** marquis "Initialize this repository with a README"
+- Clica "**Create repository**"
+
+---
+
+**Pas 2, Afegir el repositori remot al teu projecte local**
+
+```sh
+git remote add origin https://github.com/TEUNOMBRE/meu-projecte.git
+# Substitueix TEUNOMBRE pel teu nom d'usuari de GitHub
+```
+
+---
+
+**Pas 3, Verificar el repositori remot**
+
+```sh
+git remote -v
+```
+
+**Pas 4, Pujar el codi a GitHub**
+
+```sh
+git push -u origin main
+# O si la teva branca principal es diu "master":
+# git push -u origin master
+```
+
+**Pas 5, Verificar a GitHub**
+
+- Refresca la pàgina del teu repositori a GitHub
+- Hauries de veure els teus fitxers (README.md i hola.py)
+
+---
+
+### Part 2: Treballar amb branques
+
+**Pas 6, Crear una nova branca per afegir una funcionalitat**
+
+```sh
+git checkout -b afegir-funcionalitat
+# O amb la nova sintaxi:
+# git switch -c afegir-funcionalitat
+```
+
+---
+
+**Pas 7, Verificar que estàs a la nova branca**
+
+```sh
+git branch
+# Hauries de veure un asterisc (*) davant de "afegir-funcionalitat"
+```
+
+**Pas 8, Fer canvis a la nova branca**
+
+```sh
+echo "def suma(a, b):" >> hola.py
+echo "    return a + b" >> hola.py
+echo "" >> hola.py
+echo "print(suma(2, 3))" >> hola.py
+```
+
+---
+
+**Pas 9, Afegir i fer commit dels canvis**
+
+```sh
+git add hola.py
+git commit -m "Afegir funció suma a hola.py"
+```
+
+**Pas 10, Pujar la branca a GitHub**
+
+```sh git push -u origin afegir-funcionalitat ```
+
+---
+
+### Part 3: Crear un Pull Request
+
+**Pas 11, Crear el Pull Request des de GitHub**
+- Ves al teu repositori a GitHub
+- Hauries de veure un missatge groc que diu "**afegir-funcionalitat** had recent pushes"
+- Clica el botó "**Compare & pull request**"
+
+**Pas 12, Configurar el Pull Request**
+- **Títol**: "Afegir funció suma"
+- **Descripció**: Explica què fa aquest canvi
+- Revisa els canvis que es mostren
+- Clica "**Create pull request**"
+---
+
+**Pas 13, Revisar el Pull Request**
+- Veuràs la pàgina del Pull Request
+- Pots veure els canvis (fitxers modificats)
+- Pots afegir comentaris
+- Pots veure l'historial de commits
+---
+**Pas 14, Fusionar el Pull Request** (opcional, per practicar)
+- Clica el botó "**Merge pull request**"
+- Confirma amb "**Confirm merge**"
+- Opcionalment, esborra la branca després de fusionar
+
+**Pas 15, Actualitzar la branca principal local**
+```sh git checkout main  # o master git pull origin main ```
+
+---
+
+### Verificació final
+
+- ✅ El codi està pujat a GitHub
+- ✅ S'ha creat una branca nova
+- ✅ Els canvis s'han pujat a la branca
+- ✅ S'ha creat un Pull Request
+- ✅ El Pull Request s'ha fusionat (si ho has fet)
+- ✅ La branca principal local està actualitzada
+
+---
+
+### Comandes útils per recordar
+
+```sh
+# Afegir repositori remot
+git remote add origin <url>
+
+# Pujar branca per primera vegada
+git push -u origin <nom-branca>
+
+# Crear i canviar a nova branca
+git checkout -b <nom-branca>
+
+# Veure totes les branques (locals i remotes)
+git branch -a
+
+# Actualitzar branca principal
+git checkout main
+git pull origin main
+```
+
+---
+
+## Workflows de Git: Centralized Workflow
+
+**Centralized Workflow** és el model més simple, similar a SVN, amb un únic repositori central i una única branca principal.
+
+### Estructura
+
+- **Repositori central**: Únic repositori compartit
+- **main/master**: Única branca principal
+- Tots els desenvolupadors treballen directament a la branca principal
+
+---
+
+### Flux de treball
+
+1. Clonar el repositori central
+2. Fer canvis localment
+3. Fer commit dels canvis
+4. Fer `git pull` per actualitzar amb canvis d'altres
+5. Resoldre conflictes si n'hi ha
+6. Fer `git push` per pujar els canvis
+
+---
+
+### Avantatges
+
+- ✅ Màxima simplicitat
+- ✅ Fàcil d'entendre per a qui ve de SVN
+- ✅ Ideal per equips petits
+- ✅ No requereix entendre branques
+- ✅ Ràpid per projectes simples
+
+---
+
+### Desavantatges
+
+- ❌ Tots treballen a la mateixa branca (risc de conflictes)
+- ❌ Difícil treballar en funcionalitats grans sense afectar altres
+- ❌ No permet desenvolupament paral·lel segur
+- ❌ Pot ser problemàtic per equips grans
+- ❌ No aïlla funcionalitats en desenvolupament
+
+---
+
+### Quan utilitzar-lo
+
+- Equips molt petits (1-3 desenvolupadors)
+- Projectes simples amb poc codi
+- Transició des de SVN o altres sistemes centralitzats
+- Projectes amb canvis petits i freqüents
+- Quan no es necessita aïllament de funcionalitats
+
+---
+
+## Workflows de Git: Git Flow
+
+**Git Flow** és un model de workflow que utilitza múltiples branques per organitzar el desenvolupament.
+
+### Estructura de branques
+
+- **main/master**: Codi de producció estable
+- **develop**: Branca de desenvolupament principal
+- **feature/**: Branques per noves funcionalitats (es fusionen a `develop`)
+- **release/**: Branques per preparar noves versions (es fusionen a `main` i `develop`)
+- **hotfix/**: Branques per correccions urgents (es fusionen a `main` i `develop`)
+---
+### Avantatges
+
+- ✅ Separació clara entre desenvolupament i producció
+- ✅ Ideal per projectes amb versions numerades
+- ✅ Permet treballar en múltiples funcionalitats en paral·lel
+- ✅ Facilita la gestió de releases
+
+### Desavantatges
+
+- ❌ Més complex que altres workflows
+- ❌ Requereix mantenir múltiples branques actives
+- ❌ Pot ser excessiu per projectes petits
+- ❌ L'historial pot ser complicat amb moltes branques
+---
+### Quan utilitzar-lo
+
+- Projectes amb cicles de release definits
+- Equips grans amb múltiples desenvolupadors
+- Aplicacions que requereixen versions estables per producció
+
+---
+
+## Workflows de Git: GitHub Flow
+
+**GitHub Flow** és un workflow simple basat en branques de funcionalitat i Pull Requests.
+
+### Estructura de branques
+
+- **main**: Branca principal sempre desplegable
+- **feature/**: Branques de funcionalitat que es fusionen via Pull Request
+
+---
+
+### Flux de treball
+
+1. Crear una branca des de `main`
+2. Desenvolupar la funcionalitat
+3. Obrir un Pull Request
+4. Revisar i discutir els canvis
+5. Fusionar a `main` després de l'aprovació
+6. Desplegar immediatament
+
+---
+
+### Avantatges
+
+- ✅ Simple i fàcil d'entendre
+- ✅ Ideal per desplegaments continus (CI/CD)
+- ✅ Ràpid per integrar canvis
+- ✅ Perfecte per equips petits i mitjans
+
+### Desavantatges
+
+- ❌ No gestiona versions/releases explícitament
+- ❌ Requereix que `main` estigui sempre estable
+- ❌ Pot ser problemàtic per projectes amb cicles de release llargs
+
+---
+
+### Quan utilitzar-lo
+
+- Aplicacions web amb desplegaments continus
+- Projectes que no necessiten versions numerades
+- Equips que volen un workflow simple i ràpid
+
+---
+
+## Workflows de Git: Trunk-based Development
+
+**Trunk-based Development** utilitza una única branca principal (`main` o `trunk`) per a tot el desenvolupament.
+
+### Estructura de branques
+
+- **main/trunk**: Única branca principal
+- Branques de funcionalitat molt curtes (hores o dies) que es fusionen ràpidament
+
+---
+
+### Flux de treball
+
+1. Tots els desenvolupadors treballen directament a `main`
+2. Les branques de funcionalitat es creen només per funcionalitats grans
+3. Les branques es fusionen a `main` el més aviat possible
+4. Desplegament continu des de `main`
+
+---
+
+### Avantatges
+
+- ✅ Màxima simplicitat
+- ✅ Integració contínua real
+- ✅ Menys conflictes de merge
+- ✅ Ideal per desenvolupament àgil
+
+### Desavantatges
+
+- ❌ Requereix disciplina per mantenir `main` estable
+- ❌ Pot ser difícil per equips grans sense coordinació
+- ❌ No adequat per projectes amb cicles de release complexos
+
+---
+
+### Quan utilitzar-lo
+
+- Equips petits i ben coordinats
+- Projectes amb desplegaments continus
+- Desenvolupament àgil amb integració contínua
+
+---
+
+## Workflows de Git: GitLab Flow
+
+**GitLab Flow** combina Git Flow i GitHub Flow amb un enfocament en entorns de desplegament.
+
+### Estructura de branques
+
+- **main/master**: Branca principal
+- **pre-production**: Branca per proves abans de producció
+- **production**: Branca que reflecteix el codi en producció
+- **feature/**: Branques de funcionalitat
+
+---
+
+### Flux de treball
+
+1. Desenvolupar funcionalitats en branques
+2. Fusionar a `main` via Merge Request
+3. Desplegar `main` a pre-producció
+4. Fusionar `main` a `production` quan estigui llest
+5. Etiquetar versions a `production`
+
+### Avantatges
+
+- ✅ Gestiona múltiples entorns (dev, staging, prod)
+- ✅ Combina simplicitat amb control de versions
+- ✅ Ideal per aplicacions amb entorns separats
+- ✅ Permet rollback fàcil
+
+---
+
+### Desavantatges
+
+- ❌ Més complex que GitHub Flow
+- ❌ Requereix mantenir múltiples branques d'entorn
+- ❌ Pot ser excessiu per projectes simples
+
+### Quan utilitzar-lo
+
+- Aplicacions amb múltiples entorns de desplegament
+- Projectes que necessiten control sobre el que està en producció
+- Equips que volen un equilibri entre simplicitat i control
+
+---
+
+## Workflows de Git: Forking Workflow
+
+**Forking Workflow** és un model on cada desenvolupador té la seva pròpia còpia del repositori (fork) i proposa canvis mitjançant Pull Requests.
+
+### Estructura
+
+- **Repositori oficial**: Repositori central del projecte (solo lectura per a la majoria)
+- **Forks**: Còpies completes del repositori que cada desenvolupador crea
+- **Branques locals**: Cada desenvolupador treballa en branques del seu fork
+
+---
+
+### Flux de treball
+
+1. Fer un **fork** del repositori oficial al teu compte
+2. Clonar el teu fork localment
+3. Crear una branca per a la funcionalitat
+4. Desenvolupar i fer commits a la branca
+5. Pujar la branca al teu fork
+6. Obrir un **Pull Request** des del teu fork al repositori oficial
+7. Els mantenedors revisen i fusionen el PR
+
+---
+
+### Avantatges
+
+- ✅ Control total sobre qui pot fer commits al repositori oficial
+- ✅ Ideal per projectes open source amb molts contribuïdors
+- ✅ Els mantenedors poden revisar tot el codi abans de fusionar
+- ✅ Cada desenvolupador treballa de forma independent
+- ✅ No requereix gestionar permisos d'accés per a tots els desenvolupadors
+
+---
+
+### Desavantatges
+
+- ❌ Més complex que altres workflows
+- ❌ Requereix mantenir sincronitzat el fork amb el repositori oficial
+- ❌ Pot ser lent per equips interns que necessiten integració ràpida
+- ❌ Més passos per integrar canvis
+
+---
+
+### Quan utilitzar-lo
+
+- Projectes open source amb molts contribuïdors externs
+- Projectes on es vol control estricte sobre el codi que s'integra
+- Quan no es vol donar accés directe al repositori principal
+- Projectes amb un petit equip de mantenedors
+
+---
+
+## Comparació de workflows
+
+| Característica | Git Flow | GitHub Flow | Trunk-based | GitLab Flow | Forking | Centralized |
+|----------------|----------|-------------|-------------|-------------|---------|-------------|
+| **Complexitat** | Alta | Baixa | Mínima | Mitjana | Alta | Mínima |
+| **Branques** | Múltiples | Feature branches | Principalment main | Amb entorns | Feature branches | Una sola (main) |
+| **Releases** | Explícits | Implícits | Implícits | Amb etiquetes | Implícits | Implícits |
+| **Desplegament** | Per release | Continu | Continu | Per entorn | Continu | Continu |
+| **Equip** | Gran | Petit-Mitjà | Petit | Mitjà-Gran | Molt gran | Molt petit |
+| **Control d'accés** | Mitjà | Mitjà | Baix | Mitjà | Alt | Mitjà |
+| **Adequat per** | Software amb versions | Web apps | Àgil/CI-CD | Multi-entorn | Open source | Equips petits |
+
+---
+
+### Recomanació
+
+- **Projectes petits (1-3 devs)**: Centralized Workflow o GitHub Flow
+- **Projectes mitjans**: GitHub Flow o GitLab Flow
+- **Projectes grans amb releases**: Git Flow o GitLab Flow
+- **Desplegament continu**: GitHub Flow o Trunk-based
+- **Projectes open source**: Forking Workflow
+- **Transició des de SVN**: Centralized Workflow
+
+
+---
+
 ## GitHub Project Management
 
 <!-- markdownlint-disable MD033 -->
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oPQgFxHcjAw?si=Vnc_AEurpX6E4dje" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <!-- markdownlint-enable MD033 -->
 
 ---
+
+
 
 ## 🔗 Enllaços
 
