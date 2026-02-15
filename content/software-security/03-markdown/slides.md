@@ -158,3 +158,9 @@ But let's throw in a <b>tag</b>.
 - [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 - [Markdown Guide](https://www.markdownguide.org/)
 - [Markdown Crash Course (Youtube)](https://www.youtube.com/watch?v=HUBNt18RFbo)
+
+---
+
+## Exercici pràctic Markdown i Git
+
+[Anem a practicar amb Markdown i Git.](./Exercici_Markdown.pdf)
