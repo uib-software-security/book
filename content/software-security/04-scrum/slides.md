@@ -283,9 +283,122 @@ Fases, documents i rols de la metodologia Scrum
 
 ---
 
+# Metodologia Kanban
+
+---
+
+## Què és Kanban?
+
+- **Kanban** és una metodologia àgil de gestió del treball que es centra en el **flux continu** i la **visualització** de les tasques.
+- No imposa iteracions ni sprints fixos: el treball flueix a través d’etapes definides segons la capacitat.
+- S’adapta bé a equips que necessiten **flexibilitat** i a entorns amb demanda variable (suport, manteniment, desenvolupament continu).
+- El nom ve del japonès: **看板** (_kan_ = visual, _ban_ = tauler).
+
+---
+
+## Història de Kanban
+
+- **Origen industrial (Toyota, dècada de 1940)**
+  - Taiichi Ohno (Toyota) va introduir Kanban per controlar l’estoc i el flux de peces en la producció.
+  - Objectiu: produir “just-in-time”, reduir despesa i evitar acumulació innecessària.
+- **Adaptació al software (dècada de 2000)**
+  - David J. Anderson va portar els principis de Kanban al desenvolupament de software.
+  - L’enfocament es va estendre com a alternativa o complement a Scrum i altres mètodes àgils.
+- Avui s’utilitza tant en **manufactura** com en **TI**, **suport**, **disseny** i **gestió de projectes**.
+
+---
+
+## Objectiu de Kanban
+
+- **Maximitzar el valor** lliurat sense sobrecarregar l’equip.
+- **Visualitzar el treball** per veure on està cada tasca i on es produeixen colls d’ampolla.
+- **Limitar el treball en curs (WIP)** per evitar multitasca excessiva i acabar abans de començar més.
+- **Millorar el flux** de manera contínua mitjançant mètriques i retroalimentació.
+- **Reduir temps de cicle** des de “començat” fins a “llest”, sense imposar deadlines artificials com els sprints.
+
+---
+
+## Principis de Kanban
+
+1. **Comença amb el que fas ara**: no cal canviar tot el procés; s’aplica sobre el flux actual.
+2. **Compromet-te amb canvis incrementals i evolutius**: es millora pas a pas, sense revolucions.
+3. **Respecta els rols, responsabilitats i càrrecs actuals**: Kanban no defineix rols nous (a diferència de Scrum).
+4. **Encorageja l’acte de lideratge** a tots els nivells: qualsevol pot proposar i impulsar millores.
+
+---
+
+## Pràctica: Visualitzar el flux de treball
+
+- El treball es representa en un **tauler Kanban** (físic o digital).
+- **Columnes** = etapes del procés (p. ex. *Backlog*, *Per fer*, *En curs*, *Revisió*, *Fet*).
+- **Targetes** = tasques o ítems de treball; es desplacen d’esquerra a dreta segons l’avancament.
+- Això permet veure ràpidament l’estat del treball i on es concentren els retards.
+
+---
+
+## Pràctica: Limitar el treball en curs (WIP)
+
+- Es defineix un **límit WIP** per columna (o per etapa).
+- Exemple: màxim 3 tasques a “En curs”.
+- **Avantatges**:
+  - Redueix el canvi constant de context.
+  - Força a acabar tasques abans d’encomanar-ne de noves.
+  - Fa més visibles els colls d’ampolla i permet actuar-hi.
+
+---
+
+## Pràctica: Gestionar el flux
+
+- **Flux** = com flueixen les tasques des del backlog fins a “Fet”.
+- S’analitzen mètriques com:
+  - **Temps de cicle** (de “començat” a “llest”).
+  - **Throughput** (quantitat d’ítems lliurats en un període).
+  - **WIP** per columna.
+- L’equip revisa el tauler i les mètriques per detectar problemes i millorar el procés.
+
+---
+
+## Pràctica: Fer explícites les polítiques i millorar col·laborativament
+
+- Les **polítiques** queden clares i visibles (p. ex. “Què significa ‘Fet’?”, “Qui pot moure una tasca a Revisió?”).
+- Es fan **reunions de revisió del procés** (similar a una retrospectiva) per ajustar polítiques i límits WIP.
+- Kanban no imposa cerimònies concretes; l’equip decideix quines reunions i amb quina freqüència.
+
+---
+
+## Kanban vs Scrum (resum)
+
+| Aspecte | Kanban | Scrum |
+|--------|--------|--------|
+| **Iteracions** | No; flux continu | Sprints fixos (1–4 setmanes) |
+| **Rols** | No en defineix | Product Owner, Scrum Master, Equip |
+| **Compromís** | Límits WIP, no “completar sprint” | Objectiu d’sprint, backlog d’sprint |
+| **Canvis** | Es poden afegir tasques en qualsevol moment | Backlog d’sprint tancat durant l’sprint |
+| **Mètriques** | Flux, temps de cicle, WIP | Velocitat, burn-down |
+| **Flexibilitat** | Alta; s’adapta al procés actual | Estructura més definida |
+
+- **Kanban** és molt flexible i adequat per suport, manteniment o equips que no volen sprints.
+- **Scrum** ofereix més estructura (rols, esdeveniments, artefactes) i és molt utilitzat en desenvolupament de producte amb entregues iteratives.
+
+---
+
+## Quan triar Kanban?
+
+- Treball **continu** o **imprevisible** (suport, incidents, demandes que arriben sense calendari fix).
+- Equips que **no volen** o **no poden** comprometre’s amb sprints.
+- Voler **millorar el flux** sense canviar tot el procés ni els rols.
+- Combinar amb Scrum: tauler **tipus Kanban** per gestionar el backlog i l’sprint (com amb GitHub Projects).
+
+---
+
 ## 🔗 Enllaços
 
+**Scrum**
 - [Scrum: The Art of Doing Twice the Work in Half the Time (Jeff Sutherland)](https://amzn.eu/d/fBbLyZd)
 - [Mastering Professional Scrum (Ockerman Stephanie, Reindl Simon)](https://amzn.eu/d/781dVum)
 - [Essential Scrum: A Practical Guide to the Most Popular Agile Process (Kenneth S. Rubin)](https://amzn.eu/d/aFBOZ14)
+
+**Kanban**
+- [Kanban: Successful Evolutionary Change for Your Technology Business (David J. Anderson)](https://www.amazon.com/Kanban-Successful-Evolutionary-Technology-Business/dp/0984521402)
+- [Kanban Guide](https://www.scrum.org/resources/kanban-guide-scrum-teams) (Scrum.org)
 
