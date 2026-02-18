@@ -29,16 +29,60 @@
 
 ![Waterfall model](img/waterfall-model.png)
 
+Problema principal:
+
+Els canvis són difícils i costosos.
+
+---
+
+# Què són les metodologies àgils?
+
+Les metodologies àgils són enfocaments flexibles que permeten adaptar-se als canvis.
+
+Principis clau:
+
+- Entregues freqüents
+- Adaptació al canvi
+- Col·laboració amb el client
+- Equip autoorganitzat
+
+---
+
+# Manifest Àgil (2001)
+
+
+Valors principals:
+
+-
+ Individus i interaccions > processos i eines
+-
+ Programari funcional > documentació extensiva
+-
+ Col·laboració amb el client > contracte
+-
+ Respondre al canvi > seguir un pla
+
 ---
 
 ## Exemple de metodologia àgil: SCRUM
 
-- Les **metodologies** de desenvolupament de software **àgil** es basen en l'**adaptabilitat** a qualsevol **canvi** per augmentar les possibilitats d'èxit d'un projecte.
-- **Scrum** és un marc de treball àgil per desenvolupar, lliurar i mantenir productes complexos.
-  - L'objectiu és desenvolupar i crear un producte en un període determinat, on un equip format per persones diferents treballa junt per assolir un objectiu comú.
+**Scrum** és un marc de treball àgil per desenvolupar, lliurar i mantenir productes complexos.
   - Es basa en la premissa que, durant el desenvolupament del producte, els clients canviaran d'opinió sobre allò que volen i necessiten.
   - Accepta que el problema no està completament comprès ni definit.
   - Se centra a maximitzar la capacitat de l'equip per lliurar ràpidament en el temps previst i respondre a necessitats d'última hora.
+
+---
+
+Es basa en:
+
+-
+ Iteracions curtes
+-
+ Feedback constant
+-
+ Millora contínua
+
+Cada iteració s’anomena Sprint.
 
 ---
 
@@ -244,3 +288,4 @@ Fases, documents i rols de la metodologia Scrum
 - [Scrum: The Art of Doing Twice the Work in Half the Time (Jeff Sutherland)](https://amzn.eu/d/fBbLyZd)
 - [Mastering Professional Scrum (Ockerman Stephanie, Reindl Simon)](https://amzn.eu/d/781dVum)
 - [Essential Scrum: A Practical Guide to the Most Popular Agile Process (Kenneth S. Rubin)](https://amzn.eu/d/aFBOZ14)
+
