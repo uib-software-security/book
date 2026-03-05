@@ -785,7 +785,7 @@ int main() {
 - Si no tenim accés al codi, no sabem a quina distància està el buffer del `%ebp` desat
 - Un enfocament: provar molts valors diferents!
   - "prova-error"
-  - El pitjor dels casos: és un espai de memòria de 32 (o 64) bits, el que significa 232 (264) respostes possibles
+  - El pitjor dels casos: és un espai de memòria de 32 (o 64) bits, el que significa 2^32 (2^64) respostes possibles
 - Sense aleatorització d'adreces
   - La **pila sempre comença** des de la mateixa **adreça fixa**
   - La pila creixerà, però normalment no creix molt profundament (tret que el codi sigui molt recursiu)
