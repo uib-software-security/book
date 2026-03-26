@@ -291,7 +291,7 @@ println!("{:?}", (name, age)); // for debug
 - (type1, type2, ... typeN)
 
 ```rust
-let tup: (i32, f64, u8) == (500, 6.4, 1);
+let tup: (i32, f64, u8) = (500, 6.4, 1);
 // or let tup = (500, 6.4, 1);
 
 let (x, y, z) = tup;
@@ -466,7 +466,7 @@ fn modify_name(name: &mut String) {
 fn main() {
    let mut full_name = String::from("John");
    modify_name(&mut full_name); // Passing a mutable reference to 'full _name'.
-   println!("Hello, f", full_name); // 'full _name' is still valid and modified.
+   println!("Hello, {}", full_name); // 'full _name' is still valid and modified.
 }
 ```
 
