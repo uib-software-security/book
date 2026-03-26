@@ -799,6 +799,55 @@ fn main() {
 
 ---
 
+## `Box<T>` — assignació al heap
+
+- Emmagatzema dades a l'**heap** (en lloc de la pila/_stack_)
+- L'alliberament és **automàtic** quan surt de l'àmbit (RAII - _Resource Acquisition Is Initialization_)
+  - Evita els problemes de C/C++: _double-free_, _use-after-free_
+- S'utilitza quan:
+  - El tipus és massa gran per a la pila
+  - Tipus recursius (llistes enllaçades, arbres)
+
+---v
+
+```rust
+fn main() {
+    let b = Box::new(5); // 5 emmagatzemat al heap
+    println!("b = {}", b);
+} // b s'allibera automàticament aquí (drop)
+```
+
+Comparació amb C:
+
+```c
+int *p = malloc(sizeof(int));
+*p = 5;
+// cal fer free(p) manualment — si no, memory leak
+free(p);
+```
+
+---
+
+## `Rc<T>` — comptador de referències
+
+- Permet **múltiples propietaris** d'un mateix valor
+- Manté un comptador intern; quan arriba a **0**, s'allibera
+- Només per a **un sol fil** (_single-threaded_)
+  - Per a múltiples fils: `Arc<T>` (_Atomically Reference Counted_)
+
+```rust
+use std::rc::Rc;
+
+let a = Rc::new(String::from("hola"));
+let b = Rc::clone(&a); // incrementa el comptador
+let c = Rc::clone(&a); // comptador = 3
+
+println!("Comptador: {}", Rc::strong_count(&a)); // 3
+// quan a, b i c surten de l'àmbit → comptador = 0 → drop
+```
+
+---
+
 ## Tractament d'errors
 
 - Rust agrupa els errors en dues categories:
