@@ -880,12 +880,12 @@ fn main() {
 
 ## Overflow de nombres sencers
 
-- Debug mode: panic at runtime
-- Release mode (`--release`): wrapping (u8 255+1=0, 255+2=1...). Solution:
-  - Wrap in all modes with the `wrapping_*` methods, such as `wrapping_add`.
-  - Return the `None` value if there is overflow with the `checked_*` methods.
-  - Return the value and a boolean indicating whether there was overflow with the `overflowing_*` methods.
-  - Saturate at the value's minimum or maximum values with the `saturating_*` methods
+- Mode debug: `panic!` en temps d'execució
+- Mode release (`--release`): desbordament circular (u8 255+1=0, 255+2=1...). Solucions:
+  - Desbordament circular en tots els modes amb els mètodes `wrapping_*`, com ara `wrapping_add`.
+  - Retornar `None` si hi ha desbordament amb els mètodes `checked_*`.
+  - Retornar el valor i un booleà indicant si hi ha hagut desbordament amb els mètodes `overflowing_*`.
+  - Saturar al valor mínim o màxim del tipus amb els mètodes `saturating_*`.
 
 ---
 
@@ -911,13 +911,13 @@ fn main() {
 
 ---
 
-## Rust security best practices
+## Bones pràctiques de seguretat en Rust
 
-1. Follow naming conventions
-2. Use data types effectively
-3. Pattern matching for readable code
-4. Avoid unnecessary mutability
-5. Use borrowing and ownership system
+1. Seguir les convencions de nomenclatura
+2. Utilitzar els tipus de dades de manera efectiva
+3. Usar _pattern matching_ per a un codi més llegible
+4. Evitar la mutabilitat innecessària
+5. Usar el sistema de propietat i préstec (_ownership_ i _borrowing_)
 
 ---
 
